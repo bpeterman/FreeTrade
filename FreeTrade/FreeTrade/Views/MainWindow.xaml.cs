@@ -22,6 +22,8 @@ namespace FreeTrade.Views
         public MainWindow()
         {
             InitializeComponent();
+            Test myTest = new Test();
+            myTest.Test(null);
         }
     }
 }

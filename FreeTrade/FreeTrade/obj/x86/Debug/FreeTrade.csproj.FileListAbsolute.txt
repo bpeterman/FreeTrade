@@ -9,3 +9,15 @@ C:\sandboxes\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.Properties.Re
 C:\sandboxes\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.csproj.GenerateResource.Cache
 C:\sandboxes\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.exe
 C:\sandboxes\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.pdb
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.exe
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.pdb
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\bin\Debug\FreeTrade.exe
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\bin\Debug\FreeTrade.pdb
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.csprojResolveAssemblyReference.cache
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\Views\MainWindow.baml
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\Views\MainWindow.g.cs
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\App.g.cs
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade_MarkupCompile.cache
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.g.resources
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.Properties.Resources.resources
+D:\Users\Blake\workspace\FreeTrade\FreeTrade\FreeTrade\obj\x86\Debug\FreeTrade.csproj.GenerateResource.Cache

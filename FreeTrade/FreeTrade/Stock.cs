@@ -9,10 +9,27 @@ namespace FreeTrade
 {
     class Stock
     {
+        public double getStockYearHigh(string symbol)
+        {
+            return Convert.ToDouble(getFromAPI(symbol, "k0")[0]);
+        }
+        public double getStockYearLow(string symbol)
+        {
+            return Convert.ToDouble(getFromAPI(symbol, "j0")[0]);
+        }
+        public string getCompanyName(string symbol)
+        {
+            return getFromAPI(symbol, "n")[0].Substring(1, getFromAPI(symbol, "n")[0].Length - 4);
+        }
+
         public double getLatestValue(string symbol)
         {
             return Convert.ToDouble(getFromAPI(symbol, "l1")[0]);
         }
+
+        // Stock Symbol
+        // args listed here https://code.google.com/p/yahoo-finance-managed/wiki/enumQuoteProperty 
+        // returns an array of strings.  Each arg is it's own element in the array.
         private string[] getFromAPI(string symbol, string args)
         {
             string[] results = null;

@@ -7,11 +7,10 @@ namespace FreeTrade
 {
     class Test
     {
-        public void Test(string[] args)
+        public void theTest(string[] args)
         {
             Stock stock = new Stock();
-            Console.WriteLine(stock.getLatestValue("Goog").ToString());
-
+            Console.WriteLine(stock.getLatestValue("sdfgsdfg").ToString());
         }
 
     }

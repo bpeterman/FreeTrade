@@ -23,7 +23,7 @@ namespace FreeTrade.Views
         {
             InitializeComponent();
             Test myTest = new Test();
-            myTest.Test(null);
+            myTest.theTest(null);
         }
     }
 }

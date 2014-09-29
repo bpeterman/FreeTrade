@@ -9,7 +9,12 @@ namespace FreeTrade
 {
     class Stock
     {
-        // TODO 
+        // This doesn't work properly
+        public string getAnnualizedGain(string symbol)
+        {
+            return getFromAPIquoute(symbol, "g3")[0];
+        }
+
 
         public string getExchange(string symbol)
         {
@@ -73,6 +78,35 @@ namespace FreeTrade
                 //some exception
             }
             return results;
+        }
+        public string getHistory(string symbol, DateTime from, DateTime to, char interval)
+        {
+            //string[] results = null;
+            string temp = null;
+            try
+            {
+                string yahooURL = @"http://ichart.yahoo.com/table.csv?s=" +
+                                      symbol + "&a=" + (from.Month - 1).ToString() + "&b=" + 
+                                      (from.Day).ToString() + "&c=" + (from.Year).ToString() + "&d=" + 
+                                      (to.Month - 1).ToString() + "&e=" + (to.Day).ToString() + "&f=" +
+                                      (to.Year).ToString() + "&g=" + interval.ToString() + "&ignore=.csv";
+                // Initialize a new WebRequest.
+                HttpWebRequest webreq = (HttpWebRequest)WebRequest.Create(yahooURL);
+                // Get the response from the Internet resource.
+                HttpWebResponse webresp = (HttpWebResponse)webreq.GetResponse();
+                // Read the body of the response from the server.
+                StreamReader strm =
+                  new StreamReader(webresp.GetResponseStream(), Encoding.ASCII);
+                temp = strm.ReadToEnd();
+                //results = temp.Split(new Char[] { ',' });
+                //results[0] = temp;
+                strm.Close();
+            }
+            catch
+            {
+                //some exception
+            }
+            return temp;
         }
     }
 }

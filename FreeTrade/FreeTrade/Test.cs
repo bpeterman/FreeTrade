@@ -11,6 +11,10 @@ namespace FreeTrade
         {
             Stock stock = new Stock();
             Console.WriteLine(stock.getLatestValue("sdfgsdfg").ToString());
+
+            Console.WriteLine(stock.getChangeInPercent("GOOG").ToString());
+            Console.WriteLine(stock.getChange("GOOG").ToString());
+            Console.WriteLine(stock.getExchange("GOOG").ToString());
         }
 
     }

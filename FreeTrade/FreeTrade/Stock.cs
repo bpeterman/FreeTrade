@@ -10,6 +10,22 @@ namespace FreeTrade
     class Stock
     {
         // TODO 
+
+        public string getExchange(string symbol)
+        {
+            return getFromAPIquoute(symbol, "x0")[0];
+        }
+
+        public double getChange(string symbol)
+        {
+            return Convert.ToDouble(getFromAPIquoute(symbol, "c1")[0]);
+        }
+
+        public string getChangeInPercent(string symbol)
+        {
+            return getFromAPIquoute(symbol, "p2")[0];
+        }
+
         public double getStockYearHigh(string symbol)
         {
             return Convert.ToDouble(getFromAPIquoute(symbol, "k0")[0]);

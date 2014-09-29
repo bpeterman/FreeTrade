@@ -10,11 +10,12 @@
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontWeight" Value="Light" />
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSize" Value="14" />
         </Style>
         <Style TargetType="{x:Type Label}">
             <Setter Property="FontWeight" Value="Light"/>
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,2.5" />
         </Style>
     </UserControl.Resources>
     <!-- END RESOURCES -->
@@ -26,37 +27,68 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Snapshot" FontSize="16">
-            <Grid>
+        <!-- ACCOUNT OVERVIEW -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+
+            <!-- NET WORTH -->
+            <Label Content="Net worth:" />
+            <Label Content="{Binding NetWorth, UpdateSourceTrigger=PropertyChanged, FallbackValue='--'}" Grid.Column="1"/>
+            <!-- NET WORTH -->
+
+            <!-- Overall Gains / Losses -->
+            <Label Content="Overall Gains / Losses:" Grid.Row="1" />
+            <Label Content="{Binding OverallReturn, UpdateSourceTrigger=PropertyChanged, FallbackValue='--'}" Grid.Row="1" Grid.Column="1" />
+            <!-- Overall Gains / Losses -->
+
+
+            <!-- Today's Gains / Losses -->
+            <Label Content="Today's Gains / Losses:" Grid.Row="2" />
+            <Label Content="{Binding TodaysReturn, UpdateSourceTrigger=PropertyChanged, FallbackValue='--'}" Grid.Row="2" Grid.Column="1" />
+            <!-- Today's Gains / Losses -->
+        </Grid>
+        
+        <Grid Grid.RowSpan="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Label Content="Top 5 Performers" HorizontalAlignment="Center" FontSize="18"/>
+
+            <!-- GAINS -->
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="150" />
-                </Grid.ColumnDefinitions>
-
-                <!-- NET WORTH -->
-                <Label Content="Net worth:" />
-                <Label Content="{Binding NetWorth, UpdateSourceTrigger=PropertyChanged, FallbackValue='--'}" Grid.Column="1"/>
-                <!-- NET WORTH -->
-
-                <!-- Overall Gains / Losses -->
-                <Label Content="Overall Gains / Losses:" Grid.Row="1" />
-                <Label Content="{Binding OverallReturn, UpdateSourceTrigger=PropertyChanged, FallbackValue='--'}" Grid.Row="1" Grid.Column="1" />
-                <!-- Overall Gains / Losses -->
-
-
-                <!-- Today's Gains / Losses -->
-                <Label Content="Today's Gains / Losses:" Grid.Row="2" />
-                <Label Content="{Binding TodaysReturn, UpdateSourceTrigger=PropertyChanged, FallbackValue='--'}" Grid.Row="2" Grid.Column="1" />
-                <!-- Today's Gains / Losses -->
+                <Label Content="Gains" HorizontalAlignment="Center" FontSize="16"/>
+                <ListBox Grid.Row="1"/>
             </Grid>
-        </GroupBox>
+            <!-- GAINS -->
+            <!-- LOSSES -->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Losses" HorizontalAlignment="Center" FontSize="16"/>
+                <ListBox Grid.Row="1"/>
+            </Grid>
+            <!-- LOSSES -->
+        </Grid>
+        
     </Grid>
 
 </UserControl>

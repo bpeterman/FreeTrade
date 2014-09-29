@@ -33,8 +33,12 @@
             <TabItem Header="Overview">
                 <FreeTrade:Overview />
             </TabItem>
-            <TabItem Header="Portfolio" />
-            <TabItem Header="Trade" />
+            <TabItem Header="Portfolio">
+                <FreeTrade:Portfolio />
+            </TabItem>
+            <TabItem Header="Trade">
+                <FreeTrade:Trade />
+            </TabItem>
             <TabItem Header="Performance" />
         </TabControl>
 

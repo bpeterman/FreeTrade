@@ -1,8 +1,42 @@
 ﻿<Window x:Class="FreeTrade.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:FreeTrade="clr-namespace:FreeTrade.Views"
         Title="MainWindow" Height="350" Width="525">
+    <!-- START WINDOW RESOURCES -->
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="FontWeight" Value="Light" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </Window.Resources>
+    <!-- END WINDOW RESOURCES -->
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <!-- MENU -->
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Exit" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <!-- MENU -->
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Overview">
+                <FreeTrade:Overview />
+            </TabItem>
+            <TabItem Header="Portfolio" />
+            <TabItem Header="Trade" />
+            <TabItem Header="Performance" />
+        </TabControl>
+
     </Grid>
 </Window>

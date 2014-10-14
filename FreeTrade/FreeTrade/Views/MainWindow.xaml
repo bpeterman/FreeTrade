@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
 
@@ -29,6 +30,7 @@
         </DockPanel>
         <!-- MENU -->
 
+        <!-- TABS -->
         <TabControl Grid.Row="1">
             <TabItem Header="Overview">
                 <FreeTrade:Overview />
@@ -41,6 +43,18 @@
             </TabItem>
             <TabItem Header="Performance" />
         </TabControl>
-
+        <!-- TABS -->
+        
+        <!-- MARKET INFO -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Content="Market Status:" Grid.Column="0" />
+            <Label Content="{Binding MarketStatus, UpdateSourceTrigger=PropertyChanged, FallbackValue='Closed'}" Foreground="{Binding MarketStatusLabelColor, UpdateSourceTrigger=PropertyChanged, FallbackValue=Red}" Grid.Column="1"/>
+        </Grid>
+        <!-- MARKET INFO -->
     </Grid>
 </Window>

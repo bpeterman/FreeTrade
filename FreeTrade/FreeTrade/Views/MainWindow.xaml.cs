@@ -22,10 +22,9 @@ namespace FreeTrade.Views
         public MainWindow()
         {
             InitializeComponent();
-
-            //testing stuff
-            Test myTest = new Test();
-            myTest.theTest(null);
+            Search mySearch = new Search();
+            mySearch.initialize();
+           
         }
     }
 }

@@ -8,7 +8,7 @@ namespace FreeTrade
 {
     public class Search
     {
-        ObservableCollection<Company> nyse=  new ObservableCollection<Company>();
+        List<Company> nyse=  new List<Company>();
         public Search()
         {
         }
@@ -35,8 +35,13 @@ namespace FreeTrade
 
         public ObservableCollection<Company> search(String query)
         {
-
-            return null;
+            List<Company> results = new List<Company>();
+            results.AddRange(nyse.FindAll(x => x.Name.Contains(query)));
+            results.AddRange(nyse.FindAll(x => x.Symbol.Contains(query)));
+            results.AddRange(nyse.FindAll(x => x.Sector.Contains(query)));
+            results.AddRange(nyse.FindAll(x => x.Industry.Contains(query)));
+            results.AddRange(nyse.FindAll(x => x.IPOyear.Contains(query)));
+            return new ObservableCollection<Company>(results);
         }
     }
 }

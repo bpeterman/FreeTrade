@@ -35,11 +35,11 @@ namespace FreeTrade
         {
             return Convert.ToDouble(getFromAPIquoute(symbol, "k0")[0]);
         }
+
         public double getStockYearLow(string symbol)
         {
             return Convert.ToDouble(getFromAPIquoute(symbol, "j0")[0]);
         }
-
         // This method will return a string with the company name based on the symbol.
         public string getCompanyName(string symbol)
         {
@@ -79,6 +79,7 @@ namespace FreeTrade
             }
             return results;
         }
+
         public string getHistory(string symbol, DateTime from, DateTime to, char interval)
         {
             //string[] results = null;

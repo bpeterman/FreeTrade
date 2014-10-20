@@ -22,8 +22,6 @@ namespace FreeTrade.Views
         public MainWindow()
         {
             InitializeComponent();
-            Search mySearch = new Search();
-            mySearch.initialize();
            
         }
     }

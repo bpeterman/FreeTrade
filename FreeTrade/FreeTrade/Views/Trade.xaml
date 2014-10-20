@@ -39,7 +39,7 @@
             </Grid.ColumnDefinitions>
             <Label Content="Enter Stock Symbol / Company Name:" />
             <TextBox Text="{Binding StockSymbolSearchTerm, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" VerticalAlignment="Center"/>
-            <Button Content="Search" Grid.Column="2" Width="65" VerticalAlignment="Center" Height="21" Margin="4,0" Background="White"/>
+            <Button Content="Search" Grid.Column="2" Width="65" VerticalAlignment="Center" Height="21" Margin="4,0" Background="White" Command="{Binding SearchCommand}"/>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -74,11 +74,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged, FallbackValue='Google'}"/>
+                        <Label Content="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged, FallbackValue='Company Name'}"/>
                         <Label Content="-" Grid.Column="1"/>
-                        <Label Content="{Binding CompanySymbol, UpdateSourceTrigger=PropertyChanged, FallbackValue=GOOG}" Grid.Column="2"/>
+                        <Label Content="{Binding CompanySymbol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"/>
                     </Grid>
-                    <Grid>
+                    <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />

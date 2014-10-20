@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FreeTrade
 {
-    class Company
+    public class Company
     {
         public string Symbol { get; set; }
         public string Name { get; set; }
@@ -19,6 +19,11 @@ namespace FreeTrade
             Sector = sector;
             Industry = industry;
             IPOyear = ipoYear;
+        }
+
+        public override string ToString()
+        {
+            return Name + " - " + Symbol;
         }
     }
 }

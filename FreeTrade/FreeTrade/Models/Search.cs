@@ -8,10 +8,12 @@ namespace FreeTrade
 {
     public class Search
     {
-        List<Company> nyse=  new List<Company>();
+        List<Company> nyse = new List<Company>();
+
         public Search()
         {
         }
+
         public void initialize()
         {
             string[] lines = System.IO.File.ReadAllLines(@"Stocks/nyse.csv");
@@ -29,7 +31,6 @@ namespace FreeTrade
 
                 nyse.Add(theCompany);
                 theCompany = new Company(null, null, null, null, null);
-
             }
         }
 
@@ -41,7 +42,8 @@ namespace FreeTrade
             results.AddRange(nyse.FindAll(x => x.Sector.Contains(query)));
             results.AddRange(nyse.FindAll(x => x.Industry.Contains(query)));
             results.AddRange(nyse.FindAll(x => x.IPOyear.Contains(query)));
-            return new ObservableCollection<Company>(results);
+            ObservableCollection<Company> resultsOC = new ObservableCollection<Company>(results);
+            return resultsOC;
         }
     }
 }

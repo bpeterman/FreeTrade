@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FreeTrade.ViewModels;
 
 namespace FreeTrade.Views
 {
@@ -19,9 +20,12 @@ namespace FreeTrade.Views
     /// </summary>
     public partial class Trade : UserControl
     {
+        TradeViewModel viewModel = new TradeViewModel();
         public Trade()
         {
             InitializeComponent();
+
+            this.DataContext = viewModel;
         }
     }
 }

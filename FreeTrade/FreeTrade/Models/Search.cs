@@ -21,7 +21,8 @@ namespace FreeTrade
             Company theCompany = new Company(null, null, null, null, null);
             foreach(String line in lines)
             {
-                columns = line.Split(',');
+                    
+                columns = line.Replace("\"", "").Split(',');
 
                 theCompany.Name = columns[1];
                 theCompany.Symbol= columns[0];
@@ -36,14 +37,19 @@ namespace FreeTrade
 
         public ObservableCollection<Company> search(String query)
         {
-            List<Company> results = new List<Company>();
-            results.AddRange(nyse.FindAll(x => x.Name.Contains(query)));
-            results.AddRange(nyse.FindAll(x => x.Symbol.Contains(query)));
-            results.AddRange(nyse.FindAll(x => x.Sector.Contains(query)));
-            results.AddRange(nyse.FindAll(x => x.Industry.Contains(query)));
-            results.AddRange(nyse.FindAll(x => x.IPOyear.Contains(query)));
-            ObservableCollection<Company> resultsOC = new ObservableCollection<Company>(results);
-            return resultsOC;
+            if (!String.IsNullOrEmpty(query))
+            {
+                query = query.ToLower();
+                List<Company> results = new List<Company>();
+                results.AddRange(nyse.FindAll(x => x.Name.ToLower().Contains(query)));
+                results.AddRange(nyse.FindAll(x => x.Symbol.ToLower().Contains(query)));
+                results.AddRange(nyse.FindAll(x => x.Sector.ToLower().Contains(query)));
+                results.AddRange(nyse.FindAll(x => x.Industry.ToLower().Contains(query)));
+                results.AddRange(nyse.FindAll(x => x.IPOyear.ToLower().Contains(query)));
+                ObservableCollection<Company> resultsOC = new ObservableCollection<Company>(results);
+                return resultsOC;
+            }
+            return null;
         }
     }
 }

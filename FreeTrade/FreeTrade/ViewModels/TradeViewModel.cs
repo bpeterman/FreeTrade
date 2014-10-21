@@ -16,11 +16,12 @@ namespace FreeTrade.ViewModels
         private string companyName;
         private string searchTerm;
 
-        public ObservableCollection<Company> Companies;
+        public ObservableCollection<Company> companies;
         
         public TradeViewModel()
         {
             searchHelper.initialize();
+            companies = new ObservableCollection<Company>();
         }
 
         #region PROPERTIES
@@ -57,13 +58,28 @@ namespace FreeTrade.ViewModels
             }
         }
 
+        public ObservableCollection<Company> Companies
+        {
+            get
+            {
+                return companies;
+            }
+            set
+            {
+                if (companies != value)
+                {
+                    companies = value;
+                    RaisePropertyChanged("Companies");
+                }
+            }
+        }
+
         #endregion PROPERTIES
 
         #region METHODS
         public void Search()
         {
             Companies = searchHelper.search(searchTerm);
-            RaisePropertyChanged("Companies");
         }
 
         public bool CanSearch()

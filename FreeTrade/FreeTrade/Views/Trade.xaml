@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label Content="Enter Stock Symbol / Company Name:" />
-            <TextBox Text="{Binding StockSymbolSearchTerm, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" VerticalAlignment="Center" />
             <Button Content="Search" Grid.Column="2" Width="65" VerticalAlignment="Center" Height="21" Margin="4,0" Background="White" Command="{Binding SearchCommand}"/>
         </Grid>
 
@@ -49,7 +49,7 @@
             </Grid.ColumnDefinitions>
             
             <!-- COMPANY SELECTION LIST -->
-            <ListBox Grid.Column="0" Margin="5,5"/>
+            <ListBox ItemsSource="{Binding Companies}" Grid.Column="0" Margin="5,5"/>
             <!-- COMPANY SELECTION LIST -->
             
             <Grid Grid.Column="1">

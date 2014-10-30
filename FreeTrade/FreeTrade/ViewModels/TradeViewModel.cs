@@ -15,6 +15,8 @@ namespace FreeTrade.ViewModels
 
         private string companyName;
         private string searchTerm;
+        private Company selectedCompany;
+        private bool isCompanySelected = false;
 
         public ObservableCollection<Company> companies;
         
@@ -70,6 +72,50 @@ namespace FreeTrade.ViewModels
                 {
                     companies = value;
                     RaisePropertyChanged("Companies");
+                }
+            }
+        }
+
+        public Company SelectedCompany
+        {
+            get
+            {
+                return selectedCompany;
+            }
+            set
+            {
+                if (selectedCompany != value)
+                {
+                    selectedCompany = value;
+                    RaisePropertyChanged("SelectedCompany");
+
+                    if (selectedCompany != null)
+                    {
+                        IsCompanySelected = true;
+                        RaisePropertyChanged("IsCompanySelected");
+                    }
+                    else
+                    {
+                        IsCompanySelected = false;
+                        RaisePropertyChanged("IsCompanySelected");
+                    }
+
+                }
+            }
+        }
+
+        public bool IsCompanySelected
+        {
+            get
+            {
+                return isCompanySelected;
+            }
+            set
+            {
+                if (isCompanySelected != value)
+                {
+                    isCompanySelected = value;
+                    RaisePropertyChanged("IsCompanySelected");
                 }
             }
         }

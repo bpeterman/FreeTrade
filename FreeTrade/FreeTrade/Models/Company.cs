@@ -25,5 +25,15 @@ namespace FreeTrade
         {
             return Name + " - " + Symbol;
         }
+
+        public bool Contains(string query)
+        {
+            query = query.ToLower();
+            return (Symbol.ToLower().Contains(query) ||
+                Name.ToLower().Contains(query) ||
+                Sector.ToLower().Contains(query) ||
+                Industry.ToLower().Contains(query) ||
+                IPOyear.ToLower().Contains(query));
+        }
     }
 }

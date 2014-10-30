@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="700">
-    
+
     <!-- START RESOURCES -->
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontWeight" Value="Light" />
             <Setter Property="FontSize" Value="14" />
@@ -42,17 +43,17 @@
             <Button Content="Search" Grid.Column="2" Width="65" VerticalAlignment="Center" Height="21" Margin="4,0" Background="White" Command="{Binding SearchCommand}"/>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="230"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
             <!-- COMPANY SELECTION LIST -->
-            <ListBox ItemsSource="{Binding Companies}" Grid.Column="0" Margin="5,5"/>
+            <ListBox ItemsSource="{Binding Companies}" SelectedItem="{Binding SelectedCompany, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Margin="5,5" FontSize="14"/>
             <!-- COMPANY SELECTION LIST -->
-            
-            <Grid Grid.Column="1">
+
+            <Grid Grid.Column="1" Visibility="{Binding Path=IsCompanySelected, Converter={StaticResource BoolToVis}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -61,7 +62,7 @@
                 </Grid.RowDefinitions>
                 <Label Content="Company Information" Grid.Row="0" FontSize="20"/>
                 <Separator Grid.Row="1" Margin="5,5"/>
-                
+
                 <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -74,9 +75,9 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged, FallbackValue='Company Name'}"/>
+                        <Label Content="{Binding SelectedCompany.Name, UpdateSourceTrigger=PropertyChanged, FallbackValue='Company Name'}"/>
                         <Label Content="-" Grid.Column="1"/>
-                        <Label Content="{Binding CompanySymbol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"/>
+                        <Label Content="{Binding SelectedCompany.Symbol, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>

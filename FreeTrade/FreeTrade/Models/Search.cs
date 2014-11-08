@@ -38,7 +38,7 @@ namespace FreeTrade
             allStocks.AddRange(getStocksList(@"../../Stocks/amex.csv"));
             string[] lines = allStocks.ToArray();
             String[] columns=null;
-            Company theCompany = new Company(null, null, null, null, null);
+            Company theCompany = new Company(null, null, null, null, null, 0);
             foreach(String line in lines)
             {
                     
@@ -51,7 +51,7 @@ namespace FreeTrade
                 theCompany.IPOyear = columns[5];
 
                 stocks.Add(theCompany);
-                theCompany = new Company(null, null, null, null, null);
+                theCompany = new Company(null, null, null, null, null, 0);
             }
         }
 

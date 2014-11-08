@@ -12,13 +12,21 @@ namespace FreeTrade
         public string Sector { get; set; }
         public string Industry { get; set; }
         public string IPOyear { get; set; }
-        public Company(String symbol, String name, String sector, String industry, String ipoYear)
+        public double StockPrice;
+        public Company(String symbol, String name, String sector, String industry, String ipoYear, double stockPrice)
         {
             Symbol = symbol;
             Name = name;
             Sector = sector;
             Industry = industry;
             IPOyear = ipoYear;
+            StockPrice = stockPrice;
+        }
+
+        public double getStockPrice()
+        {
+            Stock stock = new Stock();
+            return stock.getLatestValue(Symbol);
         }
 
         public override string ToString()

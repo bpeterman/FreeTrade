@@ -40,9 +40,17 @@
             this.tradePage = new System.Windows.Forms.TabPage();
             this.performancePage = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchResults = new System.Windows.Forms.ListBox();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.transAmBox = new System.Windows.Forms.TextBox();
+            this.sellButton = new System.Windows.Forms.Button();
+            this.buyButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -52,7 +60,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.settingsToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(756, 24);
@@ -133,9 +143,15 @@
             // 
             // tradePage
             // 
+            this.tradePage.Controls.Add(this.buyButton);
+            this.tradePage.Controls.Add(this.sellButton);
+            this.tradePage.Controls.Add(this.transAmBox);
+            this.tradePage.Controls.Add(this.label3);
+            this.tradePage.Controls.Add(this.textBox2);
+            this.tradePage.Controls.Add(this.label2);
             this.tradePage.Controls.Add(this.searchResults);
             this.tradePage.Controls.Add(this.searchButton);
-            this.tradePage.Controls.Add(this.textBox1);
+            this.tradePage.Controls.Add(this.searchBox);
             this.tradePage.Controls.Add(this.label1);
             this.tradePage.Location = new System.Drawing.Point(4, 22);
             this.tradePage.Name = "tradePage";
@@ -164,12 +180,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter Stock Symbol / Company Name: ";
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(195, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(454, 20);
-            this.textBox1.TabIndex = 1;
+            this.searchBox.Location = new System.Drawing.Point(195, 4);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(454, 20);
+            this.searchBox.TabIndex = 1;
             // 
             // searchButton
             // 
@@ -180,14 +196,78 @@
             this.searchButton.TabStop = false;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchResults
             // 
             this.searchResults.FormattingEnabled = true;
             this.searchResults.Location = new System.Drawing.Point(10, 36);
             this.searchResults.Name = "searchResults";
-            this.searchResults.Size = new System.Drawing.Size(183, 446);
+            this.searchResults.Size = new System.Drawing.Size(183, 394);
             this.searchResults.TabIndex = 3;
+            this.searchResults.SelectedIndexChanged += new System.EventHandler(this.searchResults_SelectedIndexChanged);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 460);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Number of Shares: ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(101, 457);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(312, 20);
+            this.textBox2.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(419, 460);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Transaction Amount: ";
+            // 
+            // transAmBox
+            // 
+            this.transAmBox.Location = new System.Drawing.Point(523, 457);
+            this.transAmBox.Name = "transAmBox";
+            this.transAmBox.Size = new System.Drawing.Size(100, 20);
+            this.transAmBox.TabIndex = 7;
+            // 
+            // sellButton
+            // 
+            this.sellButton.Location = new System.Drawing.Point(629, 457);
+            this.sellButton.Name = "sellButton";
+            this.sellButton.Size = new System.Drawing.Size(50, 23);
+            this.sellButton.TabIndex = 8;
+            this.sellButton.Text = "Sell";
+            this.sellButton.UseVisualStyleBackColor = true;
+            // 
+            // buyButton
+            // 
+            this.buyButton.Location = new System.Drawing.Point(685, 457);
+            this.buyButton.Name = "buyButton";
+            this.buyButton.Size = new System.Drawing.Size(48, 23);
+            this.buyButton.TabIndex = 9;
+            this.buyButton.Text = "Buy";
+            this.buyButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -227,8 +307,16 @@
         private System.Windows.Forms.TabPage performancePage;
         private System.Windows.Forms.ListBox searchResults;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.Button buyButton;
+        private System.Windows.Forms.Button sellButton;
+        private System.Windows.Forms.TextBox transAmBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -51,6 +51,16 @@
             this.transAmBox = new System.Windows.Forms.TextBox();
             this.sellButton = new System.Windows.Forms.Button();
             this.buyButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tradeCompanyName = new System.Windows.Forms.TextBox();
+            this.tradeSymbol = new System.Windows.Forms.TextBox();
+            this.tradeStockPrice = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tradeExchange = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tradeIPO = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -143,6 +153,16 @@
             // 
             // tradePage
             // 
+            this.tradePage.Controls.Add(this.tradeIPO);
+            this.tradePage.Controls.Add(this.label8);
+            this.tradePage.Controls.Add(this.tradeExchange);
+            this.tradePage.Controls.Add(this.label7);
+            this.tradePage.Controls.Add(this.tradeStockPrice);
+            this.tradePage.Controls.Add(this.tradeSymbol);
+            this.tradePage.Controls.Add(this.tradeCompanyName);
+            this.tradePage.Controls.Add(this.label6);
+            this.tradePage.Controls.Add(this.label5);
+            this.tradePage.Controls.Add(this.label4);
             this.tradePage.Controls.Add(this.buyButton);
             this.tradePage.Controls.Add(this.sellButton);
             this.tradePage.Controls.Add(this.transAmBox);
@@ -186,6 +206,7 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(454, 20);
             this.searchBox.TabIndex = 1;
+            this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchEnter);
             // 
             // searchButton
             // 
@@ -269,6 +290,91 @@
             this.buyButton.Text = "Buy";
             this.buyButton.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(219, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Company Name: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(260, 64);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Symbol: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(216, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Last Stock Price: ";
+            // 
+            // tradeCompanyName
+            // 
+            this.tradeCompanyName.Location = new System.Drawing.Point(303, 33);
+            this.tradeCompanyName.Name = "tradeCompanyName";
+            this.tradeCompanyName.ReadOnly = true;
+            this.tradeCompanyName.Size = new System.Drawing.Size(269, 20);
+            this.tradeCompanyName.TabIndex = 13;
+            // 
+            // tradeSymbol
+            // 
+            this.tradeSymbol.Location = new System.Drawing.Point(303, 61);
+            this.tradeSymbol.Name = "tradeSymbol";
+            this.tradeSymbol.ReadOnly = true;
+            this.tradeSymbol.Size = new System.Drawing.Size(269, 20);
+            this.tradeSymbol.TabIndex = 14;
+            // 
+            // tradeStockPrice
+            // 
+            this.tradeStockPrice.Location = new System.Drawing.Point(303, 87);
+            this.tradeStockPrice.Name = "tradeStockPrice";
+            this.tradeStockPrice.ReadOnly = true;
+            this.tradeStockPrice.Size = new System.Drawing.Size(269, 20);
+            this.tradeStockPrice.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(246, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Exchange: ";
+            // 
+            // tradeExchange
+            // 
+            this.tradeExchange.Location = new System.Drawing.Point(303, 113);
+            this.tradeExchange.Name = "tradeExchange";
+            this.tradeExchange.ReadOnly = true;
+            this.tradeExchange.Size = new System.Drawing.Size(269, 20);
+            this.tradeExchange.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(251, 147);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "IPO Year: ";
+            // 
+            // tradeIPO
+            // 
+            this.tradeIPO.Location = new System.Drawing.Point(303, 144);
+            this.tradeIPO.Name = "tradeIPO";
+            this.tradeIPO.ReadOnly = true;
+            this.tradeIPO.Size = new System.Drawing.Size(269, 20);
+            this.tradeIPO.TabIndex = 19;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,6 +423,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tradeStockPrice;
+        private System.Windows.Forms.TextBox tradeSymbol;
+        private System.Windows.Forms.TextBox tradeCompanyName;
+        private System.Windows.Forms.TextBox tradeExchange;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tradeIPO;
+        private System.Windows.Forms.Label label8;
     }
 }
 

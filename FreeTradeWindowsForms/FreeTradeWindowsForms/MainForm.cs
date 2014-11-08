@@ -12,7 +12,7 @@ namespace FreeTradeWindowsForms
 {
     public partial class MainForm : Form
     {
-        List<Company> results = new List<Company>;
+        List<Company> results = new List<Company>();
         public MainForm()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace FreeTradeWindowsForms
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            results = new List<Company>;
+            results = new List<Company>();
             searchResults.Items.Clear();
             string query = searchBox.Text;
             Search search = new Search();
@@ -37,14 +37,27 @@ namespace FreeTradeWindowsForms
                     searchResults.Items.Add(String.Format("{0} - {1}", company.Name, company.Symbol));
                 }
             }
-            Stock stock = new Stock();
-            MessageBox.Show(stock.getLatestValue("GOOG").ToString());
         }
 
         private void searchResults_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Stock stock = new Stock();
             int index = searchResults.SelectedIndex;
             Company company = results[index];
+            tradeCompanyName.Text= company.Name;
+            tradeSymbol.Text=company.Symbol;
+            tradeStockPrice.Text=company.getStockPrice().ToString();
+            tradeExchange.Text = stock.getExchange(company.Symbol);
+            tradeIPO.Text = company.IPOyear;
+        }
+
+        private void searchEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchButton_Click(null, null);
+                e.Handled = true;
+            }
 
         }
     }

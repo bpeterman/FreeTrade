@@ -3,20 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace FreeTrade
 {
+
     public class Search
     {
-        List<Company> nyse = new List<Company>();
+        List<Company> stocks = new List<Company>();
 
         public Search()
         {
         }
 
+        public List<string> getStocksList(string filename)
+        {
+            List<string> allStocks = new List<string>();
+            using (StreamReader r = new StreamReader(filename))
+            {
+                string line;
+                while ((line = r.ReadLine()) != null)
+                {
+                    allStocks.Add(line);
+                }
+            }
+            return allStocks;
+        }
+
         public void initialize()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Stocks/nyse.csv");
+            List<string> allStocks = new List<string>();
+            allStocks.AddRange(getStocksList(@"../../Stocks/nyse.csv"));
+            allStocks.AddRange(getStocksList(@"../../Stocks/nasdaq.csv"));
+            allStocks.AddRange(getStocksList(@"../../Stocks/amex.csv"));
+            string[] lines = allStocks.ToArray();
             String[] columns=null;
             Company theCompany = new Company(null, null, null, null, null);
             foreach(String line in lines)
@@ -30,7 +50,7 @@ namespace FreeTrade
                 theCompany.Industry = columns[7];
                 theCompany.IPOyear = columns[5];
 
-                nyse.Add(theCompany);
+                stocks.Add(theCompany);
                 theCompany = new Company(null, null, null, null, null);
             }
         }
@@ -41,7 +61,7 @@ namespace FreeTrade
             {
                 query = query.ToLower();
                 List<Company> results = new List<Company>();
-                results.AddRange(nyse.FindAll(x => x.Contains(query)));
+                results.AddRange(stocks.FindAll(x => x.Contains(query)));
                 ObservableCollection<Company> resultsOC = new ObservableCollection<Company>(results);
                 return resultsOC;
             }

@@ -27,6 +27,7 @@ namespace profileSample
             dMoney = money;
             lPurchasedStocks = new List<PurchasedStock>();
             lSoldStocks = new List<SoldStock>();
+            ReadFromFile();
         }
 
         public string GetName()

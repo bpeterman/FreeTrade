@@ -5,12 +5,35 @@ using System.Text;
 using System.IO;
 namespace FreeTradeWindowsForms
 {
+
+    struct PurchasedStockInfo
+    {
+        public string Name;
+        public string Symbol;
+        public string NumOfShares;
+        public string NumOfInitialShares;
+        public string PurchasePrice;
+        public string Date;
+    }
+
+    struct SoldStockInfo
+    {
+        public string Name;
+        public string Symbol;
+        public string NumOfShares;
+        public string PurchasePrice;
+        public string SoldPrice;
+        public string PurchaseDate;
+        public string SoldDate;
+    }
+
     class UserProfile
     {
         private string sName;
         private double dMoney;
         List<PurchasedStock> lPurchasedStocks;
         List<SoldStock> lSoldStocks;
+
 
         public UserProfile()
         {
@@ -28,6 +51,50 @@ namespace FreeTradeWindowsForms
             lPurchasedStocks = new List<PurchasedStock>();
             lSoldStocks = new List<SoldStock>();
             ReadFromFile();
+        }
+
+        List<PurchasedStockInfo> GetPurchasedStockDescriptor()
+        {
+            List<PurchasedStockInfo> temp = new List<PurchasedStockInfo>();
+
+            PurchasedStockInfo psi = new PurchasedStockInfo();
+
+            foreach (PurchasedStock ps in lPurchasedStocks)
+            {
+                psi = new PurchasedStockInfo();
+                psi.Name = ps.GetName();
+                psi.Symbol = ps.GetSymbol();
+                psi.NumOfShares = ps.GetNumOfShares().ToString();
+                psi.NumOfInitialShares = ps.GetInitalNumOfShares().ToString();
+                psi.PurchasePrice = ps.GetPrice().ToString();
+                psi.Date = ps.GetPurchaseDate().ToString("MM/dd/yyyy HH:mm:ss:fff");
+
+                temp.Add(psi);
+            }
+            return temp;
+        }
+
+        public List<SoldStockInfo> GetSoldStockDescriptor()
+        {
+
+
+            List<SoldStockInfo> temp = new List<SoldStockInfo>();
+
+            SoldStockInfo ssi = new SoldStockInfo();
+
+            foreach (SoldStock ss in lSoldStocks)
+            {
+                ssi = new SoldStockInfo();
+                ssi.Name = ss.GetName();
+                ssi.Symbol = ss.GetSymbol();
+                ssi.NumOfShares = ss.GetNumOfShares().ToString();
+                ssi.PurchasePrice = ss.GetPrice().ToString();
+                ssi.SoldPrice = ss.GetSoldPrice().ToString();
+                ssi.PurchaseDate = ss.GetPurchaseDate().ToString("MM/dd/yyyy HH:mm:ss:fff");
+                ssi.SoldDate = ss.GetSoldDate().ToString("MM/dd/yyyy HH:mm:ss:fff");
+                temp.Add(ssi);
+            }
+            return temp;
         }
 
         public string GetName()

@@ -47,9 +47,12 @@ namespace FreeTradeWindowsForms
             Company company = results[index];
             tradeCompanyName.Text= company.Name;
             tradeSymbol.Text=company.Symbol;
-            tradeStockPrice.Text=company.getStockPrice().ToString();
+            tradeStockPrice.Text = "$" + company.getStockPrice().ToString();
             tradeExchange.Text = stock.getExchange(company.Symbol);
             tradeIPO.Text = company.IPOyear;
+            tradeIndustry.Text = company.Industry;
+            tradeHigh.Text = "$" + stock.getStockYearHigh(company.Symbol).ToString();
+            tradeLow.Text = "$" + stock.getStockYearLow(company.Symbol).ToString();
         }
 
         private void searchEnter(object sender, KeyEventArgs e)

@@ -17,6 +17,14 @@ namespace FreeTradeWindowsForms
         public MainForm()
         {
             InitializeComponent();
+            doUserStuff();
+        }
+
+        public void doUserStuff()
+        {
+            UserProfile user = new UserProfile("blake");
+            statusUserCash.Text = "$" + user.GetMoney().ToString();
+            user.WriteToFile();
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)

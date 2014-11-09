@@ -37,7 +37,7 @@
             this.marketStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.marketStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusUserCash = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainTab = new System.Windows.Forms.TabControl();
             this.overviewPage = new System.Windows.Forms.TabPage();
             this.portfolioPage = new System.Windows.Forms.TabPage();
@@ -124,7 +124,7 @@
             this.marketStatusText,
             this.marketStatus,
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.statusUserCash});
             this.statusStrip.Location = new System.Drawing.Point(0, 546);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(756, 22);
@@ -151,13 +151,13 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(82, 17);
             this.toolStripStatusLabel1.Text = "Liquid Assets: ";
             // 
-            // toolStripStatusLabel2
+            // statusUserCash
             // 
-            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Green;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(69, 17);
-            this.toolStripStatusLabel2.Text = "$40,000.56";
+            this.statusUserCash.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusUserCash.ForeColor = System.Drawing.Color.Green;
+            this.statusUserCash.Name = "statusUserCash";
+            this.statusUserCash.Size = new System.Drawing.Size(69, 17);
+            this.statusUserCash.Text = "$40,000.56";
             // 
             // mainTab
             // 
@@ -550,7 +550,7 @@
         private System.Windows.Forms.TextBox tradeIPO;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel statusUserCash;
         private System.Windows.Forms.TextBox tradeIndustry;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tradeSharesOwned;

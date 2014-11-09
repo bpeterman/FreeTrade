@@ -12,19 +12,30 @@ namespace FreeTradeWindowsForms
 {
     public partial class MainForm : Form
     {
-        List<UserProfile> users = new List<UserProfile>();
+        UserProfile user;
         List<Company> results = new List<Company>();
         public MainForm()
         {
             InitializeComponent();
-            doUserStuff();
+            showLogin();
         }
 
-        public void doUserStuff()
+        public void setUser(string uName)
         {
-            UserProfile user = new UserProfile("blake");
-            statusUserCash.Text = "$" + user.GetMoney().ToString();
-            user.WriteToFile();
+            user = new UserProfile(uName);
+        }
+
+        public void showLogin()
+        {
+            Login login = new Login();
+            login.ShowDialog();
+            initializeUser(login.getUsername());
+        }
+
+        public void initializeUser(string uName)
+        {
+            user = new UserProfile(uName);
+            statusUserCash.Text = user.GetMoney().ToString("C2");
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,12 +66,12 @@ namespace FreeTradeWindowsForms
             Company company = results[index];
             tradeCompanyName.Text= company.Name;
             tradeSymbol.Text=company.Symbol;
-            tradeStockPrice.Text = "$" + company.getStockPrice().ToString();
+            tradeStockPrice.Text = company.getStockPrice().ToString("C2");
             tradeExchange.Text = stock.getExchange(company.Symbol);
             tradeIPO.Text = company.IPOyear;
             tradeIndustry.Text = company.Industry;
-            tradeHigh.Text = "$" + stock.getStockYearHigh(company.Symbol).ToString();
-            tradeLow.Text = "$" + stock.getStockYearLow(company.Symbol).ToString();
+            tradeHigh.Text = stock.getStockYearHigh(company.Symbol).ToString("C2");
+            tradeLow.Text = stock.getStockYearLow(company.Symbol).ToString("C2");
         }
 
         private void searchEnter(object sender, KeyEventArgs e)
@@ -75,6 +86,21 @@ namespace FreeTradeWindowsForms
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            int index = searchResults.SelectedIndex;
+            if (index > -1)
+            {
+                Company company = results[index];
+                tradeCompanyName.Text = company.Name;
+                MessageBox.Show(company.Symbol);
+            }
+            else
+            {
+                MessageBox.Show("No company selected!!1!");
+            }
         }
     }
 }

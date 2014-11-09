@@ -42,6 +42,18 @@
             this.overviewPage = new System.Windows.Forms.TabPage();
             this.portfolioPage = new System.Windows.Forms.TabPage();
             this.tradePage = new System.Windows.Forms.TabPage();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tradeLow = new System.Windows.Forms.TextBox();
+            this.tradeHigh = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tradeIndustry = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tradeSharesOwned = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tradeIPO = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tradeExchange = new System.Windows.Forms.TextBox();
@@ -63,15 +75,6 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tradeSharesOwned = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tradeIndustry = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tradeHigh = new System.Windows.Forms.TextBox();
-            this.tradeLow = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -156,8 +159,8 @@
             this.statusUserCash.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusUserCash.ForeColor = System.Drawing.Color.Green;
             this.statusUserCash.Name = "statusUserCash";
-            this.statusUserCash.Size = new System.Drawing.Size(69, 17);
-            this.statusUserCash.Text = "$40,000.56";
+            this.statusUserCash.Size = new System.Drawing.Size(56, 17);
+            this.statusUserCash.Text = "$111111";
             // 
             // mainTab
             // 
@@ -193,6 +196,9 @@
             // 
             // tradePage
             // 
+            this.tradePage.Controls.Add(this.textBox3);
+            this.tradePage.Controls.Add(this.textBox1);
+            this.tradePage.Controls.Add(this.label14);
             this.tradePage.Controls.Add(this.tradeLow);
             this.tradePage.Controls.Add(this.tradeHigh);
             this.tradePage.Controls.Add(this.label13);
@@ -229,6 +235,108 @@
             this.tradePage.TabIndex = 2;
             this.tradePage.Text = "Trade";
             this.tradePage.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(303, 410);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(269, 20);
+            this.textBox3.TabIndex = 31;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(303, 382);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(269, 20);
+            this.textBox1.TabIndex = 30;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(265, 385);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(42, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Profits: ";
+            // 
+            // tradeLow
+            // 
+            this.tradeLow.Location = new System.Drawing.Point(303, 238);
+            this.tradeLow.Name = "tradeLow";
+            this.tradeLow.ReadOnly = true;
+            this.tradeLow.Size = new System.Drawing.Size(269, 20);
+            this.tradeLow.TabIndex = 28;
+            // 
+            // tradeHigh
+            // 
+            this.tradeHigh.Location = new System.Drawing.Point(303, 209);
+            this.tradeHigh.Name = "tradeHigh";
+            this.tradeHigh.ReadOnly = true;
+            this.tradeHigh.Size = new System.Drawing.Size(269, 20);
+            this.tradeHigh.TabIndex = 27;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(227, 241);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "52 Week Low: ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(225, 212);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 13);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "52 Week High: ";
+            // 
+            // tradeIndustry
+            // 
+            this.tradeIndustry.Location = new System.Drawing.Point(303, 178);
+            this.tradeIndustry.Name = "tradeIndustry";
+            this.tradeIndustry.ReadOnly = true;
+            this.tradeIndustry.Size = new System.Drawing.Size(269, 20);
+            this.tradeIndustry.TabIndex = 24;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(257, 181);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Industry: ";
+            // 
+            // tradeSharesOwned
+            // 
+            this.tradeSharesOwned.Location = new System.Drawing.Point(303, 356);
+            this.tradeSharesOwned.Name = "tradeSharesOwned";
+            this.tradeSharesOwned.ReadOnly = true;
+            this.tradeSharesOwned.Size = new System.Drawing.Size(269, 20);
+            this.tradeSharesOwned.TabIndex = 22;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(217, 413);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(90, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Date Purchased: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(224, 359);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Shares Owned: ";
             // 
             // tradeIPO
             // 
@@ -323,6 +431,7 @@
             this.buyButton.TabIndex = 9;
             this.buyButton.Text = "Buy";
             this.buyButton.UseVisualStyleBackColor = true;
+            this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
             // 
             // sellButton
             // 
@@ -414,83 +523,6 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(224, 397);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Shares Owned: ";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(217, 426);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Date Purchased: ";
-            // 
-            // tradeSharesOwned
-            // 
-            this.tradeSharesOwned.Location = new System.Drawing.Point(303, 394);
-            this.tradeSharesOwned.Name = "tradeSharesOwned";
-            this.tradeSharesOwned.ReadOnly = true;
-            this.tradeSharesOwned.Size = new System.Drawing.Size(269, 20);
-            this.tradeSharesOwned.TabIndex = 22;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(257, 181);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 13);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Industry: ";
-            // 
-            // tradeIndustry
-            // 
-            this.tradeIndustry.Location = new System.Drawing.Point(303, 178);
-            this.tradeIndustry.Name = "tradeIndustry";
-            this.tradeIndustry.ReadOnly = true;
-            this.tradeIndustry.Size = new System.Drawing.Size(269, 20);
-            this.tradeIndustry.TabIndex = 24;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(225, 212);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "52 Week High: ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(227, 241);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 13);
-            this.label13.TabIndex = 26;
-            this.label13.Text = "52 Week Low: ";
-            // 
-            // tradeHigh
-            // 
-            this.tradeHigh.Location = new System.Drawing.Point(303, 209);
-            this.tradeHigh.Name = "tradeHigh";
-            this.tradeHigh.ReadOnly = true;
-            this.tradeHigh.Size = new System.Drawing.Size(269, 20);
-            this.tradeHigh.TabIndex = 27;
-            // 
-            // tradeLow
-            // 
-            this.tradeLow.Location = new System.Drawing.Point(303, 238);
-            this.tradeLow.Name = "tradeLow";
-            this.tradeLow.ReadOnly = true;
-            this.tradeLow.Size = new System.Drawing.Size(269, 20);
-            this.tradeLow.TabIndex = 28;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,6 +592,9 @@
         private System.Windows.Forms.TextBox tradeHigh;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label14;
     }
 }
 

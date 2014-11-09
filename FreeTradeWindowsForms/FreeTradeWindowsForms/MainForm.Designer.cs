@@ -31,6 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.marketStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.marketStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -38,29 +40,27 @@
             this.overviewPage = new System.Windows.Forms.TabPage();
             this.portfolioPage = new System.Windows.Forms.TabPage();
             this.tradePage = new System.Windows.Forms.TabPage();
-            this.performancePage = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.searchBox = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.searchResults = new System.Windows.Forms.ListBox();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.transAmBox = new System.Windows.Forms.TextBox();
-            this.sellButton = new System.Windows.Forms.Button();
-            this.buyButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tradeCompanyName = new System.Windows.Forms.TextBox();
-            this.tradeSymbol = new System.Windows.Forms.TextBox();
-            this.tradeStockPrice = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tradeExchange = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.tradeIPO = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tradeExchange = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tradeStockPrice = new System.Windows.Forms.TextBox();
+            this.tradeSymbol = new System.Windows.Forms.TextBox();
+            this.tradeCompanyName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.buyButton = new System.Windows.Forms.Button();
+            this.sellButton = new System.Windows.Forms.Button();
+            this.transAmBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.searchResults = new System.Windows.Forms.ListBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.performancePage = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -91,8 +91,20 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
             // statusStrip
             // 
@@ -181,32 +193,149 @@
             this.tradePage.Text = "Trade";
             this.tradePage.UseVisualStyleBackColor = true;
             // 
-            // performancePage
+            // tradeIPO
             // 
-            this.performancePage.Location = new System.Drawing.Point(4, 22);
-            this.performancePage.Name = "performancePage";
-            this.performancePage.Padding = new System.Windows.Forms.Padding(3);
-            this.performancePage.Size = new System.Drawing.Size(748, 490);
-            this.performancePage.TabIndex = 3;
-            this.performancePage.Text = "Performance";
-            this.performancePage.UseVisualStyleBackColor = true;
+            this.tradeIPO.Location = new System.Drawing.Point(303, 144);
+            this.tradeIPO.Name = "tradeIPO";
+            this.tradeIPO.ReadOnly = true;
+            this.tradeIPO.Size = new System.Drawing.Size(269, 20);
+            this.tradeIPO.TabIndex = 19;
             // 
-            // label1
+            // label8
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Enter Stock Symbol / Company Name: ";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(251, 147);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "IPO Year: ";
             // 
-            // searchBox
+            // tradeExchange
             // 
-            this.searchBox.Location = new System.Drawing.Point(195, 4);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(454, 20);
-            this.searchBox.TabIndex = 1;
-            this.searchBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchEnter);
+            this.tradeExchange.Location = new System.Drawing.Point(303, 113);
+            this.tradeExchange.Name = "tradeExchange";
+            this.tradeExchange.ReadOnly = true;
+            this.tradeExchange.Size = new System.Drawing.Size(269, 20);
+            this.tradeExchange.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(246, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Exchange: ";
+            // 
+            // tradeStockPrice
+            // 
+            this.tradeStockPrice.Location = new System.Drawing.Point(303, 87);
+            this.tradeStockPrice.Name = "tradeStockPrice";
+            this.tradeStockPrice.ReadOnly = true;
+            this.tradeStockPrice.Size = new System.Drawing.Size(269, 20);
+            this.tradeStockPrice.TabIndex = 15;
+            // 
+            // tradeSymbol
+            // 
+            this.tradeSymbol.Location = new System.Drawing.Point(303, 61);
+            this.tradeSymbol.Name = "tradeSymbol";
+            this.tradeSymbol.ReadOnly = true;
+            this.tradeSymbol.Size = new System.Drawing.Size(269, 20);
+            this.tradeSymbol.TabIndex = 14;
+            // 
+            // tradeCompanyName
+            // 
+            this.tradeCompanyName.Location = new System.Drawing.Point(303, 33);
+            this.tradeCompanyName.Name = "tradeCompanyName";
+            this.tradeCompanyName.ReadOnly = true;
+            this.tradeCompanyName.Size = new System.Drawing.Size(269, 20);
+            this.tradeCompanyName.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(216, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Last Stock Price: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(260, 64);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Symbol: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(219, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Company Name: ";
+            // 
+            // buyButton
+            // 
+            this.buyButton.Location = new System.Drawing.Point(685, 454);
+            this.buyButton.Name = "buyButton";
+            this.buyButton.Size = new System.Drawing.Size(48, 23);
+            this.buyButton.TabIndex = 9;
+            this.buyButton.Text = "Buy";
+            this.buyButton.UseVisualStyleBackColor = true;
+            // 
+            // sellButton
+            // 
+            this.sellButton.Location = new System.Drawing.Point(629, 454);
+            this.sellButton.Name = "sellButton";
+            this.sellButton.Size = new System.Drawing.Size(50, 23);
+            this.sellButton.TabIndex = 8;
+            this.sellButton.Text = "Sell";
+            this.sellButton.UseVisualStyleBackColor = true;
+            // 
+            // transAmBox
+            // 
+            this.transAmBox.Location = new System.Drawing.Point(523, 457);
+            this.transAmBox.Name = "transAmBox";
+            this.transAmBox.Size = new System.Drawing.Size(100, 20);
+            this.transAmBox.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(419, 460);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Transaction Amount: ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(101, 457);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(312, 20);
+            this.textBox2.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 460);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Number of Shares: ";
+            // 
+            // searchResults
+            // 
+            this.searchResults.FormattingEnabled = true;
+            this.searchResults.Location = new System.Drawing.Point(10, 36);
+            this.searchResults.Name = "searchResults";
+            this.searchResults.Size = new System.Drawing.Size(183, 394);
+            this.searchResults.TabIndex = 3;
+            this.searchResults.SelectedIndexChanged += new System.EventHandler(this.searchResults_SelectedIndexChanged);
             // 
             // searchButton
             // 
@@ -219,161 +348,32 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // searchResults
+            // searchBox
             // 
-            this.searchResults.FormattingEnabled = true;
-            this.searchResults.Location = new System.Drawing.Point(10, 36);
-            this.searchResults.Name = "searchResults";
-            this.searchResults.Size = new System.Drawing.Size(183, 394);
-            this.searchResults.TabIndex = 3;
-            this.searchResults.SelectedIndexChanged += new System.EventHandler(this.searchResults_SelectedIndexChanged);
+            this.searchBox.Location = new System.Drawing.Point(195, 4);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(454, 20);
+            this.searchBox.TabIndex = 1;
+            this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchEnter);
             // 
-            // settingsToolStripMenuItem
+            // label1
             // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Enter Stock Symbol / Company Name: ";
             // 
-            // helpToolStripMenuItem
+            // performancePage
             // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 460);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Number of Shares: ";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(101, 457);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(312, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(419, 460);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Transaction Amount: ";
-            // 
-            // transAmBox
-            // 
-            this.transAmBox.Location = new System.Drawing.Point(523, 457);
-            this.transAmBox.Name = "transAmBox";
-            this.transAmBox.Size = new System.Drawing.Size(100, 20);
-            this.transAmBox.TabIndex = 7;
-            // 
-            // sellButton
-            // 
-            this.sellButton.Location = new System.Drawing.Point(629, 457);
-            this.sellButton.Name = "sellButton";
-            this.sellButton.Size = new System.Drawing.Size(50, 23);
-            this.sellButton.TabIndex = 8;
-            this.sellButton.Text = "Sell";
-            this.sellButton.UseVisualStyleBackColor = true;
-            // 
-            // buyButton
-            // 
-            this.buyButton.Location = new System.Drawing.Point(685, 457);
-            this.buyButton.Name = "buyButton";
-            this.buyButton.Size = new System.Drawing.Size(48, 23);
-            this.buyButton.TabIndex = 9;
-            this.buyButton.Text = "Buy";
-            this.buyButton.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(219, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Company Name: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(260, 64);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Symbol: ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(216, 90);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Last Stock Price: ";
-            // 
-            // tradeCompanyName
-            // 
-            this.tradeCompanyName.Location = new System.Drawing.Point(303, 33);
-            this.tradeCompanyName.Name = "tradeCompanyName";
-            this.tradeCompanyName.ReadOnly = true;
-            this.tradeCompanyName.Size = new System.Drawing.Size(269, 20);
-            this.tradeCompanyName.TabIndex = 13;
-            // 
-            // tradeSymbol
-            // 
-            this.tradeSymbol.Location = new System.Drawing.Point(303, 61);
-            this.tradeSymbol.Name = "tradeSymbol";
-            this.tradeSymbol.ReadOnly = true;
-            this.tradeSymbol.Size = new System.Drawing.Size(269, 20);
-            this.tradeSymbol.TabIndex = 14;
-            // 
-            // tradeStockPrice
-            // 
-            this.tradeStockPrice.Location = new System.Drawing.Point(303, 87);
-            this.tradeStockPrice.Name = "tradeStockPrice";
-            this.tradeStockPrice.ReadOnly = true;
-            this.tradeStockPrice.Size = new System.Drawing.Size(269, 20);
-            this.tradeStockPrice.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(246, 116);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Exchange: ";
-            // 
-            // tradeExchange
-            // 
-            this.tradeExchange.Location = new System.Drawing.Point(303, 113);
-            this.tradeExchange.Name = "tradeExchange";
-            this.tradeExchange.ReadOnly = true;
-            this.tradeExchange.Size = new System.Drawing.Size(269, 20);
-            this.tradeExchange.TabIndex = 17;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(251, 147);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "IPO Year: ";
-            // 
-            // tradeIPO
-            // 
-            this.tradeIPO.Location = new System.Drawing.Point(303, 144);
-            this.tradeIPO.Name = "tradeIPO";
-            this.tradeIPO.ReadOnly = true;
-            this.tradeIPO.Size = new System.Drawing.Size(269, 20);
-            this.tradeIPO.TabIndex = 19;
+            this.performancePage.Location = new System.Drawing.Point(4, 22);
+            this.performancePage.Name = "performancePage";
+            this.performancePage.Padding = new System.Windows.Forms.Padding(3);
+            this.performancePage.Size = new System.Drawing.Size(748, 490);
+            this.performancePage.TabIndex = 3;
+            this.performancePage.Text = "Performance";
+            this.performancePage.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

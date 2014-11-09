@@ -12,6 +12,7 @@ namespace FreeTradeWindowsForms
 {
     public partial class MainForm : Form
     {
+        List<UserProfile> users = new List<UserProfile>();
         List<Company> results = new List<Company>();
         public MainForm()
         {
@@ -58,7 +59,6 @@ namespace FreeTradeWindowsForms
                 searchButton_Click(null, null);
                 e.Handled = true;
             }
-
         }
     }
 }

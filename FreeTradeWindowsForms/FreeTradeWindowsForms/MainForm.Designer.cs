@@ -61,6 +61,8 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -93,6 +95,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -110,7 +113,9 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.marketStatusText,
-            this.marketStatus});
+            this.marketStatus,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
             this.statusStrip.Location = new System.Drawing.Point(0, 546);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(756, 22);
@@ -354,6 +359,7 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(454, 20);
             this.searchBox.TabIndex = 1;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchButton_Click);
             this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchEnter);
             // 
             // label1
@@ -374,6 +380,20 @@
             this.performancePage.TabIndex = 3;
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(82, 17);
+            this.toolStripStatusLabel1.Text = "Liquid Assets: ";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Green;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(69, 17);
+            this.toolStripStatusLabel2.Text = "$40,000.56";
             // 
             // MainForm
             // 
@@ -433,6 +453,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tradeIPO;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 

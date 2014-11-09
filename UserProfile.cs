@@ -43,14 +43,22 @@ namespace profileSample
             lSoldStocks = new List<SoldStock>();
             ReadFromFile();
         }
-
+        
+        public UserProfile(string name)
+        {
+            sName = name;
+            lPurchasedStocks = new List<PurchasedStock>();
+            lSoldStocks = new List<SoldStock>();
+            ReadFromFile();
+        }
+        
         public UserProfile(string name, double money)
         {
             sName = name;
             dMoney = money;
             lPurchasedStocks = new List<PurchasedStock>();
             lSoldStocks = new List<SoldStock>();
-            ReadFromFile();
+
         }
 
         List<PurchasedStockInfo> GetPurchasedStockDescriptor()
@@ -76,8 +84,6 @@ namespace profileSample
 
         public List<SoldStockInfo> GetSoldStockDescriptor()
         {
-
-        
             List<SoldStockInfo> temp = new List<SoldStockInfo>();
 
             SoldStockInfo ssi = new SoldStockInfo();
@@ -113,7 +119,6 @@ namespace profileSample
             return false;
 
         }
-
 
         public double GetMoney()
         {
@@ -169,10 +174,9 @@ namespace profileSample
 
                 }
             }
-
-
             return bFound;
         }
+
         public void WriteToFile()
         {
             //2 lines
@@ -262,6 +266,7 @@ namespace profileSample
 
             lSoldStocks.Add(new SoldStock(stock_name, stock_symbol, dStPrice, fNumShares, dSoldPrice, PurTemp, SoldTemp));
         }
+
         private bool ReadFromFile()
         {
             try
@@ -309,9 +314,6 @@ namespace profileSample
                     }
                 }
 
-
-
-
                 string[] soldStock = File.ReadAllLines(sName + "soldstocks.txt");
                 string sold_price = "";
                 string sold_date = "";
@@ -344,11 +346,9 @@ namespace profileSample
                             break;
                     }
                 }
-
-
                 Console.WriteLine(user.Length + " " + purStock.Length + " " + soldStock.Length);
-
             }
+
             catch (FileNotFoundException FE)
             {
                 return false;
@@ -358,5 +358,4 @@ namespace profileSample
 
     }
 
-    
 }

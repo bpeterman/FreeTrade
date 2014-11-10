@@ -144,7 +144,8 @@ namespace FreeTradeWindowsForms
         }
         public void fill_Portfolio()
         {
-            portDataGrid.DataSource = null;
+            portDataGrid.Rows.Clear();
+            portDataGrid.Refresh();
             portDataGrid.ColumnCount = 7;
             portDataGrid.Columns[0].Name = "Company Name";
             portDataGrid.Columns[1].Name = "Company Symbol";

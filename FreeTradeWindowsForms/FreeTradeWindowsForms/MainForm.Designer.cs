@@ -42,18 +42,12 @@
             this.overviewPage = new System.Windows.Forms.TabPage();
             this.portfolioPage = new System.Windows.Forms.TabPage();
             this.tradePage = new System.Windows.Forms.TabPage();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.tradeLow = new System.Windows.Forms.TextBox();
             this.tradeHigh = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tradeIndustry = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.tradeSharesOwned = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tradeIPO = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tradeExchange = new System.Windows.Forms.TextBox();
@@ -202,18 +196,12 @@
             // 
             // tradePage
             // 
-            this.tradePage.Controls.Add(this.textBox3);
-            this.tradePage.Controls.Add(this.textBox1);
-            this.tradePage.Controls.Add(this.label14);
             this.tradePage.Controls.Add(this.tradeLow);
             this.tradePage.Controls.Add(this.tradeHigh);
             this.tradePage.Controls.Add(this.label13);
             this.tradePage.Controls.Add(this.label12);
             this.tradePage.Controls.Add(this.tradeIndustry);
             this.tradePage.Controls.Add(this.label11);
-            this.tradePage.Controls.Add(this.tradeSharesOwned);
-            this.tradePage.Controls.Add(this.label10);
-            this.tradePage.Controls.Add(this.label9);
             this.tradePage.Controls.Add(this.tradeIPO);
             this.tradePage.Controls.Add(this.label8);
             this.tradePage.Controls.Add(this.tradeExchange);
@@ -240,31 +228,6 @@
             this.tradePage.TabIndex = 2;
             this.tradePage.Text = "Trade";
             this.tradePage.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(303, 410);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(269, 20);
-            this.textBox3.TabIndex = 31;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(303, 382);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(269, 20);
-            this.textBox1.TabIndex = 30;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(265, 385);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(42, 13);
-            this.label14.TabIndex = 29;
-            this.label14.Text = "Profits: ";
             // 
             // tradeLow
             // 
@@ -316,32 +279,6 @@
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Industry: ";
-            // 
-            // tradeSharesOwned
-            // 
-            this.tradeSharesOwned.Location = new System.Drawing.Point(303, 356);
-            this.tradeSharesOwned.Name = "tradeSharesOwned";
-            this.tradeSharesOwned.ReadOnly = true;
-            this.tradeSharesOwned.Size = new System.Drawing.Size(269, 20);
-            this.tradeSharesOwned.TabIndex = 22;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(217, 413);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Date Purchased: ";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(224, 359);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Shares Owned: ";
             // 
             // tradeIPO
             // 
@@ -600,16 +537,10 @@
         private System.Windows.Forms.ToolStripStatusLabel statusUserCash;
         private System.Windows.Forms.TextBox tradeIndustry;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tradeSharesOwned;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tradeLow;
         private System.Windows.Forms.TextBox tradeHigh;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView portDataGrid;
         private System.Windows.Forms.WebBrowser webBrowser1;
     }

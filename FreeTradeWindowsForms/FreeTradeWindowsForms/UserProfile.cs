@@ -93,7 +93,7 @@ namespace FreeTradeWindowsForms
                 ssi = new SoldStockInfo();
                 ssi.Name = ss.GetName();
                 ssi.Symbol = ss.GetSymbol();
-                ssi.NumOfShares = ss.GetNumOfShares().ToString();
+                ssi.NumOfShares = ss.GetNumOfShares().ToString("F");
                 ssi.PurchasePrice = ss.GetPrice().ToString();
                 ssi.SoldPrice = ss.GetSoldPrice().ToString();
                 ssi.PurchaseDate = ss.GetPurchaseDate().ToString("MM/dd/yyyy HH:mm:ss:fff");
@@ -309,7 +309,7 @@ namespace FreeTradeWindowsForms
                             break;
                         case 5:
                             pur_date = purStock[i];
-                            StringPurListStockBuilder(stock_name, stock_name, init_num_shares, num_shares, stock_price, pur_date);
+                            StringPurListStockBuilder(stock_name, stock_symbol, init_num_shares, num_shares, stock_price, pur_date);
                             break;
                     }
                 }

@@ -144,14 +144,29 @@ namespace FreeTradeWindowsForms
         }
         public void fill_Portfolio()
         {
+            portDataGrid.DataSource = null;
             portDataGrid.ColumnCount = 7;
             portDataGrid.Columns[0].Name = "Company Name";
             portDataGrid.Columns[1].Name = "Company Symbol";
             portDataGrid.Columns[2].Name = "Number of Shares";
             portDataGrid.Columns[3].Name = "Purchase Price";
-            portDataGrid.Columns[4].Name = "Purchase Date";
+            portDataGrid.Columns[4].Name = "Current Price";
+            portDataGrid.Columns[5].Name = "Purchase Date";
 
-            
+            List<PurchasedStockInfo> stocks = user.GetPurchasedStockDescriptor();
+            Stock checker = new Stock();
+            //loop through the purchased stocks.
+            foreach (PurchasedStockInfo stock in stocks)
+            {
+                string[] row = new string[6];
+                row[0] = stock.Name;
+                row[1] = stock.Symbol;
+                row[2] = stock.NumOfShares;
+                row[3] = Convert.ToDouble(stock.PurchasePrice).ToString("C2");
+                row[4] = checker.getLatestValue(stock.Symbol).ToString("C2");
+                row[5] = stock.Date;
+                portDataGrid.Rows.Add(row);
+            }
         }
     }
 }

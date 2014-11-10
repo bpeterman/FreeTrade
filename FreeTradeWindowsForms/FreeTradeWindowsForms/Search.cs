@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections.ObjectModel;
 using System.IO;
 
-namespace FreeTrade
+namespace FreeTradeWindowsForms
 {
 
     public class Search
@@ -38,15 +38,15 @@ namespace FreeTrade
             allStocks.AddRange(getStocksList(@"../../Stocks/nasdaq.csv"));
             allStocks.AddRange(getStocksList(@"../../Stocks/amex.csv"));
             string[] lines = allStocks.ToArray();
-            String[] columns=null;
+            String[] columns = null;
             Company theCompany = new Company(null, null, null, null, null, 0);
-            foreach(String line in lines)
+            foreach (String line in lines)
             {
-                    
+
                 columns = line.Replace("\"", "").Split(',');
 
                 theCompany.Name = columns[1];
-                theCompany.Symbol= columns[0];
+                theCompany.Symbol = columns[0];
                 theCompany.Sector = columns[6];
                 theCompany.Industry = columns[7];
                 theCompany.IPOyear = columns[5];
@@ -56,15 +56,15 @@ namespace FreeTrade
             }
         }
 
-        public ObservableCollection<Company> search(String query)
+        public List<Company> search(string query)
         {
             if (!String.IsNullOrEmpty(query))
             {
                 query = query.ToLower();
                 List<Company> results = new List<Company>();
                 results.AddRange(stocks.FindAll(x => x.Contains(query)));
-                ObservableCollection<Company> resultsOC = new ObservableCollection<Company>(results);
-                return resultsOC;
+                List<Company> result = new List<Company>(results);
+                return result;
             }
             return null;
         }

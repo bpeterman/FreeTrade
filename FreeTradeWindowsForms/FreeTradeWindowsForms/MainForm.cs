@@ -64,8 +64,8 @@ namespace FreeTradeWindowsForms
             Stock stock = new Stock();
             int index = searchResults.SelectedIndex;
             Company company = results[index];
-            tradeCompanyName.Text= company.Name;
-            tradeSymbol.Text=company.Symbol;
+            tradeCompanyName.Text = company.Name;
+            tradeSymbol.Text = company.Symbol;
             tradeStockPrice.Text = company.getStockPrice().ToString("C2");
             tradeExchange.Text = stock.getExchange(company.Symbol);
             tradeIPO.Text = company.IPOyear;
@@ -94,13 +94,47 @@ namespace FreeTradeWindowsForms
             if (index > -1)
             {
                 Company company = results[index];
-                tradeCompanyName.Text = company.Name;
-                MessageBox.Show(company.Symbol);
+                int numOfShares = 0;
+                numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
+                if (user.GetMoney() < (company.getStockPrice() * numOfShares))
+                {
+                    MessageBox.Show("You don't have enough money!!");
+                }
+                else
+                {
+                    DateTime now = DateTime.Now;
+                    PurchasedStock ps = new PurchasedStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, numOfShares, now);
+                    user.PurchaseStock(ps);
+                    statusUserCash.Text = user.GetMoney().ToString("C2");
+                    user.WriteToFile();
+                    MessageBox.Show("You purchased " + numOfShares + " shares of " + company.Name);
+                }
             }
             else
             {
                 MessageBox.Show("No company selected!!1!");
             }
+        }
+
+        private void tradeNumOfShares_TextChanged(object sender, EventArgs e)
+        {
+            int index = searchResults.SelectedIndex;
+            if (index > -1 && tradeNumOfShares.Text.Length>0)
+            {
+                Company company = results[index];
+                int numOfShares = 0;
+                numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
+                transAmBox.Text=(company.getStockPrice()*numOfShares).ToString("C2");
+            }
+            else if (tradeNumOfShares.Text.Length == 0) 
+            {
+               
+            }
+            else
+            {
+                MessageBox.Show("No company selected!!1!");
+            }
+
         }
     }
 }

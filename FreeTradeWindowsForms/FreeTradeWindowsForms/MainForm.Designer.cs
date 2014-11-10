@@ -65,10 +65,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buyButton = new System.Windows.Forms.Button();
-            this.sellButton = new System.Windows.Forms.Button();
             this.transAmBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tradeNumOfShares = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.searchResults = new System.Windows.Forms.ListBox();
             this.searchButton = new System.Windows.Forms.Button();
@@ -159,8 +158,8 @@
             this.statusUserCash.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusUserCash.ForeColor = System.Drawing.Color.Green;
             this.statusUserCash.Name = "statusUserCash";
-            this.statusUserCash.Size = new System.Drawing.Size(56, 17);
-            this.statusUserCash.Text = "$111111";
+            this.statusUserCash.Size = new System.Drawing.Size(21, 17);
+            this.statusUserCash.Text = "$0";
             // 
             // mainTab
             // 
@@ -219,10 +218,9 @@
             this.tradePage.Controls.Add(this.label5);
             this.tradePage.Controls.Add(this.label4);
             this.tradePage.Controls.Add(this.buyButton);
-            this.tradePage.Controls.Add(this.sellButton);
             this.tradePage.Controls.Add(this.transAmBox);
             this.tradePage.Controls.Add(this.label3);
-            this.tradePage.Controls.Add(this.textBox2);
+            this.tradePage.Controls.Add(this.tradeNumOfShares);
             this.tradePage.Controls.Add(this.label2);
             this.tradePage.Controls.Add(this.searchResults);
             this.tradePage.Controls.Add(this.searchButton);
@@ -425,29 +423,20 @@
             // 
             // buyButton
             // 
-            this.buyButton.Location = new System.Drawing.Point(685, 454);
+            this.buyButton.Location = new System.Drawing.Point(695, 454);
             this.buyButton.Name = "buyButton";
-            this.buyButton.Size = new System.Drawing.Size(48, 23);
+            this.buyButton.Size = new System.Drawing.Size(45, 23);
             this.buyButton.TabIndex = 9;
             this.buyButton.Text = "Buy";
             this.buyButton.UseVisualStyleBackColor = true;
             this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
-            // 
-            // sellButton
-            // 
-            this.sellButton.Location = new System.Drawing.Point(629, 454);
-            this.sellButton.Name = "sellButton";
-            this.sellButton.Size = new System.Drawing.Size(50, 23);
-            this.sellButton.TabIndex = 8;
-            this.sellButton.Text = "Sell";
-            this.sellButton.UseVisualStyleBackColor = true;
             // 
             // transAmBox
             // 
             this.transAmBox.Location = new System.Drawing.Point(523, 457);
             this.transAmBox.Name = "transAmBox";
             this.transAmBox.ReadOnly = true;
-            this.transAmBox.Size = new System.Drawing.Size(100, 20);
+            this.transAmBox.Size = new System.Drawing.Size(166, 20);
             this.transAmBox.TabIndex = 7;
             // 
             // label3
@@ -459,12 +448,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Transaction Amount: ";
             // 
-            // textBox2
+            // tradeNumOfShares
             // 
-            this.textBox2.Location = new System.Drawing.Point(101, 457);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(312, 20);
-            this.textBox2.TabIndex = 5;
+            this.tradeNumOfShares.Location = new System.Drawing.Point(101, 457);
+            this.tradeNumOfShares.Name = "tradeNumOfShares";
+            this.tradeNumOfShares.Size = new System.Drawing.Size(312, 20);
+            this.tradeNumOfShares.TabIndex = 5;
+            this.tradeNumOfShares.TextChanged += new System.EventHandler(this.tradeNumOfShares_TextChanged);
             // 
             // label2
             // 
@@ -566,10 +556,9 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Button buyButton;
-        private System.Windows.Forms.Button sellButton;
         private System.Windows.Forms.TextBox transAmBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tradeNumOfShares;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

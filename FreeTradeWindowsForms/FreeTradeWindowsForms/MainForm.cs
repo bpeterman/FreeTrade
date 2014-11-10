@@ -136,5 +136,22 @@ namespace FreeTradeWindowsForms
             }
 
         }
+
+        private void mainTab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mainTab.SelectedIndex == 1)
+                fill_Portfolio();
+        }
+        public void fill_Portfolio()
+        {
+            portDataGrid.ColumnCount = 7;
+            portDataGrid.Columns[0].Name = "Company Name";
+            portDataGrid.Columns[1].Name = "Company Symbol";
+            portDataGrid.Columns[2].Name = "Number of Shares";
+            portDataGrid.Columns[3].Name = "Purchase Price";
+            portDataGrid.Columns[4].Name = "Purchase Date";
+
+            
+        }
     }
 }

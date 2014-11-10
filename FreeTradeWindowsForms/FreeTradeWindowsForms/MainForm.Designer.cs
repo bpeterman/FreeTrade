@@ -74,10 +74,14 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.portDataGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
+            this.portfolioPage.SuspendLayout();
             this.tradePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -172,6 +176,7 @@
             this.mainTab.SelectedIndex = 0;
             this.mainTab.Size = new System.Drawing.Size(756, 516);
             this.mainTab.TabIndex = 2;
+            this.mainTab.SelectedIndexChanged += new System.EventHandler(this.mainTab_SelectedIndexChanged);
             // 
             // overviewPage
             // 
@@ -185,6 +190,8 @@
             // 
             // portfolioPage
             // 
+            this.portfolioPage.Controls.Add(this.portDataGrid);
+            this.portfolioPage.Controls.Add(this.webBrowser1);
             this.portfolioPage.Location = new System.Drawing.Point(4, 22);
             this.portfolioPage.Name = "portfolioPage";
             this.portfolioPage.Padding = new System.Windows.Forms.Padding(3);
@@ -513,6 +520,23 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(3, 3);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(742, 484);
+            this.webBrowser1.TabIndex = 0;
+            // 
+            // portDataGrid
+            // 
+            this.portDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.portDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.portDataGrid.Name = "portDataGrid";
+            this.portDataGrid.Size = new System.Drawing.Size(728, 490);
+            this.portDataGrid.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,8 +553,10 @@
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.mainTab.ResumeLayout(false);
+            this.portfolioPage.ResumeLayout(false);
             this.tradePage.ResumeLayout(false);
             this.tradePage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,6 +610,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridView portDataGrid;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 

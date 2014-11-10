@@ -61,7 +61,7 @@ namespace FreeTradeWindowsForms
 
         }
 
-        List<PurchasedStockInfo> GetPurchasedStockDescriptor()
+        public List<PurchasedStockInfo> GetPurchasedStockDescriptor()
         {
             List<PurchasedStockInfo> temp = new List<PurchasedStockInfo>();
 

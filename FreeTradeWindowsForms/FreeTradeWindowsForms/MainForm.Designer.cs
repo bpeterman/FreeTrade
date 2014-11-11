@@ -40,7 +40,10 @@
             this.statusUserCash = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainTab = new System.Windows.Forms.TabControl();
             this.overviewPage = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.portfolioPage = new System.Windows.Forms.TabPage();
+            this.portDataGrid = new System.Windows.Forms.DataGridView();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tradePage = new System.Windows.Forms.TabPage();
             this.tradeLow = new System.Windows.Forms.TextBox();
             this.tradeHigh = new System.Windows.Forms.TextBox();
@@ -68,14 +71,27 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.portDataGrid = new System.Windows.Forms.DataGridView();
+            this.TotalReturnsLabel = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.TodaysReturnsLabel = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ListBoxTop5Gains = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ListBoxTop5Loss = new System.Windows.Forms.ListBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.NetWorthLabel = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ListBoxWatchlist = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
+            this.overviewPage.SuspendLayout();
             this.portfolioPage.SuspendLayout();
-            this.tradePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).BeginInit();
+            this.tradePage.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -174,6 +190,15 @@
             // 
             // overviewPage
             // 
+            this.overviewPage.Controls.Add(this.groupBox3);
+            this.overviewPage.Controls.Add(this.NetWorthLabel);
+            this.overviewPage.Controls.Add(this.label16);
+            this.overviewPage.Controls.Add(this.groupBox2);
+            this.overviewPage.Controls.Add(this.groupBox1);
+            this.overviewPage.Controls.Add(this.TodaysReturnsLabel);
+            this.overviewPage.Controls.Add(this.label14);
+            this.overviewPage.Controls.Add(this.TotalReturnsLabel);
+            this.overviewPage.Controls.Add(this.label9);
             this.overviewPage.Location = new System.Drawing.Point(4, 22);
             this.overviewPage.Name = "overviewPage";
             this.overviewPage.Padding = new System.Windows.Forms.Padding(3);
@@ -181,6 +206,16 @@
             this.overviewPage.TabIndex = 0;
             this.overviewPage.Text = "Overview";
             this.overviewPage.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Total Returns:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // portfolioPage
             // 
@@ -193,6 +228,23 @@
             this.portfolioPage.TabIndex = 1;
             this.portfolioPage.Text = "Portfolio";
             this.portfolioPage.UseVisualStyleBackColor = true;
+            // 
+            // portDataGrid
+            // 
+            this.portDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.portDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.portDataGrid.Name = "portDataGrid";
+            this.portDataGrid.Size = new System.Drawing.Size(728, 490);
+            this.portDataGrid.TabIndex = 1;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(3, 3);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(742, 484);
+            this.webBrowser1.TabIndex = 0;
             // 
             // tradePage
             // 
@@ -457,22 +509,106 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
-            // webBrowser1
+            // TotalReturnsLabel
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(3, 3);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(742, 484);
-            this.webBrowser1.TabIndex = 0;
+            this.TotalReturnsLabel.AutoSize = true;
+            this.TotalReturnsLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.TotalReturnsLabel.Location = new System.Drawing.Point(106, 5);
+            this.TotalReturnsLabel.Name = "TotalReturnsLabel";
+            this.TotalReturnsLabel.Size = new System.Drawing.Size(13, 13);
+            this.TotalReturnsLabel.TabIndex = 1;
+            this.TotalReturnsLabel.Text = "--";
             // 
-            // portDataGrid
+            // label14
             // 
-            this.portDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.portDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.portDataGrid.Name = "portDataGrid";
-            this.portDataGrid.Size = new System.Drawing.Size(728, 490);
-            this.portDataGrid.TabIndex = 1;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(90, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Today\'s Returns: ";
+            // 
+            // TodaysReturnsLabel
+            // 
+            this.TodaysReturnsLabel.AutoSize = true;
+            this.TodaysReturnsLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.TodaysReturnsLabel.Location = new System.Drawing.Point(105, 22);
+            this.TodaysReturnsLabel.Name = "TodaysReturnsLabel";
+            this.TodaysReturnsLabel.Size = new System.Drawing.Size(13, 13);
+            this.TodaysReturnsLabel.TabIndex = 3;
+            this.TodaysReturnsLabel.Text = "--";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ListBoxTop5Gains);
+            this.groupBox1.Location = new System.Drawing.Point(376, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(364, 171);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Top 5 Gainers";
+            // 
+            // ListBoxTop5Gains
+            // 
+            this.ListBoxTop5Gains.FormattingEnabled = true;
+            this.ListBoxTop5Gains.Location = new System.Drawing.Point(6, 16);
+            this.ListBoxTop5Gains.Name = "ListBoxTop5Gains";
+            this.ListBoxTop5Gains.Size = new System.Drawing.Size(352, 147);
+            this.ListBoxTop5Gains.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.ListBoxTop5Loss);
+            this.groupBox2.Location = new System.Drawing.Point(376, 183);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(364, 171);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Top 5 Losses";
+            // 
+            // ListBoxTop5Loss
+            // 
+            this.ListBoxTop5Loss.FormattingEnabled = true;
+            this.ListBoxTop5Loss.Location = new System.Drawing.Point(6, 19);
+            this.ListBoxTop5Loss.Name = "ListBoxTop5Loss";
+            this.ListBoxTop5Loss.Size = new System.Drawing.Size(352, 147);
+            this.ListBoxTop5Loss.TabIndex = 6;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(37, 39);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(59, 13);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Net Worth:";
+            // 
+            // NetWorthLabel
+            // 
+            this.NetWorthLabel.AutoSize = true;
+            this.NetWorthLabel.Location = new System.Drawing.Point(108, 39);
+            this.NetWorthLabel.Name = "NetWorthLabel";
+            this.NetWorthLabel.Size = new System.Drawing.Size(61, 13);
+            this.NetWorthLabel.TabIndex = 7;
+            this.NetWorthLabel.Text = "$56,789.34";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.ListBoxWatchlist);
+            this.groupBox3.Location = new System.Drawing.Point(376, 360);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(364, 124);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Watchlist";
+            // 
+            // ListBoxWatchlist
+            // 
+            this.ListBoxWatchlist.FormattingEnabled = true;
+            this.ListBoxWatchlist.Location = new System.Drawing.Point(6, 19);
+            this.ListBoxWatchlist.Name = "ListBoxWatchlist";
+            this.ListBoxWatchlist.Size = new System.Drawing.Size(352, 95);
+            this.ListBoxWatchlist.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -490,10 +626,15 @@
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.mainTab.ResumeLayout(false);
+            this.overviewPage.ResumeLayout(false);
+            this.overviewPage.PerformLayout();
             this.portfolioPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).EndInit();
             this.tradePage.ResumeLayout(false);
             this.tradePage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,6 +684,18 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView portDataGrid;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox ListBoxTop5Loss;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListBox ListBoxTop5Gains;
+        private System.Windows.Forms.Label TodaysReturnsLabel;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label TotalReturnsLabel;
+        private System.Windows.Forms.Label NetWorthLabel;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox ListBoxWatchlist;
     }
 }
 

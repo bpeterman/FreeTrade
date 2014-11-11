@@ -33,6 +33,7 @@ namespace FreeTradeWindowsForms
         private double dMoney;
         List<PurchasedStock> lPurchasedStocks;
         List<SoldStock> lSoldStocks;
+        List<Company> Watchlist;
 
 
         public UserProfile()

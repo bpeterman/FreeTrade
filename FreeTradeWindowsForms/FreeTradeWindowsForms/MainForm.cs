@@ -36,6 +36,11 @@ namespace FreeTradeWindowsForms
         {
             user = new UserProfile(uName);
             statusUserCash.Text = user.GetMoney().ToString("C2");
+            UpdateOverview();
+        }
+
+        public void UpdateOverview()
+        {
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -168,6 +173,11 @@ namespace FreeTradeWindowsForms
                 row[5] = stock.Date;
                 portDataGrid.Rows.Add(row);
             }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

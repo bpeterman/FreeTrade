@@ -20,6 +20,7 @@ namespace transaction
         private double dPrice;
         private double dShares;
         private DateTime dtDate;
+        private bool bSold;
 
         public StockTransaction()
         {
@@ -28,9 +29,10 @@ namespace transaction
             dPrice = 0.0;
             dShares = 0.0;
             dtDate = DateTime.Now;
+            bSold = false;
         }
 
-        public StockTransaction(string name, string symbol, double price, double shares, DateTime dt)
+        public StockTransaction(string name, string symbol, double price, double shares, DateTime dt, bool sold)
         {
             if (!SetName(name))//if Error.
             {
@@ -51,6 +53,8 @@ namespace transaction
                dShares = 0.0;
             }
             SetDate(dtDate);
+
+            bSold = sold;
         }
 
         public string GetName()
@@ -132,7 +136,7 @@ namespace transaction
 
         public DateTime GetDate()
         {
-            //deep copy so others don't mess with the guts of the object.
+            //deep copy so we don't play with the guts.
             int Month = dtDate.Month;
             int Day = dtDate.Day;
             int Year = dtDate.Year;
@@ -144,5 +148,14 @@ namespace transaction
         
         }
 
+        bool GetSold()
+        {
+            return bSold;
+        }
+
+        void SetSold(bool s)
+        {
+            bSold = s;
+        }
     }
 }

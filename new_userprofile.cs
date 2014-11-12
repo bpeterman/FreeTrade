@@ -11,7 +11,7 @@ namespace transaction
         private List<CompanyStock> lCompanyStock;
         private List<StockTransaction> lStockTransaction;
 
-        string sName;
+        private string sName;
 
         private double dMoney;
         private double dPurchases;
@@ -19,7 +19,7 @@ namespace transaction
         private double dChargedFees;
         private double dTransFee;
 
-        UserProfile()
+        public  UserProfile()
         {
             sName = "default";
             dMoney = 5000.0;
@@ -27,22 +27,48 @@ namespace transaction
             dSales = 0.0;
             dChargedFees = 0.0;
             dTransFee = 7.00;
+
+            lCompanyStock = new List<CompanyStock>();
+            lStockTransaction = new List<StockTransaction>();
         }
-        UserProfile(string name)
+        public  UserProfile(string name)
         {
            //loading constructor.
            //loads user data from file.
         }
 
-        /*Buy Stock To Be Implimented */
+        public bool BuyStock(String name, string symbol, double price, double shares, DateTime dt)
+        {
+            if(shares * price > dMoney)
+                return false;
 
-        /*End Buy Stock*/
+            bool found = false;
+                        
+            lStockTransaction.Add(new StockTransaction(name, symbol, price, shares, dt, false));
 
+            for (int i = 0; i < lCompanyStock.Count && !found; i++)
+            {
+                if (lCompanyStock[i].GetName() == name && lCompanyStock[i].GetSymbol() == symbol)
+                {
+                    double spentTemp = lCompanyStock[i].GetSpent();
+                    double sharesTemp = lCompanyStock[i].GetShares();
+                    found = true;
+                    lCompanyStock[i].SetShares(sharesTemp + shares);
+                    lCompanyStock[i].SetSpent(spentTemp + spentTemp);
+                }
+            }
+            if(!found)
+            {
+               lCompanyStock.Add(new CompanyStock(name, symbol,price*shares,0,shares);
+            }
+            
+            return true;
+       }
         /*Begin sale stock*/
 
         /*End Sale stock*/
 
-        UserProfile(string name, double money, double transFee)
+        public UserProfile(string name, double money, double transFee)
         {
             //setting up a new user
             sName = name;
@@ -56,7 +82,7 @@ namespace transaction
             dTransFee = transFee;
         }
 
-        double GetMoney()
+        public double GetMoney()
         {
             return dMoney;
         }
@@ -71,12 +97,12 @@ namespace transaction
             return false;
         }
 
-        double GetPurchases()
+        public double GetPurchases()
         {
             return dPurchases;
         }
 
-        bool SetPurchases(double pur)
+        public bool SetPurchases(double pur)
         {
             if (pur >= 0)
             {
@@ -86,12 +112,12 @@ namespace transaction
             return false;
         }
 
-        double GetSales()
+        public double GetSales()
         {
             return dSales;
         }
 
-        bool SetSales(double sales)
+        public bool SetSales(double sales)
         {
             if (sales >= 0)
             {
@@ -101,12 +127,12 @@ namespace transaction
             return false;
         }
 
-        double GetChargedFee()
+        public double GetChargedFee()
         {
             return dTransFee;
         }
 
-        bool SetChargedFee(double charged)
+        public bool SetChargedFee(double charged)
         {
             if (charged >= 0.0)
             {
@@ -116,12 +142,12 @@ namespace transaction
             return false;
         }
 
-        double GetTransActionFee()
+        public double GetTransActionFee()
         {
             return dTransFee;
         }
 
-        bool SetTransActionFee(double transFee)
+        public bool SetTransActionFee(double transFee)
         {
             if (transFee >= 0)
             {

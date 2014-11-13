@@ -5,157 +5,174 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace transaction
-{
-    class Program
+{ 
+    class UserProfile
     {
-        static void Main(string[] args)
-        {
-        }
-    }
+        private List<CompanyStock> lCompanyStock;
+        private List<StockTransaction> lStockTransaction;
 
-    public class StockTransaction
-    {
         private string sName;
-        private string sStockSymbol;
-        private double dPrice;
-        private double dShares;
-        private DateTime dtDate;
-        private bool bSold;
 
-        public StockTransaction()
+        private double dMoney;
+        private double dPurchases;
+        private double dSales;
+        private double dChargedFees;
+        private double dTransFee;
+
+        public  UserProfile()
         {
             sName = "default";
-            sStockSymbol = "dt";
-            dPrice = 0.0;
-            dShares = 0.0;
-            dtDate = DateTime.Now;
-            bSold = false;
+            dMoney = 5000.0;
+            dPurchases = 0.0;
+            dSales = 0.0;
+            dChargedFees = 0.0;
+            dTransFee = 7.00;
+
+            lCompanyStock = new List<CompanyStock>();
+            lStockTransaction = new List<StockTransaction>();
+        }
+        public  UserProfile(string name)
+        {
+           //loading constructor.
+           //loads user data from file.
         }
 
-        public StockTransaction(string name, string symbol, double price, double shares, DateTime dt, bool sold)
+        public bool BuyStock(String name, string symbol, double price, double shares, DateTime dt)
         {
-            if (!SetName(name))//if Error.
+            if (shares * price > dMoney)
+                return false;
+
+            bool found = false;
+
+            lStockTransaction.Add(new StockTransaction(name, symbol, price, shares, dt, false));
+
+            for (int i = 0; i < lCompanyStock.Count && !found; i++)
             {
-                sName = "Invalid Name";
+                if (lCompanyStock[i].GetName() == name && lCompanyStock[i].GetSymbol() == symbol)
+                {
+                    double spentTemp = lCompanyStock[i].GetSpent();
+                    double sharesTemp = lCompanyStock[i].GetShares();
+                    found = true;
+                    lCompanyStock[i].SetShares(sharesTemp + shares);
+                    lCompanyStock[i].SetSpent(spentTemp + (price * shares));
+                }
             }
-            if (!SetSymbol(symbol))
+            if (!found)
             {
-                sStockSymbol = "Invalid Symbol";
+                lCompanyStock.Add(new CompanyStock(name, symbol, price * shares, 0, shares));
             }
 
-            if(!SetPrice(price))
-            {
-               price = 0.0;
-            }
-            
-            if(!SetShares(shares))
-            {
-               dShares = 0.0;
-            }
-            SetDate(dtDate);
-
-            bSold = sold;
+            return true;
         }
 
-        public string GetName()
+        public bool SellStock(String name, string symbol, double price, double shares, DateTime dt)
         {
-            return sName;
+            bool found = false;
+            for (int i = 0; i < lCompanyStock.Count && !found; i++)
+            {
+                if (lCompanyStock[i].GetName() == name && lCompanyStock[i].GetSymbol() == symbol)
+                {
+                    double  earnedTemp = lCompanyStock[i].GetEarned();
+                    double  sharesTemp = lCompanyStock[i].GetShares();
+                    found = true;
+                    if (shares > sharesTemp)
+                        return false;
+                    lCompanyStock[i].SetEarned(earnedTemp+(shares*price));
+                    lCompanyStock[i].SetShares(sharesTemp - shares);
+
+                }
+            }
+            lStockTransaction.Add(new StockTransaction(name, symbol, price, shares, dt, true));
+            return true;
         }
 
-        public bool SetName(string name)
+        public UserProfile(string name, double money, double transFee)
         {
-            if (sName.Length > 0)
+            //setting up a new user
+            sName = name;
+            if (!SetMoney(money))
             {
-                sName = name;
+                dMoney = 0.0;
+            }
+            dPurchases = 0.0;
+            dSales = 0.0;
+            dChargedFees = 0.0;
+            dTransFee = transFee;
+        }
+
+        public double GetMoney()
+        {
+            return dMoney;
+        }
+
+        bool SetMoney(double money)
+        {
+            if (money >= 0.0)
+            {
+                dMoney = money;
                 return true;
             }
             return false;
         }
 
-        public string GetSymbol()
+        public double GetPurchases()
         {
-            return sStockSymbol;
+            return dPurchases;
         }
 
-        public bool SetSymbol(string symbol)
+        public bool SetPurchases(double pur)
         {
-            if (symbol.Length > 0)
+            if (pur >= 0)
             {
-                sStockSymbol = symbol;
+                dPurchases = 0.0;
                 return true;
             }
             return false;
         }
 
-        public double GetPrice()
+        public double GetSales()
         {
-            return dPrice;
+            return dSales;
         }
 
-        public bool SetPrice(double price)
+        public bool SetSales(double sales)
         {
-            if (price >= 0.0)
+            if (sales >= 0)
             {
-                dPrice = price;
+                dSales = sales;
                 return true;
             }
             return false;
         }
 
-        public double GetShares()
+        public double GetChargedFee()
         {
-            return dShares;
+            return dTransFee;
         }
 
-
-        bool SetShares(double shares)
+        public bool SetChargedFee(double charged)
         {
-            if (shares >= 0.0)
+            if (charged >= 0.0)
             {
-                dShares = shares;
+                dChargedFees = charged;
                 return true;
             }
             return false;
         }
 
-
-        public void SetDate(DateTime dt)
+        public double GetTransActionFee()
         {
-            //creating a deep copy
-            int Month = dt.Month;
-            int Day = dt.Day;
-            int Year = dt.Year;
-            int Hour = dt.Hour;
-            int Minute = dt.Minute;
-            int Second = dt.Second;
-            int Millisecond = dt.Millisecond;
-            //deep copy  dont touch our guts.
-            dtDate = new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond);
-        
+            return dTransFee;
         }
 
-        public DateTime GetDate()
+        public bool SetTransActionFee(double transFee)
         {
-            //deep copy so we don't play with the guts.
-            int Month = dtDate.Month;
-            int Day = dtDate.Day;
-            int Year = dtDate.Year;
-            int Hour = dtDate.Hour;
-            int Minute = dtDate.Minute;
-            int Second = dtDate.Second;
-            int Millisecond = dtDate.Millisecond;
-            return new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond);
-        
-        }
-
-        bool GetSold()
-        {
-            return bSold;
-        }
-
-        void SetSold(bool s)
-        {
-            bSold = s;
+            if (transFee >= 0)
+            {
+                dTransFee = transFee;
+                return true;
+            }
+            return false;
         }
     }
 }

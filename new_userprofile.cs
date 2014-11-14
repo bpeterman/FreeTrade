@@ -37,13 +37,57 @@ namespace transaction
            //loads user data from file.
         }
 
+        public UserProfile(string name, double money, double transfee) //brandnew user;
+        {
+            sName = name;
+            dMoney = money;
+            dTransFee = transfee;
+            dChargedFees = 0.0;
+            dPurchases = 0.0;
+            dSales = 0.0;
+        }
+
+        public void WriteToFiles()
+        { 
+           string nl = Environment.NewLine;
+           string temp = sName + nl + dMoney.ToString() + nl + dPurchases.ToString() + nl + dSales.ToString() + nl + dChargedFees.ToString() + nl + dTransFee.ToString();
+           System.IO.File.WriteAllText("UserProfile.txt", temp);
+          
+           System.IO.StreamWriter file = new System.IO.StreamWriter("CompanyStock.Text", true);
+           
+           foreach(CompanyStock cs in lCompanyStock)
+           {
+               file.WriteLine(cs.GetName());
+               file.WriteLine(cs.GetSymbol());
+               file.WriteLine(cs.GetSpent().ToString());
+               file.WriteLine(cs.GetEarned().ToString());
+               file.WriteLine(cs.GetShares().ToString());
+           }
+
+           file = new System.IO.StreamWriter("StockTransaction.Text", true);
+
+           foreach(StockTransaction st in lStockTransaction)
+           {
+               file.WriteLine(st.GetName());
+               file.WriteLine(st.GetSymbol());
+               file.WriteLine(st.GetPrice());
+               file.WriteLine(st.GetShares());
+               file.WriteLine(st.GetDate().ToString("MM/dd/yyyy HH:mm:ss:fff"));
+               file.WriteLine(st.GetSold().ToString());
+           }
+
+
+        }
+
         public bool BuyStock(String name, string symbol, double price, double shares, DateTime dt)
         {
-            if(shares * price > dMoney)
+            if (shares * price > dMoney)
                 return false;
 
+            dChargedFees += dTransFee;
+            dPurchases += (shares * price);
             bool found = false;
-                        
+
             lStockTransaction.Add(new StockTransaction(name, symbol, price, shares, dt, false));
 
             for (int i = 0; i < lCompanyStock.Count && !found; i++)
@@ -54,19 +98,38 @@ namespace transaction
                     double sharesTemp = lCompanyStock[i].GetShares();
                     found = true;
                     lCompanyStock[i].SetShares(sharesTemp + shares);
-                    lCompanyStock[i].SetSpent(spentTemp + spentTemp);
+                    lCompanyStock[i].SetSpent(spentTemp + (price * shares));
                 }
             }
-            if(!found)
+            if (!found)
             {
-               lCompanyStock.Add(new CompanyStock(name, symbol,price*shares,0,shares);
+                lCompanyStock.Add(new CompanyStock(name, symbol, price * shares, 0, shares));
             }
-            
-            return true;
-       }
-        /*Begin sale stock*/
 
-        /*End Sale stock*/
+            return true;
+        }
+
+        public bool SellStock(String name, string symbol, double price, double shares, DateTime dt)
+        {
+            bool found = false;
+            for (int i = 0; i < lCompanyStock.Count && !found; i++)
+            {
+                if (lCompanyStock[i].GetName() == name && lCompanyStock[i].GetSymbol() == symbol)
+                {
+                    double  earnedTemp = lCompanyStock[i].GetEarned();
+                    double  sharesTemp = lCompanyStock[i].GetShares();
+                    found = true;
+                    if (shares > sharesTemp)
+                        return false;
+                    dSales += (shares * price);
+                    lCompanyStock[i].SetEarned(earnedTemp+(shares*price));
+                    lCompanyStock[i].SetShares(sharesTemp - shares);
+
+                }
+            }
+            lStockTransaction.Add(new StockTransaction(name, symbol, price, shares, dt, true));
+            return true;
+        }
 
         public UserProfile(string name, double money, double transFee)
         {

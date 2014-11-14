@@ -72,7 +72,7 @@ namespace transaction
                file.WriteLine(st.GetSymbol());
                file.WriteLine(st.GetPrice());
                file.WriteLine(st.GetShares());
-               file.WriteLine(st.GetDate().ToString("MM/dd/yyyy HH:mm:ss:fff"));
+               file.WriteLine(st.GetDate().ToString("MM dd yyyy HH mm ss fff"));
                file.WriteLine(st.GetSold().ToString());
            }
 

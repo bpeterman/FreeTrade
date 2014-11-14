@@ -1,4 +1,4 @@
-//Will be made obsolete by new_profile.cs
+//Will be made obsolete by new_userprofile.cs
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,53 +6,51 @@ using System.Threading.Tasks;
 
 namespace transaction
 {
-    public class StockTransaction
+    class CompanyStock
     {
-        private string sName;
-        private string sStockSymbol;
-        private double dPrice;
-        private double dShares;
-        private DateTime dtDate;
-        private bool bSold;
+        String sName;
+        string sSymbol;
+        double dSpent;
+        double dEarned;
+        double dShares;
 
-        public StockTransaction()
+        public CompanyStock()
         {
             sName = "default";
-            sStockSymbol = "dt";
-            dPrice = 0.0;
-            dShares = 0.0;
-            dtDate = DateTime.Now;
-            bSold = false;
+            sSymbol = "dt";
+            dSpent = 0;
+            dEarned = 0;
+            dShares = 0;
         }
 
-        public StockTransaction(string name, string symbol, double price, double shares, DateTime dt, bool sold)
+        public CompanyStock(string name, string symbol, double spent, double earned, double shares)
         {
-            if (!SetName(name))//if Error.
+           if(!SetName(name)) // bad name entered
+           {
+              sName = "Error";
+           }
+            if(!SetSymbol(symbol))
             {
-                sName = "Invalid Name";
-            }
-            if (!SetSymbol(symbol))
-            {
-                sStockSymbol = "Invalid Symbol";
+               sSymbol = "err";
             }
 
-            if(!SetPrice(price))
+            if(!SetSpent(spent))
             {
-               price = 0.0;
+               dSpent = 0.0;
             }
-            
+
+            if(!SetEarned(earned)) // again an error by the user.
+            {
+               dEarned = 0.0;
+            }
+
             if(!SetShares(shares))
             {
                dShares = 0.0;
             }
-            if (!SetDate(dtDate))
-            {
-                dtDate = DateTime.Now;
-            }
-
-            bSold = sold;
+        
         }
-
+        
         public string GetName()
         {
             return sName;
@@ -70,29 +68,44 @@ namespace transaction
 
         public string GetSymbol()
         {
-            return sStockSymbol;
+            return sSymbol;
         }
 
         public bool SetSymbol(string symbol)
         {
-            if (symbol !=null && symbol.Length > 0)
+            if (symbol != null && symbol.Length > 0)
             {
-                sStockSymbol = symbol;
+                sSymbol = symbol;
                 return true;
             }
             return false;
         }
 
-        public double GetPrice()
+        public double GetSpent()
         {
-            return dPrice;
+            return dSpent;
         }
 
-        public bool SetPrice(double price)
+        public bool SetSpent(double spent)
         {
-            if (price >= 0.0)
+            if (spent >= 0.0)
             {
-                dPrice = price;
+                dSpent = spent;
+                return true;
+            }
+            return false;
+        }
+
+        public double GetEarned()
+        {
+            return dEarned;
+        }
+
+        public bool SetEarned(double earned)
+        {
+            if (earned >= 0.0)
+            {
+                dEarned = earned;
                 return true;
             }
             return false;
@@ -104,7 +117,7 @@ namespace transaction
         }
 
 
-        bool SetShares(double shares)
+        public bool SetShares(double shares)
         {
             if (shares >= 0.0)
             {
@@ -112,49 +125,6 @@ namespace transaction
                 return true;
             }
             return false;
-        }
-
-
-        public bool SetDate(DateTime dt)
-        {
-            if (dt == null)
-                return false;
-            //creating a deep copy
-            int Month = dt.Month;
-            int Day = dt.Day;
-            int Year = dt.Year;
-            int Hour = dt.Hour;
-            int Minute = dt.Minute;
-            int Second = dt.Second;
-            int Millisecond = dt.Millisecond;
-            //deep copy  dont touch our guts.
-            dtDate = new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond);
-            return true;
-        
-        }
-
-        public DateTime GetDate()
-        {
-            //deep copy so we don't play with the guts.
-            int Month = dtDate.Month;
-            int Day = dtDate.Day;
-            int Year = dtDate.Year;
-            int Hour = dtDate.Hour;
-            int Minute = dtDate.Minute;
-            int Second = dtDate.Second;
-            int Millisecond = dtDate.Millisecond;
-            return new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond);
-        
-        }
-
-        public bool GetSold()
-        {
-            return bSold;
-        }
-
-        public void SetSold(bool s)
-        {
-            bSold = s;
         }
 
     }

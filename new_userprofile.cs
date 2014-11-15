@@ -35,7 +35,10 @@ namespace transaction
         public UserProfile(string name, double money, double transFee)
         {
             //setting up a new user
-            sName = name;
+            if (!SetName(name))
+            {
+                sName = "error";
+            }
             if (!SetMoney(money))
             {
                 dMoney = 0.0;
@@ -55,10 +58,10 @@ namespace transaction
 
         public  UserProfile(string name)
         {
-           //loading constructor.
-           //loads user data from file.
+            sName = name;
             lCompanyStock = new List<CompanyStock>();
             lStockTransaction = new List<StockTransaction>();
+            ReadFromFile();
         }
 
        
@@ -166,9 +169,27 @@ namespace transaction
             }
         }
 
+        public string GetName()
+        {
+            return sName;
+        }
+
+        public bool SetName(string name)
+        {
+            if (name != null && name.Length > 0)
+            {
+                sName = name;
+                return true;
+            }
+            return false;
+        }
+
         public bool BuyStock(String name, string symbol, double price, double shares, DateTime dt)
         {
             if (shares * price > dMoney)
+                return false;
+
+            if (name == null || symbol == null)
                 return false;
 
             dMoney -= ((shares * price) + dChargedFees);
@@ -199,7 +220,11 @@ namespace transaction
 
         public bool SellStock(String name, string symbol, double price, double shares, DateTime dt)
         {
+            if (name == null || symbol == null)
+                return false;
+
             bool found = false;
+
             for (int i = 0; i < lCompanyStock.Count && !found; i++)
             {
                 if (lCompanyStock[i].GetName() == name && lCompanyStock[i].GetSymbol() == symbol)
@@ -219,6 +244,8 @@ namespace transaction
             dMoney += ((shares * price) - dChargedFees);
             return true;
         }
+
+
 
 
         public double GetMoney()

@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +23,7 @@ namespace stockme
     {
         static void Main(string[] args)
         {
-            const int NUM_THREADS = 1; //reccomended 36 symbols per thread
+            const int NUM_THREADS = 8; //reccomended 36 symbols per thread
             ArrayList arList = new ArrayList();
             ArrayList qrResults;
             Stopwatch sw = new Stopwatch();
@@ -129,12 +128,20 @@ namespace stockme
             {
                 tThreads[i].Start(sFunction);
             }
-            while (StockDrone.getThreadCount() > 0) { } // Wait for all drones to finish
-            for (int i = 0; i < iThreads; i++)
+           
+            int storageCount = iThreads;
+            while (storageCount > 0)
             {
-                foreach (QueryResults qr in arResults[i])
+                
+                for (int i = 0; i < iThreads; i++)
                 {
-                    arTemp.Add(qr); // combine the work of the drones
+                    storageCount--;
+                    if(arResults[i].Count > 0)
+                    {
+                        arTemp.Add(arResults[i][0]); //allows results to be returned in the order in which they were recieved.
+                        arResults[i].RemoveAt(0);
+                        storageCount++;
+                    }
                 }
             }
             return arTemp;
@@ -192,7 +199,7 @@ namespace stockme
                                 }
                             }
                         }
-                        else if(temp2 == 'T')
+                        else if (temp2 == 'T')
                         {
                             // getChangeInPercent
                             foreach (string s in stockSymbols)

@@ -57,7 +57,7 @@ namespace transaction
 
         public bool SetName(string name)
         {
-            if (sName.Length > 0)
+            if (name != null && name.Length > 0)
             {
                 sName = name;
                 return true;
@@ -72,7 +72,7 @@ namespace transaction
 
         public bool SetSymbol(string symbol)
         {
-            if (symbol.Length > 0)
+            if (symbol !=null && symbol.Length > 0)
             {
                 sStockSymbol = symbol;
                 return true;

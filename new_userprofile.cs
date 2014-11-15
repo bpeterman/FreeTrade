@@ -1,4 +1,3 @@
-//this code is untested.
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,21 +31,37 @@ namespace transaction
             lCompanyStock = new List<CompanyStock>();
             lStockTransaction = new List<StockTransaction>();
         }
+
+        public UserProfile(string name, double money, double transFee)
+        {
+            //setting up a new user
+            sName = name;
+            if (!SetMoney(money))
+            {
+                dMoney = 0.0;
+            }
+            dPurchases = 0.0;
+            dSales = 0.0;
+            dChargedFees = 0.0;
+
+            if (!SetTransActionFee(transFee))
+            {
+                dTransFee = 2.00;
+            }
+            lCompanyStock = new List<CompanyStock>();
+            lStockTransaction = new List<StockTransaction>();
+        }
+
+
         public  UserProfile(string name)
         {
            //loading constructor.
            //loads user data from file.
+            lCompanyStock = new List<CompanyStock>();
+            lStockTransaction = new List<StockTransaction>();
         }
 
-        public UserProfile(string name, double money, double transfee) //brandnew user;
-        {
-            sName = name;
-            dMoney = money;
-            dTransFee = transfee;
-            dChargedFees = 0.0;
-            dPurchases = 0.0;
-            dSales = 0.0;
-        }
+       
 
         public void WriteToFiles()
         { 
@@ -144,7 +159,7 @@ namespace transaction
                 millisecond = int.Parse(dtSpl[6]);
                 dt = new DateTime(year, month, day, hour, minute, second, millisecond);
                 
-                lStockTransaction.Add(new StockTransaction(tempName,tempSymbol,tempPrice,tempShares,dt,tempSold);
+                lStockTransaction.Add(new StockTransaction(tempName,tempSymbol,tempPrice,tempShares,dt,tempSold));
 
             }
         }
@@ -154,6 +169,7 @@ namespace transaction
             if (shares * price > dMoney)
                 return false;
 
+            dMoney -= ((shares * price) + dChargedFees);
             dChargedFees += dTransFee;
             dPurchases += (shares * price);
             bool found = false;
@@ -198,22 +214,10 @@ namespace transaction
                 }
             }
             lStockTransaction.Add(new StockTransaction(name, symbol, price, shares, dt, true));
+            dMoney += ((shares * price) - dChargedFees);
             return true;
         }
 
-        public UserProfile(string name, double money, double transFee)
-        {
-            //setting up a new user
-            sName = name;
-            if (!SetMoney(money))
-            {
-                dMoney = 0.0;
-            }
-            dPurchases = 0.0;
-            dSales = 0.0;
-            dChargedFees = 0.0;
-            dTransFee = transFee;
-        }
 
         public double GetMoney()
         {

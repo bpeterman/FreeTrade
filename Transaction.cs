@@ -45,7 +45,10 @@ namespace transaction
             {
                dShares = 0.0;
             }
-            SetDate(dtDate);
+            if (!SetDate(dtDate))
+            {
+                dtDate = DateTime.Now;
+            }
 
             bSold = sold;
         }
@@ -112,8 +115,10 @@ namespace transaction
         }
 
 
-        public void SetDate(DateTime dt)
+        public bool SetDate(DateTime dt)
         {
+            if (dt == null)
+                return false;
             //creating a deep copy
             int Month = dt.Month;
             int Day = dt.Day;
@@ -124,6 +129,7 @@ namespace transaction
             int Millisecond = dt.Millisecond;
             //deep copy  dont touch our guts.
             dtDate = new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond);
+            return true;
         
         }
 

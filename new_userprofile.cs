@@ -80,6 +80,7 @@ namespace transaction
                file.WriteLine(cs.GetEarned().ToString());
                file.WriteLine(cs.GetShares().ToString());
            }
+           file.Close();
 
            file = new System.IO.StreamWriter(sName + "StockTransaction.txt", true);
 
@@ -92,6 +93,7 @@ namespace transaction
                file.WriteLine(st.GetDate().ToString("MM dd yyyy HH mm ss fff"));
                file.WriteLine(st.GetSold().ToString());
            }
+           file.Close();
         }
 
         private void ReadFromFile() // this is private for a really good reason.  this function should only be used by constructor.

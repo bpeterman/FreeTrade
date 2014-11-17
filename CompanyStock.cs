@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace transaction
 {
+
+    struct CompanyStockInfo
+    {
+        public string Name;
+        public string Symbol;
+        public string Spent;
+        public string Earned;
+        public string Shares;
+    
+    }
+
     class CompanyStock
     {
         String sName;
@@ -14,6 +25,17 @@ namespace transaction
         double dEarned;
         double dShares;
 
+        public CompanyStockInfo GetDescriptor()
+        {
+            CompanyStockInfo Temp = new CompanyStockInfo();
+            Temp.Name = sName;
+            Temp.Symbol = sSymbol;
+            Temp.Spent = dSpent.ToString();
+            Temp.Earned = dEarned.ToString();
+            return Temp;
+            
+        
+        }
         public CompanyStock()
         {
             sName = "default";

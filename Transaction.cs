@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace transaction
 {
+
+    struct StockTransactionInfo
+    {
+        public string Name;
+        public string Symbol;
+        public string Price;
+        public string Shares;
+        public string date;
+        public string Sold;
+    }
     public class StockTransaction
     {
         private string sName;
@@ -14,6 +24,20 @@ namespace transaction
         private double dShares;
         private DateTime dtDate;
         private bool bSold;
+
+        public StockTransactionInfo GetDescriptor()
+        {
+            StockTransactionInfo Temp = new StockTransactionInfo();
+
+            Temp.Name = sName;
+            Temp.Symbol = sStockSymbol;
+            Temp.Price = dPrice.ToString();
+            Temp.Shares = dShares.ToString();
+            Temp.date = dtDate.ToString("MM/dd/yyyy hh:mm:ss.fff");
+            Temp.Sold = bSold.ToString();
+            return Temp;
+        }
+
 
         public StockTransaction()
         {

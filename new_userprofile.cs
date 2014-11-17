@@ -19,6 +19,28 @@ namespace transaction
         private double dChargedFees;
         private double dTransFee;
 
+        List<CompanyStockInfo> GetCompnayList()
+        { 
+            List<CompanyStockInfo> Temp = new List<CompanyStockInfo>();
+            foreach (CompanyStock cs in lCompanyStock)
+            {
+                Temp.Add(cs.GetDescriptor());
+            }
+            return Temp;
+        }
+
+        List<StockTransactionInfo> GetTransactionList()
+        { 
+            List<StockTransactionInfo> Temp = new List<StockTransactionInfo>();
+
+            foreach (StockTransaction st in lStockTransaction)
+            {
+                Temp.Add(st.GetDescriptor());
+            }
+            return Temp;
+
+        }
+
         public  UserProfile()
         {
             sName = "default";

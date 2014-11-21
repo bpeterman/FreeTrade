@@ -32,7 +32,14 @@ namespace FreeTradeWindowsForms.Controllers
                 // User not found
                 return null;
             }
- 
+        }
+
+        public static bool isUser(string username)
+        {
+            string filepath = Directory.GetCurrentDirectory() + "\\" + username + ".txt";
+            if (File.Exists(filepath))
+                return true;
+            else return false;
         }
 
         public static User CreateNewUser(string username, string password, double startingCash)
@@ -44,6 +51,7 @@ namespace FreeTradeWindowsForms.Controllers
                 return null;
 
             User user = new User(username, password, startingCash);
+            Logout(user);
             return user;
         }
 

@@ -56,6 +56,7 @@
             // 
             // loginButton
             // 
+            this.loginButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.loginButton.Location = new System.Drawing.Point(138, 106);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
@@ -92,6 +93,7 @@
             this.newUserButton.TabIndex = 5;
             this.newUserButton.Text = "New User";
             this.newUserButton.UseVisualStyleBackColor = true;
+            this.newUserButton.Click += new System.EventHandler(this.newUserButton_Click);
             // 
             // Login
             // 

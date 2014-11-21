@@ -47,7 +47,12 @@ namespace FreeTradeWindowsForms
         public void showLogin()
         {
             Login login = new Login();
-            login.ShowDialog();
+            DialogResult result = login.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                Environment.Exit(0);
+                return;
+            }
             user = LoginController.Login(login.getUsername(), login.getPassword());
             if (user == null)
             {

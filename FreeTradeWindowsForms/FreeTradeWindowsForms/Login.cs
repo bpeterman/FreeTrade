@@ -31,5 +31,11 @@ namespace FreeTradeWindowsForms
         {
             return passBox.Text;
         }
+
+        private void newUserButton_Click(object sender, EventArgs e)
+        {
+            NewUser newUser = new NewUser();
+            newUser.Show();
+        }
     }
 }

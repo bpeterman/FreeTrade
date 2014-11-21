@@ -26,5 +26,10 @@ namespace FreeTradeWindowsForms
         {
             return usernameBox.Text;
         }
+
+        public string getPassword()
+        {
+            return passBox.Text;
+        }
     }
 }

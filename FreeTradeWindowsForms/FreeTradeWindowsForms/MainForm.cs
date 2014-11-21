@@ -41,21 +41,23 @@ namespace FreeTradeWindowsForms
 
         public void setUser(string uName)
         {
-            //user = new UserProfile(uName);
-
+            
         }
 
         public void showLogin()
         {
-            //Login login = new Login();
-            //login.ShowDialog();
-            //initializeUser(login.getUsername());
-            //initializeUser("test");
+            Login login = new Login();
+            login.ShowDialog();
+            user = LoginController.Login(login.getUsername(), login.getPassword());
+            if (user == null)
+            {
+                MessageBox.Show("Invalid username or password.");
+                showLogin();
+            }
         }
 
         public void initializeUser()
         {
-            user = new User("Test", "pass", 5000);
             statusUserCash.Text = user.Cash.ToString("C2");
             statusUsername.Text = user.Username;
             UpdateOverview();

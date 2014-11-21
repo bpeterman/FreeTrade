@@ -84,6 +84,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
             this.tradeSellButton = new System.Windows.Forms.Button();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -139,6 +141,8 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel2,
+            this.statusUsername,
             this.marketStatusText,
             this.marketStatus,
             this.toolStripStatusLabel1,
@@ -632,6 +636,19 @@
             this.tradeSellButton.Text = "Sell";
             this.tradeSellButton.UseVisualStyleBackColor = true;
             // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(66, 17);
+            this.toolStripStatusLabel2.Text = "Username: ";
+            // 
+            // statusUsername
+            // 
+            this.statusUsername.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Bold);
+            this.statusUsername.Name = "statusUsername";
+            this.statusUsername.Size = new System.Drawing.Size(34, 17);
+            this.statusUsername.Text = "User";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -720,6 +737,8 @@
         private System.Windows.Forms.ListBox ListBoxWatchlist;
         private System.Windows.Forms.Button watchButton;
         private System.Windows.Forms.Button tradeSellButton;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel statusUsername;
     }
 }
 

@@ -54,8 +54,9 @@ namespace FreeTradeWindowsForms
 
         public void initializeUser()
         {
-            user = new User("test", "pass", 5000);
+            user = new User("Test", "pass", 5000);
             statusUserCash.Text = user.Cash.ToString("C2");
+            statusUsername.Text = user.Username;
             UpdateOverview();
         }
 

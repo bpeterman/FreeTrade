@@ -31,6 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.passBox = new System.Windows.Forms.TextBox();
+            this.newUserButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,11 +64,42 @@
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 18);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Password: ";
+            // 
+            // passBox
+            // 
+            this.passBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passBox.Location = new System.Drawing.Point(104, 63);
+            this.passBox.Name = "passBox";
+            this.passBox.PasswordChar = '*';
+            this.passBox.Size = new System.Drawing.Size(237, 26);
+            this.passBox.TabIndex = 4;
+            // 
+            // newUserButton
+            // 
+            this.newUserButton.Location = new System.Drawing.Point(138, 135);
+            this.newUserButton.Name = "newUserButton";
+            this.newUserButton.Size = new System.Drawing.Size(75, 23);
+            this.newUserButton.TabIndex = 5;
+            this.newUserButton.Text = "New User";
+            this.newUserButton.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 141);
+            this.ClientSize = new System.Drawing.Size(353, 167);
+            this.Controls.Add(this.newUserButton);
+            this.Controls.Add(this.passBox);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.label1);
@@ -81,5 +115,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox passBox;
+        private System.Windows.Forms.Button newUserButton;
     }
 }

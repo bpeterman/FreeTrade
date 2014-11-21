@@ -109,5 +109,28 @@ namespace FreeTradeWindowsForms
             }
             return temp;
         }
+
+        public bool IsOpenStockMarket()
+        {
+            TimeSpan _marketUpdateDelay = new TimeSpan(0, 15, 00);  // market update delay
+            TimeSpan _marketOpenTime = new TimeSpan(9, 30, 00);     // market open time
+            TimeSpan _marketCloseTime = new TimeSpan(16, 00, 00);   // market close time
+            DateTime dt = DateTime.Now;
+
+            // check if current time is between stock marker open and close hours
+            if (dt.Hour > _marketOpenTime.Hours &&
+                dt.Hour < _marketCloseTime.Hours)
+                return true;
+
+            if (dt.Hour == _marketOpenTime.Hours
+                && dt.Minute >= _marketOpenTime.Minutes + _marketUpdateDelay.Minutes)
+                return true;
+
+            if (dt.Hour == _marketCloseTime.Hours
+                && dt.Minute <= _marketCloseTime.Minutes + _marketUpdateDelay.Minutes)
+                return true;
+
+            return false;
+        }
     }
 }

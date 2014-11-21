@@ -18,6 +18,22 @@ namespace FreeTradeWindowsForms
         {
             InitializeComponent();
             showLogin();
+            updateMarketStatus();
+        }
+
+        public void updateMarketStatus()
+        {
+            Stock marketCheck = new Stock();
+            if (marketCheck.IsOpenStockMarket())
+            {
+                marketStatus.Text = "Open";
+                marketStatus.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                marketStatus.Text = "Closed";
+                marketStatus.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         public void setUser(string uName)

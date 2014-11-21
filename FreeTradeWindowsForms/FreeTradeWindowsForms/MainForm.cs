@@ -183,10 +183,10 @@ namespace FreeTradeWindowsForms
             foreach (Holding stock in stocks)
             {
                 string[] row = new string[6];
-                row[0] = "";//stock.Name;
+                row[0] = stock.companyName;
                 row[1] = stock.stockSymbol;
                 row[2] = stock.numOfShares.ToString();
-                row[3] = "";
+                row[3] = stock.currentSharePrice.ToString("C2");
                 row[4] = stock.worth.ToString("C2");
                 row[5] = stock.totalInvested.ToString("C2");
                 portDataGrid.Rows.Add(row);
@@ -196,6 +196,47 @@ namespace FreeTradeWindowsForms
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tradeSellButton_Click(object sender, EventArgs e)
+        {
+            int index = searchResults.SelectedIndex;
+            if (index > -1)
+            {
+                Company company = results[index];
+                int numOfShares = 0;
+                numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
+                DateTime now = DateTime.Now;
+                double price = company.getStockPrice();
+                if (user.SellStock(company.Name, company.Symbol, price, numOfShares, now))
+                {
+                    MessageBox.Show("You sold " + numOfShares.ToString() + " share(s) of " + company.Name + " at " + price.ToString("C2") +" a share.");
+                }
+                else
+                {
+                    MessageBox.Show("Not enough shares owned.");
+                }
+                statusUserCash.Text = user.Cash.ToString("C2");
+            }
+            else
+            {
+                MessageBox.Show("No company selected!!1!");
+            }
+        }
+
+        private void watchButton_Click(object sender, EventArgs e)
+        {
+            int index = searchResults.SelectedIndex;
+            if (index > -1)
+            {
+                Company company = results[index];
+                user.AddToWatchList(company);
+                MessageBox.Show(company.Name + " added to the Watchlist.");
+            }
+            else
+            {
+                MessageBox.Show("No company selected!!1!");
+            }
         }
     }
 }

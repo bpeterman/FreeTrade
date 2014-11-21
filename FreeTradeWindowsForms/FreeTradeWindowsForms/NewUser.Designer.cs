@@ -97,6 +97,7 @@
             this.addUserButton.TabIndex = 6;
             this.addUserButton.Text = "Submit";
             this.addUserButton.UseVisualStyleBackColor = true;
+            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
             // 
             // label4
             // 

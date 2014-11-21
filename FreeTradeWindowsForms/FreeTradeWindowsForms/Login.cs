@@ -26,5 +26,16 @@ namespace FreeTradeWindowsForms
         {
             return usernameBox.Text;
         }
+
+        public string getPassword()
+        {
+            return passBox.Text;
+        }
+
+        private void newUserButton_Click(object sender, EventArgs e)
+        {
+            NewUser newUser = new NewUser();
+            newUser.Show();
+        }
     }
 }

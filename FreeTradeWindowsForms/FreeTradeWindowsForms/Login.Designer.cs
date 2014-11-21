@@ -56,6 +56,7 @@
             // 
             // loginButton
             // 
+            this.loginButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.loginButton.Location = new System.Drawing.Point(138, 106);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
@@ -76,6 +77,7 @@
             // 
             // passBox
             // 
+            this.passBox.AccessibleName = "";
             this.passBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passBox.Location = new System.Drawing.Point(104, 63);
             this.passBox.Name = "passBox";
@@ -91,6 +93,7 @@
             this.newUserButton.TabIndex = 5;
             this.newUserButton.Text = "New User";
             this.newUserButton.UseVisualStyleBackColor = true;
+            this.newUserButton.Click += new System.EventHandler(this.newUserButton_Click);
             // 
             // Login
             // 

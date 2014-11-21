@@ -41,21 +41,28 @@ namespace FreeTradeWindowsForms
 
         public void setUser(string uName)
         {
-            //user = new UserProfile(uName);
-
+            
         }
 
         public void showLogin()
         {
-            //Login login = new Login();
-            //login.ShowDialog();
-            //initializeUser(login.getUsername());
-            //initializeUser("test");
+            Login login = new Login();
+            DialogResult result = login.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                Environment.Exit(0);
+                return;
+            }
+            user = LoginController.Login(login.getUsername(), login.getPassword());
+            if (user == null)
+            {
+                MessageBox.Show("Invalid username or password.");
+                showLogin();
+            }
         }
 
         public void initializeUser()
         {
-            user = new User("Test", "pass", 5000);
             statusUserCash.Text = user.Cash.ToString("C2");
             statusUsername.Text = user.Username;
             UpdateOverview();
@@ -231,11 +238,10 @@ namespace FreeTradeWindowsForms
             {
                 Company company = results[index];
                 user.AddToWatchList(company);
-                MessageBox.Show(company.Name + " added to the Watchlist.");
             }
             else
             {
-                MessageBox.Show("No company selected!!1!");
+                MessageBox.Show("No company selected.");
             }
         }
 

@@ -34,6 +34,8 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.marketStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.marketStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -56,6 +58,7 @@
             this.portDataGrid = new System.Windows.Forms.DataGridView();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tradePage = new System.Windows.Forms.TabPage();
+            this.tradeSellButton = new System.Windows.Forms.Button();
             this.watchButton = new System.Windows.Forms.Button();
             this.tradeLow = new System.Windows.Forms.TextBox();
             this.tradeHigh = new System.Windows.Forms.TextBox();
@@ -83,9 +86,7 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.tradeSellButton = new System.Windows.Forms.Button();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusUsername = new System.Windows.Forms.ToolStripStatusLabel();
+            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -128,9 +129,12 @@
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.preferencesToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -152,6 +156,19 @@
             this.statusStrip.Size = new System.Drawing.Size(756, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "Market Status: ";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(66, 17);
+            this.toolStripStatusLabel2.Text = "Username: ";
+            // 
+            // statusUsername
+            // 
+            this.statusUsername.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Bold);
+            this.statusUsername.Name = "statusUsername";
+            this.statusUsername.Size = new System.Drawing.Size(34, 17);
+            this.statusUsername.Text = "User";
             // 
             // marketStatusText
             // 
@@ -390,6 +407,16 @@
             this.tradePage.Text = "Trade";
             this.tradePage.UseVisualStyleBackColor = true;
             // 
+            // tradeSellButton
+            // 
+            this.tradeSellButton.Location = new System.Drawing.Point(655, 455);
+            this.tradeSellButton.Name = "tradeSellButton";
+            this.tradeSellButton.Size = new System.Drawing.Size(39, 23);
+            this.tradeSellButton.TabIndex = 30;
+            this.tradeSellButton.Text = "Sell";
+            this.tradeSellButton.UseVisualStyleBackColor = true;
+            this.tradeSellButton.Click += new System.EventHandler(this.tradeSellButton_Click);
+            // 
             // watchButton
             // 
             this.watchButton.Location = new System.Drawing.Point(381, 284);
@@ -398,6 +425,7 @@
             this.watchButton.TabIndex = 29;
             this.watchButton.Text = "Add to Watchlist";
             this.watchButton.UseVisualStyleBackColor = true;
+            this.watchButton.Click += new System.EventHandler(this.watchButton_Click);
             // 
             // tradeLow
             // 
@@ -627,27 +655,12 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
-            // tradeSellButton
+            // preferencesToolStripMenuItem
             // 
-            this.tradeSellButton.Location = new System.Drawing.Point(655, 455);
-            this.tradeSellButton.Name = "tradeSellButton";
-            this.tradeSellButton.Size = new System.Drawing.Size(39, 23);
-            this.tradeSellButton.TabIndex = 30;
-            this.tradeSellButton.Text = "Sell";
-            this.tradeSellButton.UseVisualStyleBackColor = true;
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(66, 17);
-            this.toolStripStatusLabel2.Text = "Username: ";
-            // 
-            // statusUsername
-            // 
-            this.statusUsername.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Bold);
-            this.statusUsername.Name = "statusUsername";
-            this.statusUsername.Size = new System.Drawing.Size(34, 17);
-            this.statusUsername.Text = "User";
+            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.preferencesToolStripMenuItem.Text = "Preferences";
+            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -739,6 +752,7 @@
         private System.Windows.Forms.Button tradeSellButton;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel statusUsername;
+        private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
     }
 }
 

@@ -36,6 +36,8 @@ namespace FreeTradeWindowsForms.Models
 
         public List<Company> WatchList { get; set; }
 
+        public bool EnforceMarketClosure { get; set; }
+
         // Create a new user by setting the username, password, and how much cash they initially borrowed
         public User(string username, string password, double borrowedCash)
         {
@@ -44,6 +46,7 @@ namespace FreeTradeWindowsForms.Models
             this.borrowedCash = borrowedCash;
             this.Worth = borrowedCash;
             this.Cash = borrowedCash;
+            this.EnforceMarketClosure = true;
             Holdings = new List<Holding>();
             Transactions = new List<Transaction>();
             WatchList = new List<Company>();
@@ -52,6 +55,17 @@ namespace FreeTradeWindowsForms.Models
         public User()
         {
 
+        }
+
+
+        /// <summary>
+        /// Add more cash to use for investing. 
+        /// </summary>
+        /// <param name="amount"></param>
+        public void AddCash(double amount)
+        {
+            Cash = Cash += amount;
+            borrowedCash = borrowedCash += amount;
         }
 
         /// <summary>
@@ -65,6 +79,9 @@ namespace FreeTradeWindowsForms.Models
         /// <returns></returns>
         public bool BuyStock(string companyName, string companySymbol, double currentSharePrice, int numOfShares, DateTime time)
         {
+            if (!stock.IsOpenStockMarket() && EnforceMarketClosure)
+                return false;
+
             if (numOfShares * currentSharePrice > Cash)
                 return false;
 
@@ -120,6 +137,9 @@ namespace FreeTradeWindowsForms.Models
         public bool SellStock(string companyName, string companySymbol, double currentSharePrice, int numOfShares, DateTime time)
         {
             Holding holding = GetHolding(companySymbol);
+
+            if (!stock.IsOpenStockMarket() && EnforceMarketClosure)
+                return false;
 
             if (holding == null)
                 return false;

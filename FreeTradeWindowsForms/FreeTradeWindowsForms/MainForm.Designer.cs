@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -86,7 +88,8 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tradeCurrentSharesBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -135,6 +138,13 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // preferencesToolStripMenuItem
+            // 
+            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.preferencesToolStripMenuItem.Text = "Preferences";
+            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -372,6 +382,8 @@
             // 
             // tradePage
             // 
+            this.tradePage.Controls.Add(this.tradeCurrentSharesBox);
+            this.tradePage.Controls.Add(this.label10);
             this.tradePage.Controls.Add(this.tradeSellButton);
             this.tradePage.Controls.Add(this.watchButton);
             this.tradePage.Controls.Add(this.tradeLow);
@@ -655,12 +667,22 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
-            // preferencesToolStripMenuItem
+            // label10
             // 
-            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.preferencesToolStripMenuItem.Text = "Preferences";
-            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(224, 417);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Current Shares: ";
+            // 
+            // tradeCurrentSharesBox
+            // 
+            this.tradeCurrentSharesBox.Location = new System.Drawing.Point(303, 414);
+            this.tradeCurrentSharesBox.Name = "tradeCurrentSharesBox";
+            this.tradeCurrentSharesBox.ReadOnly = true;
+            this.tradeCurrentSharesBox.Size = new System.Drawing.Size(100, 20);
+            this.tradeCurrentSharesBox.TabIndex = 32;
             // 
             // MainForm
             // 
@@ -670,6 +692,7 @@
             this.Controls.Add(this.mainTab);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Free Trade";
@@ -753,6 +776,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel statusUsername;
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
+        private System.Windows.Forms.TextBox tradeCurrentSharesBox;
+        private System.Windows.Forms.Label label10;
     }
 }
 

@@ -238,11 +238,10 @@ namespace FreeTradeWindowsForms
             {
                 Company company = results[index];
                 user.AddToWatchList(company);
-                MessageBox.Show(company.Name + " added to the Watchlist.");
             }
             else
             {
-                MessageBox.Show("No company selected!!1!");
+                MessageBox.Show("No company selected.");
             }
         }
 

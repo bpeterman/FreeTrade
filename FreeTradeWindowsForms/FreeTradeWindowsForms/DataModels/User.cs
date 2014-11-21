@@ -127,8 +127,6 @@ namespace FreeTradeWindowsForms.Models
             if (numOfShares > holding.numOfShares)
                 return false;
 
-            holding.numOfShares = holding.numOfShares -  numOfShares;
-
             // Sale amount is subtracted from worth because worth is represents the overall worth of the stocks.
             double saleAmount = (numOfShares * currentSharePrice);
             holding.worth = holding.worth - saleAmount;
@@ -137,6 +135,8 @@ namespace FreeTradeWindowsForms.Models
             // The effective price per share is the total amount of money invested divided by the number of shares being held.
             double effectivePricePerShare = (holding.totalInvested / holding.numOfShares);
             holding.totalInvested = holding.totalInvested - (effectivePricePerShare * numOfShares);
+
+            holding.numOfShares = holding.numOfShares - numOfShares;
             refresh();
             return true;
         }
@@ -147,7 +147,28 @@ namespace FreeTradeWindowsForms.Models
         /// <param name="company"></param>
         public void AddToWatchList(Company company)
         {
-            WatchList.Add(company);
+            if (!CompanyInWatchList(company))
+            {
+                WatchList.Add(company);
+                MessageBox.Show("Company added to watchlist.");
+
+            }
+            else
+            {
+                MessageBox.Show("Company already in watchlist.");
+            }
+        }
+
+        public bool CompanyInWatchList(Company company)
+        {
+            foreach (Company watchListCompany in WatchList)
+            {
+                if (company.Symbol == watchListCompany.Symbol)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -164,6 +185,7 @@ namespace FreeTradeWindowsForms.Models
                 Holdings[i].Refresh(stock.getLatestValue(Holdings[i].stockSymbol));
                 tempWorth += Holdings[i].worth;
             }
+            Worth = Cash + tempWorth;
         }
     }
 }

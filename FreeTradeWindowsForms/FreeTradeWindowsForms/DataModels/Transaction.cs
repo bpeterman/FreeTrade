@@ -22,7 +22,7 @@ namespace FreeTradeWindowsForms.Models
         public Transaction(string companyName, string companySymbol, double sharePrice, int numOhShares, DateTime date)
         {
             this.CompanyName = companyName;
-            this.CompanySymbol = companySymbol;
+            this.StockSymbol = companySymbol;
             this.SharePrice = sharePrice;
             this.NumOfShares = numOhShares;
             this.date = date;

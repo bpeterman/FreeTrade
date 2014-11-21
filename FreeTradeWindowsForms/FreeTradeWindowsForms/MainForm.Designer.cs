@@ -56,6 +56,7 @@
             this.portDataGrid = new System.Windows.Forms.DataGridView();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tradePage = new System.Windows.Forms.TabPage();
+            this.watchButton = new System.Windows.Forms.Button();
             this.tradeLow = new System.Windows.Forms.TextBox();
             this.tradeHigh = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -82,7 +83,7 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.watchButton = new System.Windows.Forms.Button();
+            this.tradeSellButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -350,6 +351,7 @@
             // 
             // tradePage
             // 
+            this.tradePage.Controls.Add(this.tradeSellButton);
             this.tradePage.Controls.Add(this.watchButton);
             this.tradePage.Controls.Add(this.tradeLow);
             this.tradePage.Controls.Add(this.tradeHigh);
@@ -383,6 +385,15 @@
             this.tradePage.TabIndex = 2;
             this.tradePage.Text = "Trade";
             this.tradePage.UseVisualStyleBackColor = true;
+            // 
+            // watchButton
+            // 
+            this.watchButton.Location = new System.Drawing.Point(381, 284);
+            this.watchButton.Name = "watchButton";
+            this.watchButton.Size = new System.Drawing.Size(105, 23);
+            this.watchButton.TabIndex = 29;
+            this.watchButton.Text = "Add to Watchlist";
+            this.watchButton.UseVisualStyleBackColor = true;
             // 
             // tradeLow
             // 
@@ -522,9 +533,9 @@
             // 
             // buyButton
             // 
-            this.buyButton.Location = new System.Drawing.Point(695, 454);
+            this.buyButton.Location = new System.Drawing.Point(700, 455);
             this.buyButton.Name = "buyButton";
-            this.buyButton.Size = new System.Drawing.Size(45, 23);
+            this.buyButton.Size = new System.Drawing.Size(40, 23);
             this.buyButton.TabIndex = 9;
             this.buyButton.Text = "Buy";
             this.buyButton.UseVisualStyleBackColor = true;
@@ -535,7 +546,7 @@
             this.transAmBox.Location = new System.Drawing.Point(523, 457);
             this.transAmBox.Name = "transAmBox";
             this.transAmBox.ReadOnly = true;
-            this.transAmBox.Size = new System.Drawing.Size(166, 20);
+            this.transAmBox.Size = new System.Drawing.Size(126, 20);
             this.transAmBox.TabIndex = 7;
             // 
             // label3
@@ -612,14 +623,14 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
-            // watchButton
+            // tradeSellButton
             // 
-            this.watchButton.Location = new System.Drawing.Point(381, 284);
-            this.watchButton.Name = "watchButton";
-            this.watchButton.Size = new System.Drawing.Size(105, 23);
-            this.watchButton.TabIndex = 29;
-            this.watchButton.Text = "Add to Watchlist";
-            this.watchButton.UseVisualStyleBackColor = true;
+            this.tradeSellButton.Location = new System.Drawing.Point(655, 455);
+            this.tradeSellButton.Name = "tradeSellButton";
+            this.tradeSellButton.Size = new System.Drawing.Size(39, 23);
+            this.tradeSellButton.TabIndex = 30;
+            this.tradeSellButton.Text = "Sell";
+            this.tradeSellButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -708,6 +719,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox ListBoxWatchlist;
         private System.Windows.Forms.Button watchButton;
+        private System.Windows.Forms.Button tradeSellButton;
     }
 }
 

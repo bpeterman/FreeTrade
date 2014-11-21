@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FreeTradeWindowsForms.Models;
 
 namespace FreeTradeWindowsForms
 {
     public partial class MainForm : Form
     {
-        //UserProfile user;
+        User user;
         List<Company> results = new List<Company>();
         public MainForm()
         {
@@ -39,6 +40,7 @@ namespace FreeTradeWindowsForms
         public void setUser(string uName)
         {
             //user = new UserProfile(uName);
+
         }
 
         public void showLogin()

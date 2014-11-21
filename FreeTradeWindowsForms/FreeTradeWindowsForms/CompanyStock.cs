@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace transaction
+namespace FreeTradeWindowsForms
 {
 
     struct CompanyStockInfo
@@ -14,7 +14,7 @@ namespace transaction
         public string Spent;
         public string Earned;
         public string Shares;
-    
+        public string CurrentValue;
     }
 
     class CompanyStock
@@ -24,6 +24,7 @@ namespace transaction
         double dSpent;
         double dEarned;
         double dShares;
+        double dCurrentValue;
 
         public CompanyStockInfo GetDescriptor()
         {
@@ -32,6 +33,7 @@ namespace transaction
             Temp.Symbol = sSymbol;
             Temp.Spent = dSpent.ToString();
             Temp.Earned = dEarned.ToString();
+            Temp.CurrentValue = dCurrentValue.ToString();
             return Temp;
             
         
@@ -43,9 +45,10 @@ namespace transaction
             dSpent = 0;
             dEarned = 0;
             dShares = 0;
+            dCurrentValue = 0;
         }
 
-        public CompanyStock(string name, string symbol, double spent, double earned, double shares)
+        public CompanyStock(string name, string symbol, double spent, double earned, double shares, double currentPrice)
         {
            if(!SetName(name)) // bad name entered
            {
@@ -70,7 +73,16 @@ namespace transaction
             {
                dShares = 0.0;
             }
+            if(!SetCurrentValue(currentPrice))
+            {
+                dCurrentValue = 0.0;
+            }
         
+        }
+
+        public void RefreshHolding()
+        {
+
         }
         
         public string GetName()
@@ -144,6 +156,22 @@ namespace transaction
             if (shares >= 0.0)
             {
                 dShares = shares;
+                return true;
+            }
+            return false;
+        }
+
+        public double GetCurrentValue()
+        {
+            return dCurrentValue;
+        }
+
+
+        public bool SetCurrentValue(double currentValue)
+        {
+            if (currentValue >= 0.0)
+            {
+                dCurrentValue = currentValue;
                 return true;
             }
             return false;

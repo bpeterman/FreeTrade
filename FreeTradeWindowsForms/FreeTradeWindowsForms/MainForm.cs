@@ -108,10 +108,11 @@ namespace FreeTradeWindowsForms
                 else
                 {
                     DateTime now = DateTime.Now;
-                    PurchasedStock ps = new PurchasedStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, numOfShares, now);
-                    user.PurchaseStock(ps);
+                    user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now);
+                    //PurchasedStock ps = new PurchasedStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, numOfShares, now);
+                    //user.PurchaseStock(ps);
                     statusUserCash.Text = user.GetMoney().ToString("C2");
-                    user.WriteToFile();
+                    user.WriteToFiles();
                     MessageBox.Show("You purchased " + numOfShares + " shares of " + company.Name);
                 }
             }

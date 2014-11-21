@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace transaction
+namespace FreeTradeWindowsForms
 { 
     class UserProfile
     {
@@ -13,11 +13,11 @@ namespace transaction
 
         private string sName;
 
-        private double dMoney;
-        private double dPurchases;
-        private double dSales;
-        private double dChargedFees;
-        private double dTransFee;
+        private double dMoney; // Money we have available? Decreases when company looses value or increases when gains - this functionality should be created in RefreshStockPrices method
+        private double dPurchases; // Purchases?
+        private double dSales; //What does Sales mean?
+        private double dChargedFees; // Total Charged fees
+        private double dTransFee; // Fee to be charged per transaction
 
         List<CompanyStockInfo> GetCompnayList()
         { 
@@ -217,7 +217,7 @@ namespace transaction
             dMoney -= ((shares * price) + dChargedFees);
             dChargedFees += dTransFee;
             dPurchases += (shares * price);
-            bool found = false;
+            bool found = false; // What is found doing?
 
             lStockTransaction.Add(new StockTransaction(name, symbol, price, shares, dt, false));
 
@@ -267,7 +267,13 @@ namespace transaction
             return true;
         }
 
-
+        public void RefreshStockPrices()
+        {
+            foreach (CompanyStock  companyStock in lCompanyStock)
+            {
+                //Update each company stock's price and value
+            }
+        }
 
 
         public double GetMoney()

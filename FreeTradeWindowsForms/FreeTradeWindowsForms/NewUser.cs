@@ -14,7 +14,7 @@ namespace FreeTradeWindowsForms
     {
         public NewUser()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
     }
 }

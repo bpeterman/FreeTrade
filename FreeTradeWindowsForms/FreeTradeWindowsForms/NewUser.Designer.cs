@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 207);
+            this.ClientSize = new System.Drawing.Size(250, 207);
             this.Controls.Add(this.startCashBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.addUserButton);

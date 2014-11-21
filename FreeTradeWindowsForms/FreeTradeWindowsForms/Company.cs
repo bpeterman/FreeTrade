@@ -23,6 +23,11 @@ namespace FreeTradeWindowsForms
             StockPrice = stockPrice;
         }
 
+        public Company()
+        {
+
+        }
+
         public double getStockPrice()
         {
             Stock stock = new Stock();

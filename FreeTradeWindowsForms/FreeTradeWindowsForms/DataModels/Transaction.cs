@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreeTradeWindowsForms.Models
 {
-    class Transaction
+    public class Transaction
     {
         public string CompanyName { get; set; }
         public string StockSymbol { get; set; }

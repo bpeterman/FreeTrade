@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FreeTradeWindowsForms.Models
 {
-    class Holding
+    public class Holding
     {
+        // TODO: add companyName and currentPrice
         /*
          * This class represents a company that a user is invested in.
          *  
@@ -21,18 +22,28 @@ namespace FreeTradeWindowsForms.Models
         public Holding(string stockSymbol)
         {
             this.stockSymbol = stockSymbol;
+            this.companyName = "";
+            this.currentSharePrice = 0.0;
             this.numOfShares = 0;
-            this.totalInvested = 0;
-            this.worth = 0;
+            this.totalInvested = 0.0;
+            this.worth = 0.0;
+        }
+
+        public Holding()
+        {
+
         }
 
         public int numOfShares;
         public string stockSymbol;
+        public string companyName;
         public double totalInvested;
+        public double currentSharePrice;
         public double worth;
 
         public void Refresh(double currentPrice)
         {
+            this.currentSharePrice = currentPrice;
             worth = numOfShares * currentPrice;
         }
     }

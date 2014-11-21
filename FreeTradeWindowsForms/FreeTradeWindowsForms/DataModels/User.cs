@@ -8,7 +8,8 @@ using FreeTradeWindowsForms;
 
 namespace FreeTradeWindowsForms.Models
 {
-    class User
+    
+    public class User
     {
         Stock stock = new Stock();
         public string Username { get; set; }
@@ -48,6 +49,11 @@ namespace FreeTradeWindowsForms.Models
             WatchList = new List<Company>();
         }
 
+        public User()
+        {
+
+        }
+
         /// <summary>
         /// Buy stocks
         /// </summary>
@@ -69,6 +75,8 @@ namespace FreeTradeWindowsForms.Models
             {
                 holding = new Holding(companySymbol);
                 Holdings.Add(holding);
+                holding.companyName = companyName;
+                holding.currentSharePrice = currentSharePrice;
             }
             holding.numOfShares += numOfShares;
             holding.totalInvested += (transactionAmount);

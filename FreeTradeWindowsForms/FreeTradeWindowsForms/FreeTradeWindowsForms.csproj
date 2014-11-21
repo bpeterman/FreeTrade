@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DataModels\Holding.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

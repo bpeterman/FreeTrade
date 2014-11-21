@@ -18,8 +18,9 @@ namespace FreeTradeWindowsForms
         public MainForm()
         {
             InitializeComponent();
-            //showLogin();
+            showLogin();
             updateMarketStatus();
+            initializeUser();
         }
 
         public void updateMarketStatus()
@@ -48,13 +49,14 @@ namespace FreeTradeWindowsForms
             //Login login = new Login();
             //login.ShowDialog();
             //initializeUser(login.getUsername());
+            //initializeUser("test");
         }
 
-        public void initializeUser(string uName)
+        public void initializeUser()
         {
-            //user = new UserProfile(uName);
-            //statusUserCash.Text = user.GetMoney().ToString("C2");
-            //UpdateOverview();
+            user = new User("test", "pass", 5000);
+            statusUserCash.Text = user.Cash.ToString("C2");
+            UpdateOverview();
         }
 
         public void UpdateOverview()
@@ -113,31 +115,27 @@ namespace FreeTradeWindowsForms
 
         private void buyButton_Click(object sender, EventArgs e)
         {
-            //int index = searchResults.SelectedIndex;
-            //if (index > -1)
-            //{
-            //    Company company = results[index];
-            //    int numOfShares = 0;
-            //    numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
-            //    if (user.GetMoney() < (company.getStockPrice() * numOfShares))
-            //    {
-            //        MessageBox.Show("You don't have enough money!!");
-            //    }
-            //    else
-            //    {
-            //        DateTime now = DateTime.Now;
-            //        user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now);
-            //        //PurchasedStock ps = new PurchasedStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, numOfShares, now);
-            //        //user.PurchaseStock(ps);
-            //        statusUserCash.Text = user.GetMoney().ToString("C2");
-            //        user.WriteToFiles();
-            //        MessageBox.Show("You purchased " + numOfShares + " shares of " + company.Name);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No company selected!!1!");
-            //}
+            int index = searchResults.SelectedIndex;
+            if (index > -1)
+            {
+                Company company = results[index];
+                int numOfShares = 0;
+                numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
+                if (user.Cash < (company.getStockPrice() * numOfShares))
+                {
+                    MessageBox.Show("You don't have enough money!!");
+                }
+                else
+                {
+                    DateTime now = DateTime.Now;
+                    user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now);
+                    statusUserCash.Text = user.Cash.ToString("C2");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No company selected!!1!");
+            }
         }
 
         private void tradeNumOfShares_TextChanged(object sender, EventArgs e)
@@ -174,24 +172,23 @@ namespace FreeTradeWindowsForms
             portDataGrid.Columns[0].Name = "Company Name";
             portDataGrid.Columns[1].Name = "Company Symbol";
             portDataGrid.Columns[2].Name = "Number of Shares";
-            portDataGrid.Columns[3].Name = "Purchase Price";
-            portDataGrid.Columns[4].Name = "Current Price";
-            portDataGrid.Columns[5].Name = "Purchase Date";
+            portDataGrid.Columns[3].Name = "Current Price";
+            portDataGrid.Columns[4].Name = "Worth";
+            portDataGrid.Columns[5].Name = "Total Invested";
 
-            //List<PurchasedStockInfo> stocks = user.GetPurchasedStockDescriptor();
-            //Stock checker = new Stock();
-            ////loop through the purchased stocks.
-            //foreach (PurchasedStockInfo stock in stocks)
-            //{
-            //    string[] row = new string[6];
-            //    row[0] = stock.Name;
-            //    row[1] = stock.Symbol;
-            //    row[2] = stock.NumOfShares;
-            //    row[3] = Convert.ToDouble(stock.PurchasePrice).ToString("C2");
-            //    row[4] = checker.getLatestValue(stock.Symbol).ToString("C2");
-            //    row[5] = stock.Date;
-            //    portDataGrid.Rows.Add(row);
-            //}
+            List<Holding> stocks = user.Holdings;
+            //loop through the purchased stocks.
+            foreach (Holding stock in stocks)
+            {
+                string[] row = new string[6];
+                row[0] = "";//stock.Name;
+                row[1] = stock.stockSymbol;
+                row[2] = stock.numOfShares.ToString();
+                row[3] = "";
+                row[4] = stock.worth.ToString("C2");
+                row[5] = stock.totalInvested.ToString("C2");
+                portDataGrid.Rows.Add(row);
+            }
         }
 
         private void label9_Click(object sender, EventArgs e)

@@ -13,11 +13,27 @@ namespace FreeTradeWindowsForms.Models
         Stock stock = new Stock();
         public string Username { get; set; }
         public string Password { get; set; }
-        public double Cash { get; set; } // Buying Power
-        public double Worth { get; set; } // Overall worth of cash and all investments
-        public double borrowedCash { get; set; } // Total amount of cash used for investing - this only changes if more cash is borrowed, this will be the basis of all performance calculations
-        public List<Holding> Holdings { get; set; } // All companies that are currently being invested in.
+
+        /// <summary>
+        /// Buying power available
+        /// </summary>
+        public double Cash { get; set; }
+        /// <summary>
+        /// Overall worth of cash and all investments
+        /// </summary>
+        public double Worth { get; set; }
+        /// <summary>
+        /// Total amount of cash used for investing - this only changes if more cash is borrowed, this will be the basis of all performance calculations
+        /// </summary>
+        public double borrowedCash { get; set; }
+        /// <summary>
+        /// // All companies that are currently being invested in.
+        /// </summary>
+        public List<Holding> Holdings { get; set; } 
+
         public List<Transaction> Transactions { get; set; }
+
+        public List<Company> WatchList { get; set; }
 
         // Create a new user by setting the username, password, and how much cash they initially borrowed
         public User(string username, string password, double borrowedCash)
@@ -27,6 +43,9 @@ namespace FreeTradeWindowsForms.Models
             this.borrowedCash = borrowedCash;
             this.Worth = borrowedCash;
             this.Cash = borrowedCash;
+            Holdings = new List<Holding>();
+            Transactions = new List<Transaction>();
+            WatchList = new List<Company>();
         }
 
         /// <summary>
@@ -54,6 +73,10 @@ namespace FreeTradeWindowsForms.Models
             holding.numOfShares += numOfShares;
             holding.totalInvested += (transactionAmount);
             holding.worth += (transactionAmount);
+
+            // Add to list of transactions
+            Transactions.Add(new Transaction(companyName, companySymbol, currentSharePrice, numOfShares, time));
+
             MessageBox.Show("You just purchased " + numOfShares + " shares of " + companyName + " stock @ $" + currentSharePrice + " per share.");
             Cash = Cash - transactionAmount;
             refresh();
@@ -111,6 +134,15 @@ namespace FreeTradeWindowsForms.Models
         }
 
         /// <summary>
+        /// Add a company to the user's watchlist.
+        /// </summary>
+        /// <param name="company"></param>
+        public void AddToWatchList(Company company)
+        {
+            WatchList.Add(company);
+        }
+
+        /// <summary>
         /// Refresh user profile
         /// </summary>
         public void refresh()
@@ -118,11 +150,11 @@ namespace FreeTradeWindowsForms.Models
             // refresh everything in the user profile
             // refresh everything in each holding
             // 
-            
+            double tempWorth = 0;
             for (int i = 0; i < Holdings.Count; i++)
             {
                 Holdings[i].Refresh(stock.getLatestValue(Holdings[i].stockSymbol));
-
+                tempWorth += Holdings[i].worth;
             }
         }
     }

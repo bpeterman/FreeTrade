@@ -60,6 +60,8 @@
             this.portDataGrid = new System.Windows.Forms.DataGridView();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tradePage = new System.Windows.Forms.TabPage();
+            this.tradeCurrentSharesBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tradeSellButton = new System.Windows.Forms.Button();
             this.watchButton = new System.Windows.Forms.Button();
             this.tradeLow = new System.Windows.Forms.TextBox();
@@ -88,8 +90,6 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tradeCurrentSharesBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -419,6 +419,23 @@
             this.tradePage.Text = "Trade";
             this.tradePage.UseVisualStyleBackColor = true;
             // 
+            // tradeCurrentSharesBox
+            // 
+            this.tradeCurrentSharesBox.Location = new System.Drawing.Point(303, 414);
+            this.tradeCurrentSharesBox.Name = "tradeCurrentSharesBox";
+            this.tradeCurrentSharesBox.ReadOnly = true;
+            this.tradeCurrentSharesBox.Size = new System.Drawing.Size(100, 20);
+            this.tradeCurrentSharesBox.TabIndex = 32;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(224, 417);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Current Shares: ";
+            // 
             // tradeSellButton
             // 
             this.tradeSellButton.Location = new System.Drawing.Point(655, 455);
@@ -666,23 +683,6 @@
             this.performancePage.TabIndex = 3;
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(224, 417);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 13);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Current Shares: ";
-            // 
-            // tradeCurrentSharesBox
-            // 
-            this.tradeCurrentSharesBox.Location = new System.Drawing.Point(303, 414);
-            this.tradeCurrentSharesBox.Name = "tradeCurrentSharesBox";
-            this.tradeCurrentSharesBox.ReadOnly = true;
-            this.tradeCurrentSharesBox.Size = new System.Drawing.Size(100, 20);
-            this.tradeCurrentSharesBox.TabIndex = 32;
             // 
             // MainForm
             // 

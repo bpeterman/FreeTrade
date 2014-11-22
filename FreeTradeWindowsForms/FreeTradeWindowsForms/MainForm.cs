@@ -65,11 +65,12 @@ namespace FreeTradeWindowsForms
         {
             statusUserCash.Text = user.Cash.ToString("C2");
             statusUsername.Text = user.Username;
-            UpdateOverview();
+            updateOverview();
         }
 
-        public void UpdateOverview()
+        public void updateOverview()
         {
+            NetWorthLabel.Text = user.Worth.ToString("C2");
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)

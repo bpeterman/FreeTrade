@@ -89,6 +89,11 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
+            this.performancePic = new System.Windows.Forms.PictureBox();
+            this.performanceHoldingsBox = new System.Windows.Forms.ListBox();
+            this.performanceTimeBox = new System.Windows.Forms.ListBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -99,6 +104,8 @@
             this.portfolioPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).BeginInit();
             this.tradePage.SuspendLayout();
+            this.performancePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performancePic)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -140,7 +147,7 @@
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
@@ -668,6 +675,11 @@
             // 
             // performancePage
             // 
+            this.performancePage.Controls.Add(this.label17);
+            this.performancePage.Controls.Add(this.label15);
+            this.performancePage.Controls.Add(this.performanceTimeBox);
+            this.performancePage.Controls.Add(this.performanceHoldingsBox);
+            this.performancePage.Controls.Add(this.performancePic);
             this.performancePage.Location = new System.Drawing.Point(4, 22);
             this.performancePage.Name = "performancePage";
             this.performancePage.Padding = new System.Windows.Forms.Padding(3);
@@ -675,6 +687,57 @@
             this.performancePage.TabIndex = 3;
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
+            // 
+            // performancePic
+            // 
+            this.performancePic.Location = new System.Drawing.Point(110, 196);
+            this.performancePic.Name = "performancePic";
+            this.performancePic.Size = new System.Drawing.Size(512, 288);
+            this.performancePic.TabIndex = 0;
+            this.performancePic.TabStop = false;
+            // 
+            // performanceHoldingsBox
+            // 
+            this.performanceHoldingsBox.FormattingEnabled = true;
+            this.performanceHoldingsBox.Location = new System.Drawing.Point(171, 30);
+            this.performanceHoldingsBox.Name = "performanceHoldingsBox";
+            this.performanceHoldingsBox.Size = new System.Drawing.Size(267, 160);
+            this.performanceHoldingsBox.TabIndex = 1;
+            // 
+            // performanceTimeBox
+            // 
+            this.performanceTimeBox.FormattingEnabled = true;
+            this.performanceTimeBox.Items.AddRange(new object[] {
+            "1 Day",
+            "5 Days",
+            "3 Months",
+            "6 Months",
+            "1 Year",
+            "2 Years",
+            "5 Years",
+            "Maximum"});
+            this.performanceTimeBox.Location = new System.Drawing.Point(444, 30);
+            this.performanceTimeBox.Name = "performanceTimeBox";
+            this.performanceTimeBox.Size = new System.Drawing.Size(120, 160);
+            this.performanceTimeBox.TabIndex = 2;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(168, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Your Holdings:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(441, 14);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Time Period: ";
             // 
             // MainForm
             // 
@@ -702,6 +765,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).EndInit();
             this.tradePage.ResumeLayout(false);
             this.tradePage.PerformLayout();
+            this.performancePage.ResumeLayout(false);
+            this.performancePage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performancePic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,6 +835,11 @@
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.TextBox tradeCurrentSharesBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox performancePic;
+        private System.Windows.Forms.ListBox performanceTimeBox;
+        private System.Windows.Forms.ListBox performanceHoldingsBox;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label15;
     }
 }
 

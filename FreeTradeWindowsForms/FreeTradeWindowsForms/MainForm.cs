@@ -195,7 +195,9 @@ namespace FreeTradeWindowsForms
             if (mainTab.SelectedIndex == 2)
                 clearTrade(); 
             else
-                clearTrade();   
+                clearTrade();
+            if (mainTab.SelectedIndex == 3)
+                updatePerformance(); 
         }
 
         public void clearTrade()
@@ -305,6 +307,23 @@ namespace FreeTradeWindowsForms
             base.OnFormClosing(e);
             LoginController.Logout(user);
             if (e.CloseReason == CloseReason.WindowsShutDown) return;
+        }
+
+        public void updatePerformance()
+        {
+            performanceHoldingsBox.Items.Clear();
+            List<Holding> holdings = user.Holdings;
+            //loop through the purchased stocks.
+            foreach (Holding holding in holdings)
+            {
+                performanceHoldingsBox.Items.Add(String.Format("{0} - {1}", holding.companyName, holding.currentSharePrice.ToString("C2")));
+            }
+            updatePerformanceGraph("GOOG", "1d");
+        }
+
+        public void updatePerformanceGraph(string symbol, string timePeriod)
+        {
+            performancePic.Load("http://chart.finance.yahoo.com/z?s=" + symbol + "&t="+timePeriod);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace FreeTradeWindowsForms
             showLogin();
             updateMarketStatus();
             initializeUser();
+            user.EnforceMarketClosure = false;
         }
 
         public void updateMarketStatus()
@@ -252,8 +253,10 @@ namespace FreeTradeWindowsForms
 
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
+            Settings settings = new Settings(user);
             settings.ShowDialog();
+            user=settings.getUser();
+            statusUserCash.Text = user.Cash.ToString("C2");
         }
     }
 }

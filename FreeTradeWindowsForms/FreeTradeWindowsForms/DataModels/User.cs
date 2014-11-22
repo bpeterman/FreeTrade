@@ -55,6 +55,7 @@ namespace FreeTradeWindowsForms.Models
             this.Worth = borrowedCash;
             this.Cash = borrowedCash;
             this.EnforceMarketClosure = true;
+            this.transactionFee = 0;
             Holdings = new List<Holding>();
             Transactions = new List<Transaction>();
             WatchList = new List<Company>();
@@ -94,7 +95,10 @@ namespace FreeTradeWindowsForms.Models
             }
 
             if (numOfShares * currentSharePrice > Cash)
+            {
+                MessageBox.Show("You don't have enough money for that purchase. Dummy.");
                 return false;
+            }
 
             double transactionAmount = (numOfShares * currentSharePrice);
             // create a new holding if one doesn't already exist
@@ -113,7 +117,7 @@ namespace FreeTradeWindowsForms.Models
             // Add to list of transactions
             Transactions.Add(new Transaction(companyName, companySymbol, currentSharePrice, numOfShares, time));
 
-            MessageBox.Show("You just purchased " + numOfShares + " shares of " + companyName + " stock @ $" + currentSharePrice + " per share.");
+            MessageBox.Show("You just purchased " + numOfShares + " shares of " + companyName + " stock at" + currentSharePrice.ToString("C2") + " per share.");
             Cash = Cash - transactionAmount;
             Cash = Cash - transactionFee;
             refresh();
@@ -155,12 +159,14 @@ namespace FreeTradeWindowsForms.Models
                 MessageBox.Show("The market is closed.");
                 return false;
             }
-
             if (holding == null)
                 return false;
 
             if (numOfShares > holding.numOfShares)
+            {
+                MessageBox.Show("You cannot sell more shares than you own, dummy...");
                 return false;
+            }
 
             // Sale amount is subtracted from worth because worth is represents the overall worth of the stocks.
             double saleAmount = (numOfShares * currentSharePrice);
@@ -174,6 +180,7 @@ namespace FreeTradeWindowsForms.Models
 
             holding.numOfShares = holding.numOfShares - numOfShares;
             refresh();
+            MessageBox.Show("You sold " + numOfShares.ToString() + " share(s) of " + companyName + " at " + currentSharePrice.ToString("C2") + " a share. Total sale amount: " + saleAmount.ToString("C2"));
             return true;
         }
 

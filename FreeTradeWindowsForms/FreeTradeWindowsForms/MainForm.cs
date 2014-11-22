@@ -216,14 +216,7 @@ namespace FreeTradeWindowsForms
                 numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
                 DateTime now = DateTime.Now;
                 double price = company.getStockPrice();
-                if (user.SellStock(company.Name, company.Symbol, price, numOfShares, now))
-                {
-                    MessageBox.Show("You sold " + numOfShares.ToString() + " share(s) of " + company.Name + " at " + price.ToString("C2") +" a share.");
-                }
-                else
-                {
-                    MessageBox.Show("Not enough shares owned.");
-                }
+                user.SellStock(company.Name, company.Symbol, price, numOfShares, now);
                 statusUserCash.Text = user.Cash.ToString("C2");
             }
             else

@@ -31,9 +31,9 @@ namespace FreeTradeWindowsForms
                 int numShares = Convert.ToInt32(purchasedSharesBox.Text);
                 double profit = (toPrice - fromPrice) * numShares;
                 if (profit >= 0)
-                    MessageBox.Show("You would have made " + profit.ToString("C2") + " had you bought " + numShares + " share(s) of " + companySymbolBox.Text + " in " + from.Year + " and then sold in " + to.Year);
+                    MessageBox.Show("You would have made " + profit.ToString("C2") + " had you bought " + numShares + " share(s) of " + companySymbolBox.Text + " in " + from.Year + " and then sold in " + to.Year + "\nFrom: " + fromPrice.ToString("C2") + "\nTo: " + toPrice.ToString("C2"));
                 else
-                    MessageBox.Show("You would have lost " + profit.ToString("C2") + " had you bought " + numShares + " share(s) of " + companySymbolBox.Text + " in " + from.Year + " and then sold in " + to.Year);
+                    MessageBox.Show("You would have lost " + profit.ToString("C2") + " had you bought " + numShares + " share(s) of " + companySymbolBox.Text + " in " + from.Year + " and then sold in " + to.Year + "\nFrom: " + fromPrice.ToString("C2") + "\nTo: " + toPrice.ToString("C2"));
             }
             catch
             {

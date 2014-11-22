@@ -74,6 +74,7 @@ namespace FreeTradeWindowsForms
         {
             ListBoxWatchlist.Items.Clear();
             List<Company> comps = user.WatchList;
+            comps.Reverse();
             foreach (Company company in comps)
             {
                 ListBoxWatchlist.Items.Add(String.Format("{0} - {1}", company.Name, company.getStockPrice().ToString("C2")));

@@ -258,5 +258,12 @@ namespace FreeTradeWindowsForms
             user=settings.getUser();
             statusUserCash.Text = user.Cash.ToString("C2");
         }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            LoginController.Logout(user);
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace FreeTradeWindowsForms.Controllers
                 System.IO.StreamReader file = new System.IO.StreamReader(filepath);
                 User user = new User();
                 user = (User)reader.Deserialize(file);
+                file.Close();
                 if (user.Password == password)
                     return user;
                 else

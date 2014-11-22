@@ -214,7 +214,6 @@ namespace FreeTradeWindowsForms.Models
         {
             // refresh everything in the user profile
             // refresh everything in each holding
-            // 
             double tempWorth = 0;
             for (int i = 0; i < Holdings.Count; i++)
             {

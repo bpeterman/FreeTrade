@@ -23,7 +23,6 @@ namespace FreeTradeWindowsForms
             {
                 marketCloseBox.Text = "No";
             }
-            //TODO add the user's actual fees here.
             settingsFeesBox.Text = user.transactionFee.ToString();
         }
 

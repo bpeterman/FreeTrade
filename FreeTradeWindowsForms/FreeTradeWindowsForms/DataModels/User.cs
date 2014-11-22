@@ -36,7 +36,15 @@ namespace FreeTradeWindowsForms.Models
 
         public List<Company> WatchList { get; set; }
 
+        /// <summary>
+        /// This flag determines whether the user can trade when the market is closed
+        /// </summary>
         public bool EnforceMarketClosure { get; set; }
+
+        /// <summary>
+        /// This value determines the fee that is charged for each transaction.
+        /// </summary>
+        public double transactionFee { get; set; }
 
         // Create a new user by setting the username, password, and how much cash they initially borrowed
         public User(string username, string password, double borrowedCash)
@@ -107,6 +115,7 @@ namespace FreeTradeWindowsForms.Models
 
             MessageBox.Show("You just purchased " + numOfShares + " shares of " + companyName + " stock @ $" + currentSharePrice + " per share.");
             Cash = Cash - transactionAmount;
+            Cash = Cash - transactionFee;
             refresh();
             return true;
         }
@@ -157,6 +166,7 @@ namespace FreeTradeWindowsForms.Models
             double saleAmount = (numOfShares * currentSharePrice);
             holding.worth = holding.worth - saleAmount;
             Cash = Cash + saleAmount;
+            Cash = Cash - transactionFee;
 
             // The effective price per share is the total amount of money invested divided by the number of shares being held.
             double effectivePricePerShare = (holding.totalInvested / holding.numOfShares);

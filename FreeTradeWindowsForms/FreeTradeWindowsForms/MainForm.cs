@@ -107,6 +107,21 @@ namespace FreeTradeWindowsForms
             tradeIndustry.Text = company.Industry;
             tradeHigh.Text = stock.getStockYearHigh(company.Symbol).ToString("C2");
             tradeLow.Text = stock.getStockYearLow(company.Symbol).ToString("C2");
+
+            List<Holding> holdings = user.Holdings;
+            //loop through the purchased stocks.
+            foreach (Holding holding in holdings)
+            {
+                if (holding.stockSymbol.Equals(company.Symbol))
+                {
+                    tradeCurrentSharesBox.Text = holding.numOfShares.ToString();
+                }
+                else
+                {
+                    tradeCurrentSharesBox.Text = "0";
+                }
+            }
+
         }
 
         private void searchEnter(object sender, KeyEventArgs e)
@@ -140,6 +155,7 @@ namespace FreeTradeWindowsForms
                     DateTime now = DateTime.Now;
                     user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now);
                     statusUserCash.Text = user.Cash.ToString("C2");
+                    tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) + numOfShares).ToString();
                 }
             }
             else
@@ -219,6 +235,7 @@ namespace FreeTradeWindowsForms
                 if (user.SellStock(company.Name, company.Symbol, price, numOfShares, now))
                 {
                     MessageBox.Show("You sold " + numOfShares.ToString() + " share(s) of " + company.Name + " at " + price.ToString("C2") +" a share.");
+                    tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) - numOfShares).ToString();
                 }
                 else
                 {

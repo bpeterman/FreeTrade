@@ -367,5 +367,11 @@ namespace FreeTradeWindowsForms
             else
                 return "";
         }
+
+        private void whatIfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WhatIf whatIf = new WhatIf();
+            whatIf.Show();
+        }
     }
 }

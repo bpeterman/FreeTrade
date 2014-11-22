@@ -94,6 +94,8 @@
             this.performanceTimeBox = new System.Windows.Forms.ListBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatIfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -112,6 +114,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -741,6 +744,21 @@
             this.label17.TabIndex = 4;
             this.label17.Text = "Time Period: ";
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.whatIfToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // whatIfToolStripMenuItem
+            // 
+            this.whatIfToolStripMenuItem.Name = "whatIfToolStripMenuItem";
+            this.whatIfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.whatIfToolStripMenuItem.Text = "What If?";
+            this.whatIfToolStripMenuItem.Click += new System.EventHandler(this.whatIfToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -842,6 +860,8 @@
         private System.Windows.Forms.ListBox performanceHoldingsBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whatIfToolStripMenuItem;
     }
 }
 

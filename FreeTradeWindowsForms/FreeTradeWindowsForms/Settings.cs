@@ -7,14 +7,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FreeTradeWindowsForms.Controllers;
+using FreeTradeWindowsForms.Models;
 
 namespace FreeTradeWindowsForms
 {
     public partial class Settings : Form
     {
-        public Settings()
+        User user;
+        public Settings(User user)
         {
             InitializeComponent();
+            this.user = user;
+            if (!user.EnforceMarketClosure) 
+            {
+                marketCloseBox.Text = "No";
+            }
+            //TODO add the user's actual fees here.
+            settingsFeesBox.Text = "";
+        }
+
+        public User getUser()
+        {
+            return user;
+        }
+
+        public string getCash()
+        {
+            return settingsCashBox.Text;
+        }
+
+        public string getFees()
+        {
+            return settingsFeesBox.Text;
+        }
+                
+        public string getEnforcement()
+        {
+            return marketCloseBox.Text;
+        }
+
+        private void settingsSaveButton_Click(object sender, EventArgs e)
+        {
+            //add to cash here.
+            if (settingsCashBox.Text.Length>0)
+                user.AddCash(Convert.ToDouble(settingsCashBox.Text));
+            //TODO add fees here.
+
+            //set market enforcement
+            if (getEnforcement().Equals("Yes"))
+            {
+                user.EnforceMarketClosure = true;
+            }
+            else
+            {
+                user.EnforceMarketClosure = false;
+            }
         }
     }
 }

@@ -80,7 +80,10 @@ namespace FreeTradeWindowsForms.Models
         public bool BuyStock(string companyName, string companySymbol, double currentSharePrice, int numOfShares, DateTime time)
         {
             if (!stock.IsOpenStockMarket() && EnforceMarketClosure)
+            {
+                MessageBox.Show("The market is closed.");
                 return false;
+            }
 
             if (numOfShares * currentSharePrice > Cash)
                 return false;
@@ -139,7 +142,10 @@ namespace FreeTradeWindowsForms.Models
             Holding holding = GetHolding(companySymbol);
 
             if (!stock.IsOpenStockMarket() && EnforceMarketClosure)
+            {
+                MessageBox.Show("The market is closed.");
                 return false;
+            }
 
             if (holding == null)
                 return false;

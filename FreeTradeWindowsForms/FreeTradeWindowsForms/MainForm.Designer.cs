@@ -34,7 +34,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusUsername = new System.Windows.Forms.ToolStripStatusLabel();
@@ -60,6 +59,8 @@
             this.portDataGrid = new System.Windows.Forms.DataGridView();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tradePage = new System.Windows.Forms.TabPage();
+            this.tradeCurrentSharesBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tradeSellButton = new System.Windows.Forms.Button();
             this.watchButton = new System.Windows.Forms.Button();
             this.tradeLow = new System.Windows.Forms.TextBox();
@@ -88,8 +89,13 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tradeCurrentSharesBox = new System.Windows.Forms.TextBox();
+            this.performancePic = new System.Windows.Forms.PictureBox();
+            this.performanceHoldingsBox = new System.Windows.Forms.ListBox();
+            this.performanceTimeBox = new System.Windows.Forms.ListBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatIfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -100,14 +106,16 @@
             this.portfolioPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).BeginInit();
             this.tradePage.SuspendLayout();
+            this.performancePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performancePic)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.settingsToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.toolsToolStripMenuItem,
+            this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(756, 24);
@@ -126,7 +134,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -142,15 +150,9 @@
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // statusStrip
             // 
@@ -419,6 +421,23 @@
             this.tradePage.Text = "Trade";
             this.tradePage.UseVisualStyleBackColor = true;
             // 
+            // tradeCurrentSharesBox
+            // 
+            this.tradeCurrentSharesBox.Location = new System.Drawing.Point(303, 414);
+            this.tradeCurrentSharesBox.Name = "tradeCurrentSharesBox";
+            this.tradeCurrentSharesBox.ReadOnly = true;
+            this.tradeCurrentSharesBox.Size = new System.Drawing.Size(100, 20);
+            this.tradeCurrentSharesBox.TabIndex = 32;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(224, 417);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Current Shares: ";
+            // 
             // tradeSellButton
             // 
             this.tradeSellButton.Location = new System.Drawing.Point(655, 455);
@@ -659,6 +678,11 @@
             // 
             // performancePage
             // 
+            this.performancePage.Controls.Add(this.label17);
+            this.performancePage.Controls.Add(this.label15);
+            this.performancePage.Controls.Add(this.performanceTimeBox);
+            this.performancePage.Controls.Add(this.performanceHoldingsBox);
+            this.performancePage.Controls.Add(this.performancePic);
             this.performancePage.Location = new System.Drawing.Point(4, 22);
             this.performancePage.Name = "performancePage";
             this.performancePage.Padding = new System.Windows.Forms.Padding(3);
@@ -667,22 +691,73 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // performancePic
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(224, 417);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 13);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Current Shares: ";
+            this.performancePic.Location = new System.Drawing.Point(110, 196);
+            this.performancePic.Name = "performancePic";
+            this.performancePic.Size = new System.Drawing.Size(512, 288);
+            this.performancePic.TabIndex = 0;
+            this.performancePic.TabStop = false;
             // 
-            // tradeCurrentSharesBox
+            // performanceHoldingsBox
             // 
-            this.tradeCurrentSharesBox.Location = new System.Drawing.Point(303, 414);
-            this.tradeCurrentSharesBox.Name = "tradeCurrentSharesBox";
-            this.tradeCurrentSharesBox.ReadOnly = true;
-            this.tradeCurrentSharesBox.Size = new System.Drawing.Size(100, 20);
-            this.tradeCurrentSharesBox.TabIndex = 32;
+            this.performanceHoldingsBox.FormattingEnabled = true;
+            this.performanceHoldingsBox.Location = new System.Drawing.Point(171, 30);
+            this.performanceHoldingsBox.Name = "performanceHoldingsBox";
+            this.performanceHoldingsBox.Size = new System.Drawing.Size(267, 160);
+            this.performanceHoldingsBox.TabIndex = 1;
+            this.performanceHoldingsBox.SelectedIndexChanged += new System.EventHandler(this.performanceHoldingsBox_SelectedIndexChanged);
+            // 
+            // performanceTimeBox
+            // 
+            this.performanceTimeBox.FormattingEnabled = true;
+            this.performanceTimeBox.Items.AddRange(new object[] {
+            "1 Day",
+            "5 Days",
+            "3 Months",
+            "6 Months",
+            "1 Year",
+            "2 Years",
+            "5 Years",
+            "Maximum"});
+            this.performanceTimeBox.Location = new System.Drawing.Point(444, 30);
+            this.performanceTimeBox.Name = "performanceTimeBox";
+            this.performanceTimeBox.Size = new System.Drawing.Size(120, 160);
+            this.performanceTimeBox.TabIndex = 2;
+            this.performanceTimeBox.SelectedIndexChanged += new System.EventHandler(this.performanceTimeBox_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(168, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Your Holdings:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(441, 14);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Time Period: ";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.whatIfToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // whatIfToolStripMenuItem
+            // 
+            this.whatIfToolStripMenuItem.Name = "whatIfToolStripMenuItem";
+            this.whatIfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.whatIfToolStripMenuItem.Text = "What If?";
+            this.whatIfToolStripMenuItem.Click += new System.EventHandler(this.whatIfToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -710,6 +785,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.portDataGrid)).EndInit();
             this.tradePage.ResumeLayout(false);
             this.tradePage.PerformLayout();
+            this.performancePage.ResumeLayout(false);
+            this.performancePage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performancePic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -733,7 +811,6 @@
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Button buyButton;
         private System.Windows.Forms.TextBox transAmBox;
         private System.Windows.Forms.Label label3;
@@ -778,6 +855,13 @@
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.TextBox tradeCurrentSharesBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox performancePic;
+        private System.Windows.Forms.ListBox performanceTimeBox;
+        private System.Windows.Forms.ListBox performanceHoldingsBox;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whatIfToolStripMenuItem;
     }
 }
 

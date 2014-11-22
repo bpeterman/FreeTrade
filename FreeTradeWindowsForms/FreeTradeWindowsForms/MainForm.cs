@@ -22,7 +22,6 @@ namespace FreeTradeWindowsForms
             showLogin();
             updateMarketStatus();
             initializeUser();
-            user.EnforceMarketClosure = false;
         }
 
         public void updateMarketStatus()
@@ -40,10 +39,6 @@ namespace FreeTradeWindowsForms
             }
         }
 
-        public void setUser(string uName)
-        {
-            
-        }
 
         public void showLogin()
         {
@@ -66,11 +61,24 @@ namespace FreeTradeWindowsForms
         {
             statusUserCash.Text = user.Cash.ToString("C2");
             statusUsername.Text = user.Username;
-            UpdateOverview();
+            updateOverview();
         }
 
-        public void UpdateOverview()
+        public void updateOverview()
         {
+            NetWorthLabel.Text = user.Worth.ToString("C2");
+            updateWatchlistBox();
+        }
+
+        private void updateWatchlistBox()
+        {
+            ListBoxWatchlist.Items.Clear();
+            List<Company> comps = user.WatchList;
+            comps.Reverse();
+            foreach (Company company in comps)
+            {
+                ListBoxWatchlist.Items.Add(String.Format("{0} - {1}", company.Name, company.getStockPrice().ToString("C2")));
+            }
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,15 +106,34 @@ namespace FreeTradeWindowsForms
         {
             Stock stock = new Stock();
             int index = searchResults.SelectedIndex;
-            Company company = results[index];
-            tradeCompanyName.Text = company.Name;
-            tradeSymbol.Text = company.Symbol;
-            tradeStockPrice.Text = company.getStockPrice().ToString("C2");
-            tradeExchange.Text = stock.getExchange(company.Symbol);
-            tradeIPO.Text = company.IPOyear;
-            tradeIndustry.Text = company.Industry;
-            tradeHigh.Text = stock.getStockYearHigh(company.Symbol).ToString("C2");
-            tradeLow.Text = stock.getStockYearLow(company.Symbol).ToString("C2");
+            if (index >= 0)
+            {
+                Company company = results[index];
+                tradeCompanyName.Text = company.Name;
+                tradeSymbol.Text = company.Symbol;
+                tradeStockPrice.Text = company.getStockPrice().ToString("C2");
+                tradeExchange.Text = stock.getExchange(company.Symbol);
+                tradeIPO.Text = company.IPOyear;
+                tradeIndustry.Text = company.Industry;
+                tradeHigh.Text = stock.getStockYearHigh(company.Symbol).ToString("C2");
+                tradeLow.Text = stock.getStockYearLow(company.Symbol).ToString("C2");
+
+                List<Holding> holdings = user.Holdings;
+                //loop through the purchased stocks.
+                foreach (Holding holding in holdings)
+                {
+                    if (holding.stockSymbol.Equals(company.Symbol))
+                    {
+                        tradeCurrentSharesBox.Text = holding.numOfShares.ToString();
+                        break;
+                    }
+                    else
+                    {
+                        tradeCurrentSharesBox.Text = "0";
+                    }
+                }
+            }
+
         }
 
         private void searchEnter(object sender, KeyEventArgs e)
@@ -140,6 +167,7 @@ namespace FreeTradeWindowsForms
                     DateTime now = DateTime.Now;
                     user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now);
                     statusUserCash.Text = user.Cash.ToString("C2");
+                    tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) + numOfShares).ToString();
                 }
             }
             else
@@ -171,9 +199,34 @@ namespace FreeTradeWindowsForms
 
         private void mainTab_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (mainTab.SelectedIndex == 0)
+                updateOverview();
             if (mainTab.SelectedIndex == 1)
                 fill_Portfolio();
+            if (mainTab.SelectedIndex == 2)
+                clearTrade(); 
+            else
+                clearTrade();
+            if (mainTab.SelectedIndex == 3)
+                updatePerformance(); 
         }
+
+        public void clearTrade()
+        {
+            searchBox.Text = "";
+            tradeCurrentSharesBox.Text = "";
+            tradeCompanyName.Text = "";
+            tradeSymbol.Text = "";
+            tradeStockPrice.Text = "";
+            tradeExchange.Text = "";
+            tradeIPO.Text = "";
+            tradeIndustry.Text = "";
+            tradeHigh.Text = "";
+            tradeLow.Text = "";
+            tradeNumOfShares.Text = "";
+            transAmBox.Text = "";
+        }
+
         public void fill_Portfolio()
         {
             portDataGrid.Rows.Clear();
@@ -216,7 +269,10 @@ namespace FreeTradeWindowsForms
                 numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
                 DateTime now = DateTime.Now;
                 double price = company.getStockPrice();
-                user.SellStock(company.Name, company.Symbol, price, numOfShares, now);
+                if (user.SellStock(company.Name, company.Symbol, price, numOfShares, now))
+                {
+                    tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) - numOfShares).ToString();
+                }
                 statusUserCash.Text = user.Cash.ToString("C2");
             }
             else
@@ -257,6 +313,71 @@ namespace FreeTradeWindowsForms
             base.OnFormClosing(e);
             LoginController.Logout(user);
             if (e.CloseReason == CloseReason.WindowsShutDown) return;
+        }
+
+        public void updatePerformance()
+        {
+            performanceHoldingsBox.Items.Clear();
+            List<Holding> holdings = user.Holdings;
+            //loop through the purchased stocks.
+            foreach (Holding holding in holdings)
+            {
+                performanceHoldingsBox.Items.Add(String.Format("{0} - {1}", holding.companyName, holding.currentSharePrice.ToString("C2")));
+            }
+
+            //load initial graph.
+            updatePerformanceGraph("", "");
+        }
+
+        public void updatePerformanceGraph(string symbol, string timePeriod)
+        {
+            performancePic.Load("http://chart.finance.yahoo.com/z?s=" + symbol + "&t="+timePeriod);
+        }
+
+        private void performanceHoldingsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePerformanceGraph(getHoldingBoxString(), getTimeBoxString());
+        }
+        private string getHoldingBoxString()
+        {
+            int i = performanceHoldingsBox.SelectedIndex;
+            if (i < 0)
+                return "";
+            List<Holding> holdings = user.Holdings;
+            return holdings[i].stockSymbol;
+        }
+
+        private void performanceTimeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePerformanceGraph(getHoldingBoxString(), getTimeBoxString());
+        }
+        private string getTimeBoxString()
+        {
+            int i = performanceTimeBox.SelectedIndex;
+            if (i == 0)
+                return "1d";
+            else if (i == 1)
+                return "5d";
+            else if (i == 2)
+                return "3m";
+            else if (i == 3)
+                return "6m";
+            else if (i == 4)
+                return "1y";
+            else if (i == 5)
+                return "2y";
+            else if (i == 6)
+                return "5y";
+            else if (i == 7)
+                return "my";
+            else
+                return "";
+        }
+
+        private void whatIfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WhatIf whatIf = new WhatIf();
+            whatIf.Show();
         }
     }
 }

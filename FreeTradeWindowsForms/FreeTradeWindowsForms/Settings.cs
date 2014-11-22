@@ -24,7 +24,7 @@ namespace FreeTradeWindowsForms
                 marketCloseBox.Text = "No";
             }
             //TODO add the user's actual fees here.
-            settingsFeesBox.Text = "";
+            settingsFeesBox.Text = user.transactionFee.ToString();
         }
 
         public User getUser()
@@ -52,7 +52,9 @@ namespace FreeTradeWindowsForms
             //add to cash here.
             if (settingsCashBox.Text.Length>0)
                 user.AddCash(Convert.ToDouble(settingsCashBox.Text));
-            //TODO add fees here.
+            //add fees here.
+            if (settingsFeesBox.Text.Length > 0)
+                user.transactionFee= Convert.ToDouble(settingsFeesBox.Text);
 
             //set market enforcement
             if (getEnforcement().Equals("Yes"))
@@ -63,6 +65,10 @@ namespace FreeTradeWindowsForms
             {
                 user.EnforceMarketClosure = false;
             }
+
+            //close the settings window.
+            this.Close();
+            MessageBox.Show("Settings changed.");
         }
     }
 }

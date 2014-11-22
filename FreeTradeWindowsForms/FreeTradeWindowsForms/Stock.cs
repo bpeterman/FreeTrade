@@ -116,6 +116,12 @@ namespace FreeTradeWindowsForms
             TimeSpan _marketOpenTime = new TimeSpan(9, 30, 00);     // market open time
             TimeSpan _marketCloseTime = new TimeSpan(16, 00, 00);   // market close time
             DateTime dt = DateTime.Now;
+            string nameOfTheDay = DateTime.Now.ToString("dddd", new System.Globalization.CultureInfo("en-GB")).ToLower();
+
+            if (nameOfTheDay == "sunday" || nameOfTheDay == "saturday")
+            {
+                return false;
+            }
 
             // check if current time is between stock marker open and close hours
             if (dt.Hour > _marketOpenTime.Hours &&

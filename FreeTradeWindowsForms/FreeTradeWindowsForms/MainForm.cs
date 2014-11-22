@@ -271,10 +271,6 @@ namespace FreeTradeWindowsForms
                     MessageBox.Show("You sold " + numOfShares.ToString() + " share(s) of " + company.Name + " at " + price.ToString("C2") +" a share.");
                     tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) - numOfShares).ToString();
                 }
-                else
-                {
-                    MessageBox.Show("Not enough shares owned.");
-                }
                 statusUserCash.Text = user.Cash.ToString("C2");
             }
             else

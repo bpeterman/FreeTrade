@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FreeTradeWindowsForms.Controllers;
 using FreeTradeWindowsForms.Models;
+using System.Threading;
 
 namespace FreeTradeWindowsForms
 {
@@ -22,6 +23,14 @@ namespace FreeTradeWindowsForms
             showLogin();
             updateMarketStatus();
             initializeUser();
+            Thread refreshThread = new Thread(refresh);
+            
+        }
+
+        public void refresh()
+        {
+            // if on the overview page, refresh the overview page every 15 seconds
+            // else do nothing
         }
 
         public void updateMarketStatus()

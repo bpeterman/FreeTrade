@@ -438,7 +438,7 @@
             this.tradeCurrentSharesBox.Location = new System.Drawing.Point(303, 414);
             this.tradeCurrentSharesBox.Name = "tradeCurrentSharesBox";
             this.tradeCurrentSharesBox.ReadOnly = true;
-            this.tradeCurrentSharesBox.Size = new System.Drawing.Size(100, 20);
+            this.tradeCurrentSharesBox.Size = new System.Drawing.Size(110, 20);
             this.tradeCurrentSharesBox.TabIndex = 32;
             // 
             // label10

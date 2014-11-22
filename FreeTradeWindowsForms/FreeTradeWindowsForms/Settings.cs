@@ -63,6 +63,10 @@ namespace FreeTradeWindowsForms
             {
                 user.EnforceMarketClosure = false;
             }
+            MessageBox.Show("Settings changed.");
+
+            //close the settings window.
+            this.Close();
         }
     }
 }

@@ -22,7 +22,6 @@ namespace FreeTradeWindowsForms
             showLogin();
             updateMarketStatus();
             initializeUser();
-            user.EnforceMarketClosure = false;
         }
 
         public void updateMarketStatus()

@@ -115,6 +115,7 @@ namespace FreeTradeWindowsForms
                 if (holding.stockSymbol.Equals(company.Symbol))
                 {
                     tradeCurrentSharesBox.Text = holding.numOfShares.ToString();
+                    break;
                 }
                 else
                 {
@@ -187,9 +188,32 @@ namespace FreeTradeWindowsForms
 
         private void mainTab_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (mainTab.SelectedIndex == 0)
+                updateOverview();
             if (mainTab.SelectedIndex == 1)
                 fill_Portfolio();
+            if (mainTab.SelectedIndex == 2)
+                clearTrade(); 
+            else
+                clearTrade();   
         }
+
+        public void clearTrade()
+        {
+            searchBox.Text = "";
+            tradeCurrentSharesBox.Text = "";
+            tradeCompanyName.Text = "";
+            tradeSymbol.Text = "";
+            tradeStockPrice.Text = "";
+            tradeExchange.Text = "";
+            tradeIPO.Text = "";
+            tradeIndustry.Text = "";
+            tradeHigh.Text = "";
+            tradeLow.Text = "";
+            tradeNumOfShares.Text = "";
+            transAmBox.Text = "";
+        }
+
         public void fill_Portfolio()
         {
             portDataGrid.Rows.Clear();

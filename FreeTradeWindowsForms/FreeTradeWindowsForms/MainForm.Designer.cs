@@ -32,6 +32,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatIfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -45,15 +47,14 @@
             this.overviewPage = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ListBoxWatchlist = new System.Windows.Forms.ListBox();
-            this.NetWorthLabel = new System.Windows.Forms.Label();
+            this.LabelCashOverview = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ListBoxTop5Loss = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ListBoxTop5Gains = new System.Windows.Forms.ListBox();
-            this.TodaysReturnsLabel = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.TotalReturnsLabel = new System.Windows.Forms.Label();
+            this.LabelOverallWorth = new System.Windows.Forms.Label();
+            this.LabelTotalReturns = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.portfolioPage = new System.Windows.Forms.TabPage();
             this.portDataGrid = new System.Windows.Forms.DataGridView();
@@ -89,13 +90,14 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.performancePage = new System.Windows.Forms.TabPage();
-            this.performancePic = new System.Windows.Forms.PictureBox();
-            this.performanceHoldingsBox = new System.Windows.Forms.ListBox();
-            this.performanceTimeBox = new System.Windows.Forms.ListBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whatIfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label15 = new System.Windows.Forms.Label();
+            this.performanceTimeBox = new System.Windows.Forms.ListBox();
+            this.performanceHoldingsBox = new System.Windows.Forms.ListBox();
+            this.performancePic = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.ButtonWatchlistDelete = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -134,9 +136,24 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.whatIfToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // whatIfToolStripMenuItem
+            // 
+            this.whatIfToolStripMenuItem.Name = "whatIfToolStripMenuItem";
+            this.whatIfToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.whatIfToolStripMenuItem.Text = "What If?";
+            this.whatIfToolStripMenuItem.Click += new System.EventHandler(this.whatIfToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -150,7 +167,7 @@
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
@@ -225,14 +242,16 @@
             // 
             // overviewPage
             // 
-            this.overviewPage.Controls.Add(this.groupBox3);
-            this.overviewPage.Controls.Add(this.NetWorthLabel);
+            this.overviewPage.Controls.Add(this.ButtonWatchlistDelete);
+            this.overviewPage.Controls.Add(this.label18);
             this.overviewPage.Controls.Add(this.label16);
+            this.overviewPage.Controls.Add(this.groupBox3);
+            this.overviewPage.Controls.Add(this.LabelCashOverview);
             this.overviewPage.Controls.Add(this.groupBox2);
             this.overviewPage.Controls.Add(this.groupBox1);
-            this.overviewPage.Controls.Add(this.TodaysReturnsLabel);
+            this.overviewPage.Controls.Add(this.LabelOverallWorth);
             this.overviewPage.Controls.Add(this.label14);
-            this.overviewPage.Controls.Add(this.TotalReturnsLabel);
+            this.overviewPage.Controls.Add(this.LabelTotalReturns);
             this.overviewPage.Controls.Add(this.label9);
             this.overviewPage.Location = new System.Drawing.Point(4, 22);
             this.overviewPage.Name = "overviewPage";
@@ -245,9 +264,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.ListBoxWatchlist);
-            this.groupBox3.Location = new System.Drawing.Point(376, 360);
+            this.groupBox3.Location = new System.Drawing.Point(6, 80);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(364, 124);
+            this.groupBox3.Size = new System.Drawing.Size(364, 371);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Watchlist";
@@ -257,51 +276,53 @@
             this.ListBoxWatchlist.FormattingEnabled = true;
             this.ListBoxWatchlist.Location = new System.Drawing.Point(6, 19);
             this.ListBoxWatchlist.Name = "ListBoxWatchlist";
-            this.ListBoxWatchlist.Size = new System.Drawing.Size(352, 95);
+            this.ListBoxWatchlist.Size = new System.Drawing.Size(352, 342);
             this.ListBoxWatchlist.TabIndex = 0;
             // 
-            // NetWorthLabel
+            // LabelCashOverview
             // 
-            this.NetWorthLabel.AutoSize = true;
-            this.NetWorthLabel.Location = new System.Drawing.Point(108, 39);
-            this.NetWorthLabel.Name = "NetWorthLabel";
-            this.NetWorthLabel.Size = new System.Drawing.Size(61, 13);
-            this.NetWorthLabel.TabIndex = 7;
-            this.NetWorthLabel.Text = "$56,789.34";
+            this.LabelCashOverview.AutoSize = true;
+            this.LabelCashOverview.Location = new System.Drawing.Point(106, 39);
+            this.LabelCashOverview.Name = "LabelCashOverview";
+            this.LabelCashOverview.Size = new System.Drawing.Size(13, 13);
+            this.LabelCashOverview.TabIndex = 7;
+            this.LabelCashOverview.Text = "--";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(37, 39);
+            this.label16.Location = new System.Drawing.Point(62, 39);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 13);
+            this.label16.Size = new System.Drawing.Size(34, 13);
             this.label16.TabIndex = 6;
-            this.label16.Text = "Net Worth:";
+            this.label16.Text = "Cash:";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.ListBoxTop5Loss);
-            this.groupBox2.Location = new System.Drawing.Point(376, 183);
+            this.groupBox2.ForeColor = System.Drawing.Color.Red;
+            this.groupBox2.Location = new System.Drawing.Point(376, 250);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 171);
+            this.groupBox2.Size = new System.Drawing.Size(364, 234);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Top 5 Losses";
+            this.groupBox2.Text = "Top 5 Losers";
             // 
             // ListBoxTop5Loss
             // 
             this.ListBoxTop5Loss.FormattingEnabled = true;
-            this.ListBoxTop5Loss.Location = new System.Drawing.Point(6, 19);
+            this.ListBoxTop5Loss.Location = new System.Drawing.Point(6, 16);
             this.ListBoxTop5Loss.Name = "ListBoxTop5Loss";
-            this.ListBoxTop5Loss.Size = new System.Drawing.Size(352, 147);
+            this.ListBoxTop5Loss.Size = new System.Drawing.Size(352, 212);
             this.ListBoxTop5Loss.TabIndex = 6;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ListBoxTop5Gains);
+            this.groupBox1.ForeColor = System.Drawing.Color.Green;
             this.groupBox1.Location = new System.Drawing.Point(376, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(364, 171);
+            this.groupBox1.Size = new System.Drawing.Size(364, 238);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Top 5 Gainers";
@@ -311,42 +332,33 @@
             this.ListBoxTop5Gains.FormattingEnabled = true;
             this.ListBoxTop5Gains.Location = new System.Drawing.Point(6, 16);
             this.ListBoxTop5Gains.Name = "ListBoxTop5Gains";
-            this.ListBoxTop5Gains.Size = new System.Drawing.Size(352, 147);
+            this.ListBoxTop5Gains.Size = new System.Drawing.Size(352, 212);
             this.ListBoxTop5Gains.TabIndex = 0;
             // 
-            // TodaysReturnsLabel
+            // LabelOverallWorth
             // 
-            this.TodaysReturnsLabel.AutoSize = true;
-            this.TodaysReturnsLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TodaysReturnsLabel.Location = new System.Drawing.Point(105, 22);
-            this.TodaysReturnsLabel.Name = "TodaysReturnsLabel";
-            this.TodaysReturnsLabel.Size = new System.Drawing.Size(13, 13);
-            this.TodaysReturnsLabel.TabIndex = 3;
-            this.TodaysReturnsLabel.Text = "--";
+            this.LabelOverallWorth.AutoSize = true;
+            this.LabelOverallWorth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelOverallWorth.Location = new System.Drawing.Point(106, 22);
+            this.LabelOverallWorth.Name = "LabelOverallWorth";
+            this.LabelOverallWorth.Size = new System.Drawing.Size(13, 13);
+            this.LabelOverallWorth.TabIndex = 3;
+            this.LabelOverallWorth.Text = "--";
             // 
-            // label14
+            // LabelTotalReturns
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 22);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(90, 13);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Today\'s Returns: ";
-            // 
-            // TotalReturnsLabel
-            // 
-            this.TotalReturnsLabel.AutoSize = true;
-            this.TotalReturnsLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TotalReturnsLabel.Location = new System.Drawing.Point(106, 5);
-            this.TotalReturnsLabel.Name = "TotalReturnsLabel";
-            this.TotalReturnsLabel.Size = new System.Drawing.Size(13, 13);
-            this.TotalReturnsLabel.TabIndex = 1;
-            this.TotalReturnsLabel.Text = "--";
+            this.LabelTotalReturns.AutoSize = true;
+            this.LabelTotalReturns.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LabelTotalReturns.Location = new System.Drawing.Point(106, 5);
+            this.LabelTotalReturns.Name = "LabelTotalReturns";
+            this.LabelTotalReturns.Size = new System.Drawing.Size(13, 13);
+            this.LabelTotalReturns.TabIndex = 1;
+            this.LabelTotalReturns.Text = "--";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 5);
+            this.label9.Location = new System.Drawing.Point(22, 6);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(74, 13);
             this.label9.TabIndex = 0;
@@ -691,22 +703,23 @@
             this.performancePage.Text = "Performance";
             this.performancePage.UseVisualStyleBackColor = true;
             // 
-            // performancePic
+            // label17
             // 
-            this.performancePic.Location = new System.Drawing.Point(110, 196);
-            this.performancePic.Name = "performancePic";
-            this.performancePic.Size = new System.Drawing.Size(512, 288);
-            this.performancePic.TabIndex = 0;
-            this.performancePic.TabStop = false;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(441, 14);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Time Period: ";
             // 
-            // performanceHoldingsBox
+            // label15
             // 
-            this.performanceHoldingsBox.FormattingEnabled = true;
-            this.performanceHoldingsBox.Location = new System.Drawing.Point(171, 30);
-            this.performanceHoldingsBox.Name = "performanceHoldingsBox";
-            this.performanceHoldingsBox.Size = new System.Drawing.Size(267, 160);
-            this.performanceHoldingsBox.TabIndex = 1;
-            this.performanceHoldingsBox.SelectedIndexChanged += new System.EventHandler(this.performanceHoldingsBox_SelectedIndexChanged);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(168, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Your Holdings:";
             // 
             // performanceTimeBox
             // 
@@ -726,38 +739,48 @@
             this.performanceTimeBox.TabIndex = 2;
             this.performanceTimeBox.SelectedIndexChanged += new System.EventHandler(this.performanceTimeBox_SelectedIndexChanged);
             // 
-            // label15
+            // performanceHoldingsBox
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(168, 14);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(76, 13);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Your Holdings:";
+            this.performanceHoldingsBox.FormattingEnabled = true;
+            this.performanceHoldingsBox.Location = new System.Drawing.Point(171, 30);
+            this.performanceHoldingsBox.Name = "performanceHoldingsBox";
+            this.performanceHoldingsBox.Size = new System.Drawing.Size(267, 160);
+            this.performanceHoldingsBox.TabIndex = 1;
+            this.performanceHoldingsBox.SelectedIndexChanged += new System.EventHandler(this.performanceHoldingsBox_SelectedIndexChanged);
             // 
-            // label17
+            // performancePic
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(441, 14);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 13);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Time Period: ";
+            this.performancePic.Location = new System.Drawing.Point(110, 196);
+            this.performancePic.Name = "performancePic";
+            this.performancePic.Size = new System.Drawing.Size(512, 288);
+            this.performancePic.TabIndex = 0;
+            this.performancePic.TabStop = false;
             // 
-            // toolsToolStripMenuItem
+            // label14
             // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.whatIfToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(21, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(75, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Overall Worth:";
             // 
-            // whatIfToolStripMenuItem
+            // label18
             // 
-            this.whatIfToolStripMenuItem.Name = "whatIfToolStripMenuItem";
-            this.whatIfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.whatIfToolStripMenuItem.Text = "What If?";
-            this.whatIfToolStripMenuItem.Click += new System.EventHandler(this.whatIfToolStripMenuItem_Click);
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(55, 52);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(0, 13);
+            this.label18.TabIndex = 9;
+            // 
+            // ButtonWatchlistDelete
+            // 
+            this.ButtonWatchlistDelete.Location = new System.Drawing.Point(145, 455);
+            this.ButtonWatchlistDelete.Name = "ButtonWatchlistDelete";
+            this.ButtonWatchlistDelete.Size = new System.Drawing.Size(75, 23);
+            this.ButtonWatchlistDelete.TabIndex = 10;
+            this.ButtonWatchlistDelete.Text = "Delete";
+            this.ButtonWatchlistDelete.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -841,10 +864,9 @@
         private System.Windows.Forms.ListBox ListBoxTop5Loss;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox ListBoxTop5Gains;
-        private System.Windows.Forms.Label TodaysReturnsLabel;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label TotalReturnsLabel;
-        private System.Windows.Forms.Label NetWorthLabel;
+        private System.Windows.Forms.Label LabelOverallWorth;
+        private System.Windows.Forms.Label LabelTotalReturns;
+        private System.Windows.Forms.Label LabelCashOverview;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox ListBoxWatchlist;
@@ -862,6 +884,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whatIfToolStripMenuItem;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button ButtonWatchlistDelete;
     }
 }
 

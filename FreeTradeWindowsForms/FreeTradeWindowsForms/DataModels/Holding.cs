@@ -27,6 +27,7 @@ namespace FreeTradeWindowsForms.Models
             this.numOfShares = 0;
             this.totalInvested = 0.0;
             this.worth = 0.0;
+            this.performance = 0.0;
         }
 
         public Holding()
@@ -40,6 +41,16 @@ namespace FreeTradeWindowsForms.Models
         public double totalInvested;
         public double currentSharePrice;
         public double worth;
+        public double performance;
+
+
+        /// <summary>
+        /// Get the percentage increase or decrease, don't forget to update the current share price manually before using this.
+        /// </summary>
+        public double GetPerformance()
+        {
+            return ((worth / totalInvested) - 1);
+        } 
 
         public void Refresh(double currentPrice)
         {

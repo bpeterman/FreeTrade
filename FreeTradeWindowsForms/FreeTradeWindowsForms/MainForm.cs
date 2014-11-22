@@ -66,8 +66,17 @@ namespace FreeTradeWindowsForms
 
         public void updateOverview()
         {
-            NetWorthLabel.Text = user.Worth.ToString("C2");
+            LabelCashOverview.Text = user.Worth.ToString("C2");
             updateWatchlistBox();
+            UpdateTopGainersListbox();
+            LabelOverallWorth.Text = user.Worth.ToString("C2");
+            double userTotalReturns = ((user.Worth / user.borrowedCash) - 1);
+            LabelTotalReturns.Text = userTotalReturns.ToString("P");
+            if (userTotalReturns < 0)
+                LabelTotalReturns.ForeColor = Color.Red;
+            else
+                LabelTotalReturns.ForeColor = Color.Green;
+            LabelCashOverview.Text = user.Cash.ToString("C2");
         }
 
         private void updateWatchlistBox()
@@ -79,6 +88,18 @@ namespace FreeTradeWindowsForms
             {
                 ListBoxWatchlist.Items.Add(String.Format("{0} - {1}", company.Name, company.getStockPrice().ToString("C2")));
             }
+        }
+
+        private void UpdateTopGainersListbox()
+        {
+            ListBoxTop5Gains.Items.Clear();
+            ListBoxTop5Loss.Items.Clear();
+            List<Holding> topGainers = user.GetTopGainers(5, true);
+            foreach (Holding holding in topGainers)
+                ListBoxTop5Gains.Items.Add(String.Format("{0} | %{1}", holding.companyName, holding.GetPerformance())); 
+            topGainers = user.GetTopGainers(5, false);
+            foreach (Holding holding in topGainers)
+                ListBoxTop5Loss.Items.Add(String.Format("{0} | %{1}", holding.companyName, holding.GetPerformance()));
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)

@@ -229,5 +229,44 @@ namespace FreeTradeWindowsForms.Models
             }
             Worth = Cash + tempWorth;
         }
+
+        /// <summary>
+        /// Get a list of the top gainers
+        /// </summary>
+        /// <param name="count">How many holdings do you want in the list?</param>
+        /// <param name="Gains">If true, returns top gainers, if false, top losers.</param>
+        /// <returns></returns>
+        public List<Holding> GetTopGainers(int count, bool gains)
+        {
+            refresh();
+            List<Holding> topGainers; 
+            if (gains)
+                topGainers = Holdings.OrderByDescending(o => o.GetPerformance()).ToList();
+            else
+                topGainers = Holdings.OrderBy(o => o.GetPerformance()).ToList();
+
+            if (count < Holdings.Count)
+            {
+                List<Holding> topGainersConstrained = new List<Holding>();
+                for (int i = 0; i < count; i++)
+                    topGainersConstrained.Add(topGainers[i]);
+                return topGainersConstrained;
+            }
+            return topGainers;
+        }
+
+        private void AddTestDataToHoldings()
+        {
+            Holding holding = new Holding("AAPL");
+            holding.numOfShares = 5;
+            holding.totalInvested = 80.00;
+            Holdings.Add(holding);
+
+            holding = new Holding("TSLA");
+            holding.numOfShares = 10;
+            holding.totalInvested = 10000.00;
+            Holdings.Add(holding);
+
+        }
     }
 }

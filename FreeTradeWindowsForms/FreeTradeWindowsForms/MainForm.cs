@@ -39,10 +39,6 @@ namespace FreeTradeWindowsForms
             }
         }
 
-        public void setUser(string uName)
-        {
-            
-        }
 
         public void showLogin()
         {
@@ -71,6 +67,17 @@ namespace FreeTradeWindowsForms
         public void updateOverview()
         {
             NetWorthLabel.Text = user.Worth.ToString("C2");
+            updateWatchlistBox();
+        }
+
+        private void updateWatchlistBox()
+        {
+            ListBoxWatchlist.Items.Clear();
+            List<Company> comps = user.WatchList;
+            foreach (Company company in comps)
+            {
+                ListBoxWatchlist.Items.Add(String.Format("{0} - {1}", company.Name, company.getStockPrice().ToString("C2")));
+            }
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)

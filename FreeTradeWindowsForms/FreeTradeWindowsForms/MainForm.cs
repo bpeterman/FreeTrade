@@ -318,7 +318,7 @@ namespace FreeTradeWindowsForms
             {
                 performanceHoldingsBox.Items.Add(String.Format("{0} - {1}", holding.companyName, holding.currentSharePrice.ToString("C2")));
             }
-            updatePerformanceGraph("GOOG", "1d");
+            updatePerformanceGraph("", "");
         }
 
         public void updatePerformanceGraph(string symbol, string timePeriod)

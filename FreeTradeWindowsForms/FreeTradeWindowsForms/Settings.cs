@@ -68,8 +68,6 @@ namespace FreeTradeWindowsForms
 
             //close the settings window.
             this.Close();
-
-
             MessageBox.Show("Settings changed.");
         }
     }

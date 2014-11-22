@@ -318,12 +318,54 @@ namespace FreeTradeWindowsForms
             {
                 performanceHoldingsBox.Items.Add(String.Format("{0} - {1}", holding.companyName, holding.currentSharePrice.ToString("C2")));
             }
+
+            //load initial graph.
             updatePerformanceGraph("", "");
         }
 
         public void updatePerformanceGraph(string symbol, string timePeriod)
         {
             performancePic.Load("http://chart.finance.yahoo.com/z?s=" + symbol + "&t="+timePeriod);
+        }
+
+        private void performanceHoldingsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePerformanceGraph(getHoldingBoxString(), getTimeBoxString());
+        }
+        private string getHoldingBoxString()
+        {
+            int i = performanceHoldingsBox.SelectedIndex;
+            if (i < 0)
+                return "";
+            List<Holding> holdings = user.Holdings;
+            return holdings[i].stockSymbol;
+        }
+
+        private void performanceTimeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updatePerformanceGraph(getHoldingBoxString(), getTimeBoxString());
+        }
+        private string getTimeBoxString()
+        {
+            int i = performanceTimeBox.SelectedIndex;
+            if (i == 0)
+                return "1d";
+            else if (i == 1)
+                return "5d";
+            else if (i == 2)
+                return "3m";
+            else if (i == 3)
+                return "6m";
+            else if (i == 4)
+                return "1y";
+            else if (i == 5)
+                return "2y";
+            else if (i == 6)
+                return "5y";
+            else if (i == 7)
+                return "my";
+            else
+                return "";
         }
     }
 }

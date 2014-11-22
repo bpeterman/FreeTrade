@@ -703,6 +703,7 @@
             this.performanceHoldingsBox.Name = "performanceHoldingsBox";
             this.performanceHoldingsBox.Size = new System.Drawing.Size(267, 160);
             this.performanceHoldingsBox.TabIndex = 1;
+            this.performanceHoldingsBox.SelectedIndexChanged += new System.EventHandler(this.performanceHoldingsBox_SelectedIndexChanged);
             // 
             // performanceTimeBox
             // 
@@ -720,6 +721,7 @@
             this.performanceTimeBox.Name = "performanceTimeBox";
             this.performanceTimeBox.Size = new System.Drawing.Size(120, 160);
             this.performanceTimeBox.TabIndex = 2;
+            this.performanceTimeBox.SelectedIndexChanged += new System.EventHandler(this.performanceTimeBox_SelectedIndexChanged);
             // 
             // label15
             // 

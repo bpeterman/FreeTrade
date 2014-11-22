@@ -16,5 +16,29 @@ namespace FreeTradeWindowsForms
         {
             InitializeComponent();
         }
+
+        private void whatButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime from = fromPicker.Value;
+                DateTime to = toPicker.Value;
+                Stock stock = new Stock();
+                string[] splitResults = stock.getHistory(companySymbolBox.Text, from, from, 'm').Split(new Char[] { ',' });
+                double fromPrice = Convert.ToDouble(splitResults[7]);
+                splitResults = stock.getHistory(companySymbolBox.Text, to, to, 'm').Split(new Char[] { ',' });
+                double toPrice = Convert.ToDouble(splitResults[7]);
+                int numShares = Convert.ToInt32(purchasedSharesBox.Text);
+                double profit = (toPrice - fromPrice) * numShares;
+                if (profit >= 0)
+                    MessageBox.Show("You would have made " + profit.ToString("C2") + " had you bought " + numShares + " share(s) of " + companySymbolBox.Text + " in " + from.Year + " and then sold in " + to.Year);
+                else
+                    MessageBox.Show("You would have lost " + profit.ToString("C2") + " had you bought " + numShares + " share(s) of " + companySymbolBox.Text + " in " + from.Year + " and then sold in " + to.Year);
+            }
+            catch
+            {
+                MessageBox.Show("Something is wrong with this.");
+            }
+        }
     }
 }

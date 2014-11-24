@@ -45,15 +45,18 @@
             this.statusUserCash = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainTab = new System.Windows.Forms.TabControl();
             this.overviewPage = new System.Windows.Forms.TabPage();
+            this.ButtonWatchlistDelete = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ListBoxWatchlist = new System.Windows.Forms.ListBox();
             this.LabelCashOverview = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ListBoxTop5Loss = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ListBoxTop5Gains = new System.Windows.Forms.ListBox();
             this.LabelOverallWorth = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.LabelTotalReturns = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.portfolioPage = new System.Windows.Forms.TabPage();
@@ -95,9 +98,6 @@
             this.performanceTimeBox = new System.Windows.Forms.ListBox();
             this.performanceHoldingsBox = new System.Windows.Forms.ListBox();
             this.performancePic = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.ButtonWatchlistDelete = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -261,6 +261,33 @@
             this.overviewPage.Text = "Overview";
             this.overviewPage.UseVisualStyleBackColor = true;
             // 
+            // ButtonWatchlistDelete
+            // 
+            this.ButtonWatchlistDelete.Location = new System.Drawing.Point(145, 455);
+            this.ButtonWatchlistDelete.Name = "ButtonWatchlistDelete";
+            this.ButtonWatchlistDelete.Size = new System.Drawing.Size(75, 23);
+            this.ButtonWatchlistDelete.TabIndex = 10;
+            this.ButtonWatchlistDelete.Text = "Delete";
+            this.ButtonWatchlistDelete.UseVisualStyleBackColor = true;
+            this.ButtonWatchlistDelete.Click += new System.EventHandler(this.ButtonWatchlistDelete_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(55, 52);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(0, 13);
+            this.label18.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(62, 39);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(34, 13);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Cash:";
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.ListBoxWatchlist);
@@ -287,15 +314,6 @@
             this.LabelCashOverview.Size = new System.Drawing.Size(13, 13);
             this.LabelCashOverview.TabIndex = 7;
             this.LabelCashOverview.Text = "--";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(62, 39);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(34, 13);
-            this.label16.TabIndex = 6;
-            this.label16.Text = "Cash:";
             // 
             // groupBox2
             // 
@@ -344,6 +362,15 @@
             this.LabelOverallWorth.Size = new System.Drawing.Size(13, 13);
             this.LabelOverallWorth.TabIndex = 3;
             this.LabelOverallWorth.Text = "--";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(21, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(75, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Overall Worth:";
             // 
             // LabelTotalReturns
             // 
@@ -755,32 +782,6 @@
             this.performancePic.Size = new System.Drawing.Size(512, 288);
             this.performancePic.TabIndex = 0;
             this.performancePic.TabStop = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(21, 22);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 13);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Overall Worth:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(55, 52);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(0, 13);
-            this.label18.TabIndex = 9;
-            // 
-            // ButtonWatchlistDelete
-            // 
-            this.ButtonWatchlistDelete.Location = new System.Drawing.Point(145, 455);
-            this.ButtonWatchlistDelete.Name = "ButtonWatchlistDelete";
-            this.ButtonWatchlistDelete.Size = new System.Drawing.Size(75, 23);
-            this.ButtonWatchlistDelete.TabIndex = 10;
-            this.ButtonWatchlistDelete.Text = "Delete";
-            this.ButtonWatchlistDelete.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

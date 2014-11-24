@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FreeTradeWindowsForms.Controllers;
@@ -17,20 +18,31 @@ namespace FreeTradeWindowsForms
     {
         User user;
         List<Company> results = new List<Company>();
+        Thread refreshThread;
+        System.Timers.Timer refreshTimer;
         public MainForm()
         {
             InitializeComponent();
             showLogin();
             updateMarketStatus();
             initializeUser();
-            Thread refreshThread = new Thread(refresh);
-            
+            refreshThread = new Thread(refresh);
+            refreshThread.Start();
+            refreshTimer = new System.Timers.Timer(30000);
         }
 
         public void refresh()
         {
-            // if on the overview page, refresh the overview page every 15 seconds
-            // else do nothing
+            Thread.Sleep(30000);
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (mainTab.SelectedIndex == 0)
+                {
+                    user.refresh();
+                    updateOverview();
+                }
+            });
+            refresh();
         }
 
         public void updateMarketStatus()
@@ -105,10 +117,10 @@ namespace FreeTradeWindowsForms
             ListBoxTop5Loss.Items.Clear();
             List<Holding> topGainers = user.GetTopGainers(5, true);
             foreach (Holding holding in topGainers)
-                ListBoxTop5Gains.Items.Add(String.Format("{0} | %{1}", holding.companyName, holding.GetPerformance())); 
+                ListBoxTop5Gains.Items.Add(String.Format("{0} | %{1}", holding.companyName, holding.GetPerformance().ToString("P"))); 
             topGainers = user.GetTopGainers(5, false);
             foreach (Holding holding in topGainers)
-                ListBoxTop5Loss.Items.Add(String.Format("{0} | %{1}", holding.companyName, holding.GetPerformance()));
+                ListBoxTop5Loss.Items.Add(String.Format("{0} | %{1}", holding.companyName, holding.GetPerformance().ToString("P")));
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -340,6 +352,7 @@ namespace FreeTradeWindowsForms
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            refreshThread.Abort();
             base.OnFormClosing(e);
             LoginController.Logout(user);
             if (e.CloseReason == CloseReason.WindowsShutDown) return;
@@ -352,7 +365,7 @@ namespace FreeTradeWindowsForms
             //loop through the purchased stocks.
             foreach (Holding holding in holdings)
             {
-                performanceHoldingsBox.Items.Add(String.Format("{0} - {1}", holding.companyName, holding.currentSharePrice.ToString("C2")));
+                performanceHoldingsBox.Items.Add(String.Format("{0} | {1} | {2}", holding.companyName, holding.currentSharePrice.ToString("C2"), holding.GetPerformance().ToString("P")));
             }
 
             //load initial graph.
@@ -408,6 +421,12 @@ namespace FreeTradeWindowsForms
         {
             WhatIf whatIf = new WhatIf();
             whatIf.Show();
+        }
+
+        private void ButtonWatchlistDelete_Click(object sender, EventArgs e)
+        {
+            user.WatchList.RemoveAt(ListBoxWatchlist.SelectedIndex);
+            ListBoxWatchlist.Items.RemoveAt(ListBoxWatchlist.SelectedIndex);
         }
     }
 }

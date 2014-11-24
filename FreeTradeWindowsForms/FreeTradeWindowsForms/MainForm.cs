@@ -200,15 +200,12 @@ namespace FreeTradeWindowsForms
                 Company company = results[index];
                 int numOfShares = 0;
                 numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
-                if (user.Cash < (company.getStockPrice() * numOfShares))
+                DateTime now = DateTime.Now;
+                if (user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now))
                 {
-                    MessageBox.Show("You don't have enough money!!");
-                }
-                else
-                {
-                    DateTime now = DateTime.Now;
-                    user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now);
                     statusUserCash.Text = user.Cash.ToString("C2");
+                    if (string.IsNullOrEmpty(tradeCurrentSharesBox.Text))
+                        tradeCurrentSharesBox.Text = "0";
                     tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) + numOfShares).ToString();
                 }
             }

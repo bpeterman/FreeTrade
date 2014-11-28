@@ -50,25 +50,31 @@ namespace FreeTradeWindowsForms
         {
             string message = "";
             double temp = 0; //used in parsing and then assigned to revelent fields.
-          
-            if (settingsCashBox.Text.Length>0  && double.TryParse(settingsCashBox.Text,out temp))
+
+            if (settingsCashBox.Text.Length > 0 && double.TryParse(settingsCashBox.Text, out temp))
             {
                 if (user.AddCash(temp)) { }
 
                 else
                     message += "No money has been added since cash is zero.";
-                
+
             }
             else
-                message += "Invalid Entry in cash";
-            //add fees here.
-            if (settingsFeesBox.Text.Length >= 0 && double.TryParse(settingsFeesBox.Text, out temp) && temp > 0)
+            {
+                if(settingsCashBox.Text.Length > 0)
+                   message += "Invalid Entry in cash";
+            }
+                //add fees here.
+            if (settingsFeesBox.Text.Length >= 0 && double.TryParse(settingsFeesBox.Text, out temp) && temp >= 0)
                 user.transactionFee= temp;
             else
             {
-              if(message.Length > 0)
-                 message+=Environment.NewLine;
-              message += "Invalid entry in fees";
+                if(message.Length > 0)
+                   message+=Environment.NewLine;
+                if(settingsFeesBox.Text.Length > 0)
+                   message += "Invalid entry in fees";
+                else
+                   settingsFeesBox.Text = user.transactionFee.ToString();
             }
             //set market enforcement
             if (getEnforcement().Equals("Yes"))

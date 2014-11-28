@@ -199,19 +199,25 @@ namespace FreeTradeWindowsForms
             {
                 Company company = results[index];
                 int numOfShares = 0;
-                numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
+
+                bool bParse = int.TryParse(tradeNumOfShares.Text, out numOfShares);
+                
                 DateTime now = DateTime.Now;
-                if (user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now))
+                
+                // had to use short circuiting to make sure stocks were not bought with an ammount of zero. //rework of code??
+                if (bParse && numOfShares > 0 && user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now))
                 {
                     statusUserCash.Text = user.Cash.ToString("C2");
-                    if (string.IsNullOrEmpty(tradeCurrentSharesBox.Text))
-                        tradeCurrentSharesBox.Text = "0";
+                   
                     tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) + numOfShares).ToString();
                 }
+                else
+                    MessageBox.Show("Invalid Data in number of stocks.");
+
             }
             else
             {
-                MessageBox.Show("No company selected!!1!");
+                MessageBox.Show("No company selected or field is empty!!!");
             }
         }
 
@@ -221,9 +227,24 @@ namespace FreeTradeWindowsForms
             if (index > -1 && tradeNumOfShares.Text.Length>0)
             {
                 Company company = results[index];
-                int numOfShares = 0;
-                numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
-                transAmBox.Text=(company.getStockPrice()*numOfShares).ToString("C2");
+               
+                 int numOfShares = 0;
+                 bool bParseSucces = false;
+
+                bParseSucces = int.TryParse(tradeNumOfShares.Text, out numOfShares);
+
+                if (bParseSucces)
+                {
+                
+
+                    transAmBox.Text = (company.getStockPrice() * numOfShares).ToString("C2");
+                }
+             
+                else
+                {
+                    MessageBox.Show("Non-Numerial Entry in Number of Share", "Invalid Input");
+                    tradeNumOfShares.Text = "";
+                }
             }
             else if (tradeNumOfShares.Text.Length == 0) 
             {
@@ -231,7 +252,7 @@ namespace FreeTradeWindowsForms
             }
             else
             {
-                MessageBox.Show("No company selected!!1!");
+                MessageBox.Show("No company selected!!!!");
             }
 
         }
@@ -305,18 +326,24 @@ namespace FreeTradeWindowsForms
             {
                 Company company = results[index];
                 int numOfShares = 0;
-                numOfShares = Convert.ToInt32(tradeNumOfShares.Text);
+                bool bParse = int.TryParse(tradeNumOfShares.Text, out numOfShares);
                 DateTime now = DateTime.Now;
                 double price = company.getStockPrice();
-                if (user.SellStock(company.Name, company.Symbol, price, numOfShares, now))
+
+                //had to use short circuiting 
+                if (bParse && numOfShares > 0 && user.SellStock(company.Name, company.Symbol, price, numOfShares, now))
                 {
                     tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) - numOfShares).ToString();
                 }
+                else
+                    MessageBox.Show("Error in Number of stocks.");
                 statusUserCash.Text = user.Cash.ToString("C2");
+               
             }
+                
             else
             {
-                MessageBox.Show("No company selected!!1!");
+                MessageBox.Show("No company selected!!!");
             }
         }
 

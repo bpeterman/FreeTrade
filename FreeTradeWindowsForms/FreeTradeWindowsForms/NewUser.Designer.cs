@@ -115,6 +115,7 @@
             this.startCashBox.Name = "startCashBox";
             this.startCashBox.Size = new System.Drawing.Size(100, 20);
             this.startCashBox.TabIndex = 8;
+            this.startCashBox.TextChanged += new System.EventHandler(this.startCashBox_TextChanged);
             // 
             // NewUser
             // 

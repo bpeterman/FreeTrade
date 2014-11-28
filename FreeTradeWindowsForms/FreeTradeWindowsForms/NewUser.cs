@@ -67,7 +67,7 @@ namespace FreeTradeWindowsForms
                 string.IsNullOrEmpty(getPasswordVerification()) || 
                 string.IsNullOrEmpty(getStartingCash()) ||
                 !double.TryParse(getStartingCash(), out startingCash) ||
-                pass1Box.Text != pass2Box.Text)
+                pass1Box.Text != pass2Box.Text || startingCash < 0)
             {
                 MessageBox.Show("Invalid information. Please try again.");
                 return;
@@ -80,6 +80,11 @@ namespace FreeTradeWindowsForms
                 LoginController.CreateNewUser(getUsername(), getPassword(), double.Parse(getStartingCash()));
                 this.Close();
             }
+        }
+
+        private void startCashBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

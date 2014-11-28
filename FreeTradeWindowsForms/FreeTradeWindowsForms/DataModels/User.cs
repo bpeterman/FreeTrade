@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using FreeTradeWindowsForms;
 
 namespace FreeTradeWindowsForms.Models
@@ -267,6 +268,38 @@ namespace FreeTradeWindowsForms.Models
             holding.totalInvested = 10000.00;
             Holdings.Add(holding);
 
+        }
+
+        public void GenerateReport(string filepath)
+        {
+            StreamWriter file = new StreamWriter(filepath);
+
+            // Clear file
+            if (File.Exists(filepath))
+            {
+                File.WriteAllText(filepath, string.Empty);
+            }
+
+            refresh();
+
+            List<String> report = new List<string>();
+            report.Add("Auto Generated report for: " + Username);
+            report.Add(DateTime.Now.ToShortDateString());
+            report.Add("------------------------------------------------");
+
+            report.Add("");
+            report.Add("Net Worth:\t" + Worth.ToString("C2"));
+            report.Add("Cash on Hand:\t" + Cash.ToString("C2"));
+            report.Add("Cash Borrowed:\t" + borrowedCash.ToString("C2"));
+            report.Add("Num of Transactions: \t" + Transactions.Count.ToString());
+
+            report.Add("");
+            report.Add("Holdings");
+            report.Add("--------");
+            for (int i = 0; i < Holdings.Count; i++)
+            {
+                report.Add((i + 1).ToString() + ". " + Holdings[i].companyName + " - " + Holdings[i].stockSymbol);
+            }
         }
     }
 }

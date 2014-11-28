@@ -48,24 +48,28 @@ namespace FreeTradeWindowsForms
 
         private void settingsSaveButton_Click(object sender, EventArgs e)
         {
+            string message = "";
             double temp = 0; //used in parsing and then assigned to revelent fields.
           
             if (settingsCashBox.Text.Length>0  && double.TryParse(settingsCashBox.Text,out temp))
             {
-                if (user.AddCash(temp)) {}
+                if (user.AddCash(temp)) { }
 
                 else
-                   MessageBox.Show("No money has been added since cash is zero.");
+                    message += "No money has been added since cash is zero.";
                 
             }
             else
-                MessageBox.Show("Invalid Entry in cash");
+                message += "Invalid Entry in cash";
             //add fees here.
             if (settingsFeesBox.Text.Length >= 0 && double.TryParse(settingsFeesBox.Text, out temp) && temp > 0)
                 user.transactionFee= temp;
             else
-                MessageBox.Show("Invalid entry in fees");
-
+            {
+              if(message.Length > 0)
+                 message+=Environment.NewLine;
+              message += "Invalid entry in fees";
+            }
             //set market enforcement
             if (getEnforcement().Equals("Yes"))
             {
@@ -78,7 +82,10 @@ namespace FreeTradeWindowsForms
 
             //close the settings window.
             this.Close();
-            MessageBox.Show("Settings changed.");
+            if (message.Length > 0)
+                MessageBox.Show(message);
+            else
+               MessageBox.Show("Settings changed.");
         }
 
         private void settingsFeesBox_TextChanged(object sender, EventArgs e)

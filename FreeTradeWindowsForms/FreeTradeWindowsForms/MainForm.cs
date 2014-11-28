@@ -236,7 +236,6 @@ namespace FreeTradeWindowsForms
                 if (bParseSucces)
                 {
                 
-
                     transAmBox.Text = (company.getStockPrice() * numOfShares).ToString("C2");
                 }
              

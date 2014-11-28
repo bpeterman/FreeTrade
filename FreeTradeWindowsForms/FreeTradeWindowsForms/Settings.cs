@@ -55,13 +55,13 @@ namespace FreeTradeWindowsForms
                 if (user.AddCash(temp)) {}
 
                 else
-                   MessageBox.Show("Cash is not greater than 0");
+                   MessageBox.Show("No money has been added since cash is zero.");
                 
             }
             else
                 MessageBox.Show("Invalid Entry in cash");
             //add fees here.
-            if (settingsFeesBox.Text.Length > 0 && double.TryParse(settingsCashBox.Text, out temp) && temp > 0)
+            if (settingsFeesBox.Text.Length >= 0 && double.TryParse(settingsFeesBox.Text, out temp) && temp > 0)
                 user.transactionFee= temp;
             else
                 MessageBox.Show("Invalid entry in fees");

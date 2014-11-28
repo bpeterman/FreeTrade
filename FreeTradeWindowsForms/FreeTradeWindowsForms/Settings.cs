@@ -48,12 +48,21 @@ namespace FreeTradeWindowsForms
 
         private void settingsSaveButton_Click(object sender, EventArgs e)
         {
-            //add to cash here.
-            if (settingsCashBox.Text.Length>0)
-                user.AddCash(Convert.ToDouble(settingsCashBox.Text));
+            double temp = 0; //used in parsing and then assigned to revelent fields.
+          
+            if (settingsCashBox.Text.Length>0  && double.TryParse(settingsCashBox.Text,out temp))
+            {
+                if (user.AddCash(temp)) {}
+
+                else
+                   MessageBox.Show("Cash is not greater than 0");
+                
+            }
             //add fees here.
-            if (settingsFeesBox.Text.Length > 0)
-                user.transactionFee= Convert.ToDouble(settingsFeesBox.Text);
+            if (settingsFeesBox.Text.Length > 0 && double.TryParse(settingsCashBox.Text, out temp) && temp > 0)
+                user.transactionFee= temp;
+            else
+                MessageBox.Show("Invalid entry in fees");
 
             //set market enforcement
             if (getEnforcement().Equals("Yes"))
@@ -68,6 +77,11 @@ namespace FreeTradeWindowsForms
             //close the settings window.
             this.Close();
             MessageBox.Show("Settings changed.");
+        }
+
+        private void settingsFeesBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

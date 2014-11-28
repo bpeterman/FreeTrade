@@ -71,6 +71,7 @@
             this.settingsFeesBox.Name = "settingsFeesBox";
             this.settingsFeesBox.Size = new System.Drawing.Size(100, 20);
             this.settingsFeesBox.TabIndex = 3;
+            this.settingsFeesBox.TextChanged += new System.EventHandler(this.settingsFeesBox_TextChanged);
             // 
             // label3
             // 

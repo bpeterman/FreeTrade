@@ -71,10 +71,16 @@ namespace FreeTradeWindowsForms.Models
         /// Add more cash to use for investing. 
         /// </summary>
         /// <param name="amount"></param>
-        public void AddCash(double amount)
+        public bool AddCash(double amount)
         {
-            Cash = Cash += amount;
-            borrowedCash = borrowedCash += amount;
+            if (amount > 0)
+            {
+                Cash += amount;
+                borrowedCash += amount;
+                return true;
+            }
+            return false;
+
         }
 
         /// <summary>

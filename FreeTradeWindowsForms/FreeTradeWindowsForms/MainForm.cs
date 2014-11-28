@@ -208,12 +208,14 @@ namespace FreeTradeWindowsForms
                 if (bParse && numOfShares > 0 && user.BuyStock(company.Name, company.Symbol, company.getStockPrice(), numOfShares, now))
                 {
                     statusUserCash.Text = user.Cash.ToString("C2");
-                   
+
                     tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) + numOfShares).ToString();
                 }
                 else
-                    MessageBox.Show("Invalid Data in number of stocks.");
-
+                {
+                    if(numOfShares < 1)
+                         MessageBox.Show("Invalid Data in number of stocks.");
+                }
             }
             else
             {

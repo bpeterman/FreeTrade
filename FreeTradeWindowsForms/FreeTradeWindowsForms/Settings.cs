@@ -58,6 +58,8 @@ namespace FreeTradeWindowsForms
                    MessageBox.Show("Cash is not greater than 0");
                 
             }
+            else
+                MessageBox.Show("Invalid Entry in cash");
             //add fees here.
             if (settingsFeesBox.Text.Length > 0 && double.TryParse(settingsCashBox.Text, out temp) && temp > 0)
                 user.transactionFee= temp;

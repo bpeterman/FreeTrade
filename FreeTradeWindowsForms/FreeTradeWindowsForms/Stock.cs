@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Windows.Forms;
 
 namespace FreeTradeWindowsForms
 {
@@ -57,25 +58,36 @@ namespace FreeTradeWindowsForms
         private string[] getFromAPIquoute(string symbol, string args)
         {
             string[] results = null;
-            try
+            int count = 0;
+            while (results == null && count < 3)
             {
-                string temp = null;
-                string yahooURL = @"http://download.finance.yahoo.com/d/quotes.csv?s=" +
-                                      symbol + "&f=" + args;
-                // Initialize a new WebRequest.
-                HttpWebRequest webreq = (HttpWebRequest)WebRequest.Create(yahooURL);
-                // Get the response from the Internet resource.
-                HttpWebResponse webresp = (HttpWebResponse)webreq.GetResponse();
-                // Read the body of the response from the server.
-                StreamReader strm =
-                  new StreamReader(webresp.GetResponseStream(), Encoding.ASCII);
-                temp = strm.ReadToEnd();
-                results = temp.Split(new Char[] { ',' });
-                strm.Close();
+                try
+                {
+                    string temp = null;
+                    string yahooURL = @"http://download.finance.yahoo.com/d/quotes.csv?s=" +
+                                          symbol + "&f=" + args;
+                    // Initialize a new WebRequest.
+                    HttpWebRequest webreq = (HttpWebRequest)WebRequest.Create(yahooURL);
+                    // Get the response from the Internet resource.
+                    HttpWebResponse webresp = (HttpWebResponse)webreq.GetResponse();
+                    // Read the body of the response from the server.
+                    StreamReader strm =
+                      new StreamReader(webresp.GetResponseStream(), Encoding.ASCII);
+                    temp = strm.ReadToEnd();
+                    results = temp.Split(new Char[] { ',' });
+                    strm.Close();
+                }
+                catch
+                {
+                    //some exception
+                }
+                count++;
             }
-            catch
+            if (count == 3)
             {
-                //some exception
+                MessageBox.Show("Can't seem to get ahold of Yahoo at the moment, maybe try again later?\nThe system will now exit.");
+                results = new string[1] { "0" };
+                Environment.Exit(0);
             }
             return results;
         }

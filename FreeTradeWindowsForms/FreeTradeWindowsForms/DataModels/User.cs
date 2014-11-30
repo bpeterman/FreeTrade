@@ -278,13 +278,13 @@ namespace FreeTradeWindowsForms.Models
 
         public void GenerateReport(string filepath)
         {
-            StreamWriter file = new StreamWriter(filepath);
-
             // Clear file
             if (File.Exists(filepath))
             {
                 File.WriteAllText(filepath, string.Empty);
             }
+
+            StreamWriter file = new StreamWriter(filepath);
 
             refresh();
 
@@ -304,8 +304,18 @@ namespace FreeTradeWindowsForms.Models
             report.Add("--------");
             for (int i = 0; i < Holdings.Count; i++)
             {
-                report.Add((i + 1).ToString() + ". " + Holdings[i].companyName + " - " + Holdings[i].stockSymbol);
+                report.Add("\t" + (i + 1).ToString() + ". " + Holdings[i].companyName + " - " + Holdings[i].stockSymbol);
+                report.Add("Performance: " + Holdings[i].GetPerformance().ToString("P"));
+                report.Add("Number of Shares: " + Holdings[i].numOfShares);
+                report.Add("Worth: " + Holdings[i].worth.ToString("C2"));
+                report.Add("Total Invested: " + Holdings[i].totalInvested.ToString("C2"));
             }
+
+            for (int i = 0; i < report.Count; i ++)
+            {
+                file.WriteLine(report[i]);
+            }
+            file.Close();
         }
     }
 }

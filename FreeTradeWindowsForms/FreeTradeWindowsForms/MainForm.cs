@@ -453,5 +453,14 @@ namespace FreeTradeWindowsForms
             user.WatchList.RemoveAt(ListBoxWatchlist.SelectedIndex);
             ListBoxWatchlist.Items.RemoveAt(ListBoxWatchlist.SelectedIndex);
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.DefaultExt = "*.ftr";
+            DialogResult result = fileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+                user.GenerateReport(fileDialog.FileName);
+        }
     }
 }

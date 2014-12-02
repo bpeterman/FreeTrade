@@ -209,7 +209,12 @@ namespace FreeTradeWindowsForms
                 {
                     statusUserCash.Text = user.Cash.ToString("C2");
 
-                    tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) + numOfShares).ToString();
+                    if (string.IsNullOrEmpty(tradeCurrentSharesBox.Text))
+                    {
+                        tradeCurrentSharesBox.Text = numOfShares.ToString();
+                    }
+                    else
+                        tradeCurrentSharesBox.Text = (Convert.ToDouble(tradeCurrentSharesBox.Text) + numOfShares).ToString();
                 }
                 else
                 {
